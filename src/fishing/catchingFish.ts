@@ -1,7 +1,7 @@
-const { Region, OptionalSearchParameters, screen } = require('@nut-tree/nut-js');
-const { mouseMovement } = require('./mouseMovement');
+import { Region, OptionalSearchParameters, screen } from '@nut-tree/nut-js';
+import { mouseMovement } from './mouseMovement';
 
-async function catchingFish(screenWidth, screenHeight) {
+export async function catchingFish(screenWidth: number, screenHeight: number) {
 	console.log('SEARCH | LMB');
 
 	const lmbSearchRegion = new Region(
@@ -10,6 +10,7 @@ async function catchingFish(screenWidth, screenHeight) {
 		screenWidth - screenWidth * 0.6,
 		screenHeight * 0.3,
 	);
+
 	const lmbSearchParam = new OptionalSearchParameters(lmbSearchRegion, 0.93);
 	const lmbIndicator = await screen.waitFor('lmb.png', 50000, lmbSearchParam);
 
@@ -17,5 +18,3 @@ async function catchingFish(screenWidth, screenHeight) {
 
 	mouseMovement(screenWidth, screenHeight);
 }
-
-module.exports = { catchingFish };

@@ -1,7 +1,13 @@
-const { Region, OptionalSearchParameters, screen, mouse, left, right } = require('@nut-tree/nut-js');
-const { getRandomIntInclusive } = require('../utils/getRandomIntInclusive');
+import { Region, OptionalSearchParameters, screen, mouse, left, right } from '@nut-tree/nut-js';
+import { getRandomIntInclusive } from '../utils/getRandomIntInclusive';
 
-async function mouseMovement(screenWidth, screenHeight, direction = true, timeout = 50000, region = false) {
+export async function mouseMovement(
+	screenWidth: number,
+	screenHeight: number,
+	direction = true,
+	timeout = 50000,
+	region: boolean | Region = false,
+) {
 	mouse.config.autoDelayMs = 1;
 	mouse.config.mouseSpeed = 20000;
 
@@ -10,10 +16,10 @@ async function mouseMovement(screenWidth, screenHeight, direction = true, timeou
 
 		console.log(region);
 
-		let lmbSearchRegion;
+		let lmbSearchRegion: Region;
 
 		if (region !== false) {
-			lmbSearchRegion = region;
+			lmbSearchRegion = region as unknown as Region;
 		} else {
 			lmbSearchRegion = new Region(
 				screenWidth * 0.5,
@@ -45,9 +51,5 @@ async function mouseMovement(screenWidth, screenHeight, direction = true, timeou
 	} catch (err) {
 		console.log(err);
 		return;
-		// direction = !direction;
-		// mouseMovement(screenWidth, screenHeight, direction);
 	}
 }
-
-module.exports = { mouseMovement };

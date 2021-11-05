@@ -1,9 +1,7 @@
-const { screen, Region, OptionalSearchParameters, keyboard, Key } = require('@nut-tree/nut-js');
-const { catchingFish } = require('./catchingFish');
+import { screen, Region, OptionalSearchParameters, keyboard, Key } from '@nut-tree/nut-js';
+import { catchingFish } from './catchingFish';
 
-screen.config.autoHighlight = true;
-
-async function fishingBotIteration() {
+export async function fishingBotIteration() {
 	screen.config.resourceDirectory += `/src/img/`;
 
 	try {
@@ -39,5 +37,3 @@ async function fishingBotIteration() {
 		console.log('bot false');
 	}
 }
-
-module.exports = { fishingBotIteration };
