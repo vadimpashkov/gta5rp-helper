@@ -13,5 +13,6 @@ export type Config = {
 	lmbRegion: Region;
 	fishingPlaceRegion: Region;
 	successRegion: Region;
+	errorRegion: Region;
 	clickingDirection: boolean;
 };
