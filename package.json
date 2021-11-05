@@ -1,0 +1,15 @@
+{
+	"name": "gta5-helper",
+	"version": "1.0.0",
+	"description": "",
+	"main": "src/index.js",
+	"scripts": {
+		"start": "node src/index.js"
+	},
+	"keywords": [],
+	"author": "Vadim Pashkov <vadimpashkov.job@gmail.com> (https://github.com/vadimpashkov)",
+	"license": "MIT",
+	"dependencies": {
+		"@nut-tree/nut-js": "^1.7.0"
+	}
+}
