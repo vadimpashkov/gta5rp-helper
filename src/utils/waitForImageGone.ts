@@ -1,4 +1,4 @@
-import { OptionalSearchParameters, Region, screen } from '@nut-tree/nut-js';
+import { OptionalSearchParameters, screen } from '@nut-tree/nut-js';
 import { timeout } from './timeout';
 
 // Ждем  когда картинка пропадет

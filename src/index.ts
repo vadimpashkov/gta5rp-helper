@@ -1,10 +1,11 @@
 import 'module-alias/register';
-import { screen } from '@nut-tree/nut-js';
+import { screen, mouse } from '@nut-tree/nut-js';
 import { Machine } from './state';
 import { startState } from './state/fishing/start';
 import { initConfig } from './initConfig';
 
 screen.config.resourceDirectory += `/build/img/`;
+mouse.config.mouseSpeed = 3000;
 
 const start = async () => {
 	const width = await screen.width();

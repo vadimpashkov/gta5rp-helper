@@ -1,3 +1,5 @@
+import { mouse } from '@nut-tree/nut-js';
+
 import { waitForImage } from '@utils/waitForImage';
 import { createParam } from '@utils/parameterFactory';
 import { abortMany } from '@utils/abort';
@@ -31,6 +33,8 @@ export const waitLmdSwitch: StateSwitch = async (config: Config) => {
 
 					foundFish++;
 					config.messanger(`Поймано рыб: ${foundFish}`);
+
+					// mouse.move(config.startMousePosition);
 
 					resolve(startState);
 				}
