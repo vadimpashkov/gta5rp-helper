@@ -1,3 +1,6 @@
 import { OptionalSearchParameters, Region } from '@nut-tree/nut-js';
 
-export const createParam = (region: Region, confience: number) => new OptionalSearchParameters(region, confience);
+export const createParam = (region: Region, confience: number) =>
+	new OptionalSearchParameters(region, confience, false, {
+		onabort: () => null,
+	} as any);

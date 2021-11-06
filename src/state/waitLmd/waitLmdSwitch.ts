@@ -11,5 +11,7 @@ export const waitLmdSwitch: StateSwitch = async (config: Config) => {
 
 	config.lmbRegion = lmbIndicator;
 
+	lmbSearchParam.abort.onabort({} as any);
+
 	return clickingState;
 };

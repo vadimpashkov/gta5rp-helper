@@ -3,8 +3,8 @@ import { timeout } from './timeout';
 
 // Ждем  когда картинка пропадет
 export const waitForImageGone = (image: string, timeToOut: number, param: OptionalSearchParameters) =>
-	timeout<void>(
-		100,
+	timeout(
+		70,
 		timeToOut,
 		async () => {
 			try {
@@ -13,6 +13,7 @@ export const waitForImageGone = (image: string, timeToOut: number, param: Option
 				throw 'found';
 			} catch (e) {
 				if (e === 'found') throw e;
+				return true;
 			}
 		},
 		{ signal: param.abort },
