@@ -11,6 +11,7 @@ export type State = {
 
 export type Config = {
 	lmbRegion: Region;
+	hookRegion: Region;
 	fishingPlaceRegion: Region;
 	successRegion: Region;
 	errorRegion: Region;

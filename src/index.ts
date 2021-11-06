@@ -13,15 +13,18 @@ const start = async () => {
 
 	const machine = new Machine(startState, config, console.log);
 
-	setInterval(machine.iteration, 10);
+	setInterval(machine.iteration, 150);
 
 	switchState(machine);
 };
 
 const switchState = async (machine: Machine) => {
-	await machine.switchState();
-
-	switchState(machine);
+	try {
+		await machine.switchState();
+		switchState(machine);
+	} catch {
+		switchState(machine);
+	}
 };
 
 start();
