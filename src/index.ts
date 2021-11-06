@@ -14,12 +14,10 @@ const start = async () => {
 
 	const machine = new Machine(startState, config, console.log);
 
-	let timeout = setTimeout(() => {
+	let timeout = setTimeout(function createTimeout() {
 		machine.iteration();
 
-		timeout = setTimeout(() => {
-			machine.iteration();
-		}, 150);
+		timeout = setTimeout(createTimeout, 150);
 	}, 150);
 
 	switchState(machine);
