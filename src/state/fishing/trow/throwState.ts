@@ -1,4 +1,4 @@
-import { State } from '../types';
+import { State } from '../../types';
 import { throwSwitch } from './thowSwitch';
 
 export const throwState: State = {

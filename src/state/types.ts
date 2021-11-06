@@ -9,6 +9,8 @@ export type State = {
 	switcher: StateSwitch;
 };
 
+export type Messanger = (message: string) => void;
+
 export type Config = {
 	lmbRegion: Region;
 	hookRegion: Region;

@@ -1,7 +1,9 @@
-import { throwState } from '../trow';
-import { Config, StateSwitch } from '../types';
 import { waitForImage } from '@utils/waitForImage';
 import { createParam } from '@utils/parameterFactory';
+
+import { throwState } from '../trow';
+
+import { Config, StateSwitch } from '../../types';
 
 export const startSwitch: StateSwitch = async (config: Config) => {
 	const { fishingPlaceRegion } = config;

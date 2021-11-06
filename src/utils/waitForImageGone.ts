@@ -4,7 +4,7 @@ import { timeout } from './timeout';
 // Ждем  когда картинка пропадет
 export const waitForImageGone = (image: string, timeToOut: number, param: OptionalSearchParameters) =>
 	timeout(
-		70,
+		30,
 		timeToOut,
 		async () => {
 			try {

@@ -1,7 +1,7 @@
 import 'module-alias/register';
 import { screen } from '@nut-tree/nut-js';
 import { Machine } from './state';
-import { startState } from './state/start';
+import { startState } from './state/fishing/start';
 import { initConfig } from './initConfig';
 
 screen.config.resourceDirectory += `/build/img/`;
@@ -14,7 +14,7 @@ const start = async () => {
 
 	const machine = new Machine(startState, config, console.log);
 
-	const iterationInterval = 200;
+	const iterationInterval = 190;
 
 	let timeout = setTimeout(function createTimeout() {
 		machine.iteration();
@@ -26,8 +26,12 @@ const start = async () => {
 };
 
 const switchState = async (machine: Machine) => {
-	await machine.switchState();
-	switchState(machine);
+	try {
+		await machine.switchState();
+		switchState(machine);
+	} catch {
+		switchState(machine);
+	}
 };
 
 start();

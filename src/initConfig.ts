@@ -15,7 +15,7 @@ export const initConfig = (screenWidth: number, screenHeight: number): Config =>
 		screenWidth - screenWidth * 0.5,
 		screenHeight - screenHeight * 0.5,
 	),
-	successRegion: new Region(0, screenHeight * 0.8, screenWidth, screenHeight - screenHeight * 0.8),
+	successRegion: new Region(0, screenHeight * 0.5, screenWidth, screenHeight - screenHeight * 0.5),
 	errorRegion: new Region(0, screenHeight * 0.8, screenWidth, screenHeight - screenHeight * 0.8),
 	clickingDirection: false,
 });
