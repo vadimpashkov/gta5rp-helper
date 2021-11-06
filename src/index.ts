@@ -27,12 +27,8 @@ const start = async () => {
 };
 
 const switchState = async (machine: Machine) => {
-	try {
-		await machine.switchState();
-		switchState(machine);
-	} catch {
-		switchState(machine);
-	}
+	await machine.switchState();
+	switchState(machine);
 };
 
 start();
