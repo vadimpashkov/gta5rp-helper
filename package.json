@@ -14,8 +14,12 @@
 	"keywords": [],
 	"author": "Vadim Pashkov <vadimpashkov.job@gmail.com> (https://github.com/vadimpashkov)",
 	"license": "MIT",
+	"_moduleAliases": {
+		"@utils": "build/utils"
+	},
 	"dependencies": {
-		"@nut-tree/nut-js": "^1.7.0"
+		"@nut-tree/nut-js": "^1.7.0",
+		"module-alias": "^2.2.2"
 	},
 	"devDependencies": {
 		"@types/node": "^16.11.6",

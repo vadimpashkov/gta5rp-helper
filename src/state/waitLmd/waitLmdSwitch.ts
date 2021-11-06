@@ -1,7 +1,7 @@
 import { clickingState } from '../clicking';
 import { Config, StateSwitch } from '../types';
-import { waitForImage } from '../../utils/waitForImage';
-import { createParam } from '../../utils/parameterFactory';
+import { waitForImage } from '@utils/waitForImage';
+import { createParam } from '@utils/parameterFactory';
 
 export const waitLmdSwitch: StateSwitch = async (config: Config) => {
 	const { lmbRegion } = config;

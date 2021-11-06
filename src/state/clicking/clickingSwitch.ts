@@ -1,8 +1,8 @@
 import { waitLmdState } from '../waitLmd';
 import { throwState } from '../trow';
 import { Config, StateSwitch } from '../types';
-import { waitForImage } from '../../utils/waitForImage';
-import { createParam } from '../../utils/parameterFactory';
+import { waitForImage } from '@utils/waitForImage';
+import { createParam } from '@utils/parameterFactory';
 
 export const clickingSwitch: StateSwitch = async (config: Config) => {
 	const { hookRegion, successRegion, errorRegion } = config;

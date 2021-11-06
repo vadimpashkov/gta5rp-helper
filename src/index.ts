@@ -1,3 +1,4 @@
+import 'module-alias/register';
 import { screen } from '@nut-tree/nut-js';
 import { Machine } from './state';
 import { startState } from './state/start';

@@ -1,5 +1,5 @@
 import { Region, OptionalSearchParameters, screen, mouse, left, right } from '@nut-tree/nut-js';
-import { getRandomIntInclusive } from '../utils/getRandomIntInclusive';
+import { getRandomIntInclusive } from '@utils/getRandomIntInclusive';
 
 export async function mouseMovement(
 	screenWidth: number,
