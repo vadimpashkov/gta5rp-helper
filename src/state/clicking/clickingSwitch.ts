@@ -2,6 +2,7 @@ import { waitLmdState } from '../waitLmd';
 import { throwState } from '../trow';
 import { Config, StateSwitch } from '../types';
 import { waitForImage } from '@utils/waitForImage';
+import { waitForImageGone } from '@utils/waitForImageGone';
 import { createParam } from '@utils/parameterFactory';
 
 export const clickingSwitch: StateSwitch = async (config: Config) => {
@@ -13,9 +14,7 @@ export const clickingSwitch: StateSwitch = async (config: Config) => {
 
 	const works = [
 		new Promise<string>(async (resolve) => {
-			const lmbIndicator = await waitForImage('hook.png', 50000, lmbSearchParam);
-
-			config.hookRegion = lmbIndicator;
+			await waitForImageGone('lmb.png', 50000, lmbSearchParam);
 
 			resolve('hook');
 		}),
