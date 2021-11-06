@@ -4,6 +4,7 @@
 		"module": "commonjs",
 		"target": "es6",
 		"esModuleInterop": true,
+		"outDir": "./build",
 		"allowJs": true,
 		"lib": ["es2021"],
 		"baseUrl": "./src",
