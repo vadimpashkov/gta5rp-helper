@@ -10,9 +10,9 @@ const start = async () => {
 	const width = await screen.width();
 	const height = await screen.height();
 
-	const config = initConfig(width, height);
+	const config = initConfig(width, height, console.log);
 
-	const machine = new Machine(startState, config, console.log);
+	const machine = new Machine(startState, config);
 
 	const iterationInterval = 190;
 

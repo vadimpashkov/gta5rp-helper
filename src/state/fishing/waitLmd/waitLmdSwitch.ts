@@ -7,9 +7,10 @@ import { startState } from '../start';
 
 import { Config, State, StateSwitch } from '../../types';
 
+let foundFish = 0;
+
 export const waitLmdSwitch: StateSwitch = async (config: Config) => {
 	const { lmbRegion, successRegion, errorRegion } = config;
-
 	const successParam = createParam(successRegion, 0.93);
 	const lmbSearchParam = createParam(lmbRegion, 0.99);
 	const errorParam = createParam(errorRegion, 0.93);
@@ -18,11 +19,21 @@ export const waitLmdSwitch: StateSwitch = async (config: Config) => {
 		// Поймали рыбу
 		new Promise<State>(async (resolve) => {
 			try {
-				const success = await waitForImage('success.png', 50000, successParam);
+				if (!config.startedInLast10sec) {
+					const success = await waitForImage('successful.png', 50000, successParam);
 
-				config.successRegion = success;
+					config.successRegion = success;
+					config.startedInLast10sec = true;
 
-				resolve(startState);
+					setTimeout(() => {
+						config.startedInLast10sec = false;
+					}, 10000);
+
+					foundFish++;
+					config.messanger(`Поймано рыб: ${foundFish}`);
+
+					resolve(startState);
+				}
 			} catch {}
 		}),
 		// Нужно поймать рыбу
@@ -38,11 +49,18 @@ export const waitLmdSwitch: StateSwitch = async (config: Config) => {
 		// Не получилось поймать рыбу либо кончилась приманка
 		new Promise<State>(async (resolve) => {
 			try {
-				const error = await waitForImage('error.png', 50000, errorParam);
+				if (!config.startedInLast10sec) {
+					const error = await waitForImage('error.png', 50000, errorParam);
 
-				config.errorRegion = error;
+					config.errorRegion = error;
+					config.startedInLast10sec = true;
 
-				resolve(startState);
+					setTimeout(() => {
+						config.startedInLast10sec = false;
+					}, 10000);
+
+					resolve(startState);
+				}
 			} catch {}
 		}),
 	];

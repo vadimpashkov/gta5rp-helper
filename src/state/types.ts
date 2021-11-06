@@ -12,10 +12,12 @@ export type State = {
 export type Messanger = (message: string) => void;
 
 export type Config = {
+	messanger: Messanger;
 	lmbRegion: Region;
 	hookRegion: Region;
 	fishingPlaceRegion: Region;
 	successRegion: Region;
 	errorRegion: Region;
 	clickingDirection: boolean;
+	startedInLast10sec: boolean;
 };
