@@ -1,0 +1,80 @@
+.drag-panel {
+	position: relative;
+	z-index: var(--z-index-drag-panel);
+	display: flex;
+	padding: 0 var(--indent-main);
+	justify-content: space-between;
+	align-items: center;
+	height: var(--height-drag-panel);
+
+	box-sizing: border-box;
+	-webkit-app-region: drag;
+}
+
+.drag-panel::after {
+	z-index: var(--z-index-drag-panel-background);
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--color-block);
+}
+
+.drag-panel__bot-state {
+	background-color: var(--color-block-secondary);
+}
+
+.drag-panel__bot-state--active {
+	background-color: var(--color-primary);
+}
+
+.drag-panel__buttons {
+	display: flex;
+	align-items: center;
+	column-gap: 10px;
+}
+
+.drag-panel__minimize:hover,
+.drag-panel__minimize:focus-visible {
+	background-color: var(--color-minimize);
+}
+
+.drag-panel__minimize:focus {
+	outline: none;
+}
+
+.drag-panel__close:hover,
+.drag-panel__close:focus-visible {
+	background-color: var(--color-secondary);
+}
+
+.drag-panel__close:focus {
+	outline: none;
+}
+
+.drag-panel__bot-state,
+.drag-panel__buttons {
+	-webkit-app-region: no-drag;
+	z-index: var(--z-index-drag-panel-item);
+}
+
+.drag-panel__minimize,
+.drag-panel__close {
+	background-color: var(--color-block-secondary);
+	padding: 0;
+	border: none;
+	cursor: pointer;
+}
+
+.drag-panel__bot-state,
+.drag-panel__minimize,
+.drag-panel__close {
+	--size: 10px;
+
+	width: var(--size);
+	height: var(--size);
+
+	border-radius: 100%;
+}
