@@ -1,23 +1,14 @@
-import { Region, Point } from '@nut-tree/nut-js';
+export type StateIteration<T extends DefaultConfig> = (config: T) => Promise<void>;
+export type StateSwitch<T extends DefaultConfig> = (config: T) => Promise<State<T>>;
 
-export type StateIteration = (config: Config) => Promise<void>;
-export type StateSwitch = (config: Config) => Promise<State>;
-
-export type State = {
+export type State<T extends DefaultConfig> = {
 	name: string;
-	iteration?: StateIteration;
-	switcher: StateSwitch;
+	iteration?: StateIteration<T>;
+	switcher: StateSwitch<T>;
 };
 
 export type Messanger = (message: string) => void;
 
-export type Config = {
+export type DefaultConfig = {
 	messanger: Messanger;
-	lmbRegion: Region;
-	fishingPlaceRegion: Region;
-	successRegion: Region;
-	errorRegion: Region;
-	startMousePosition: Point;
-	clickingDirection: boolean;
-	startedInLast10sec: boolean;
 };

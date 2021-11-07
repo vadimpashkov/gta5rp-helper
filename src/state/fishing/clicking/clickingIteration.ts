@@ -1,8 +1,8 @@
 import { left, mouse, right } from '@nut-tree/nut-js';
 import { getRandomIntInclusive } from '@utils/getRandomIntInclusive';
-import { Config, StateIteration } from '../../types';
+import { FishingIteration } from '../types';
 
-export const clickingIteration: StateIteration = async (config: Config) => {
+export const clickingIteration: FishingIteration = async (config) => {
 	const { clickingDirection: direction } = config;
 	const moveSize = getRandomIntInclusive(100, 200);
 

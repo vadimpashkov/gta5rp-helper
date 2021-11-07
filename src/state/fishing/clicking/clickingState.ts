@@ -1,8 +1,9 @@
-import { State } from '../../types';
 import { clickingSwitch } from './clickingSwitch';
 import { clickingIteration } from './clickingIteration';
 
-export const clickingState: State = {
+import { FishingState } from '../types';
+
+export const clickingState: FishingState = {
 	name: 'Ловим рыбу',
 	switcher: clickingSwitch,
 	iteration: clickingIteration,

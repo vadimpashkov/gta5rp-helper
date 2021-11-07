@@ -3,9 +3,9 @@ import { createParam } from '@utils/parameterFactory';
 
 import { throwState } from '../trow';
 
-import { Config, StateSwitch } from '../../types';
+import { FishingSwitch } from '../types';
 
-export const startSwitch: StateSwitch = async (config: Config) => {
+export const startSwitch: FishingSwitch = async (config) => {
 	const { fishingPlaceRegion } = config;
 	const fishingPlaceSearchParam = createParam(fishingPlaceRegion, 0.93);
 	const fishingPlaceIndicator = await waitForImage('fishingPlace.png', 10000, fishingPlaceSearchParam);

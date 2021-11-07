@@ -1,7 +1,8 @@
-import { State } from '../../types';
 import { throwSwitch } from './thowSwitch';
 
-export const throwState: State = {
+import { FishingState } from '../types';
+
+export const throwState: FishingState = {
 	name: 'Закидываем удочку',
 	switcher: throwSwitch,
 };

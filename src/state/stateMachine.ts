@@ -1,10 +1,10 @@
-import { Config, State } from './types';
+import { State, DefaultConfig } from './types';
 
-export class Machine {
-	currentState: State;
-	config: Config;
+export class Machine<T> {
+	currentState: State<T>;
+	config: DefaultConfig & T;
 
-	constructor(initialState: State, config: Config) {
+	constructor(initialState: State<T>, config: DefaultConfig & T) {
 		this.currentState = initialState;
 		this.config = config;
 	}
