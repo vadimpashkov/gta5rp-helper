@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html class="page" lang="ru">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<title>GTA 5 Helper - Рыбалка</title>
+		<link rel="stylesheet" href="./css/index.css" />
+		<link rel="stylesheet" href="./css/fishing.css" />
+	</head>
+	<body class="page__body" id="fishing">
+		<div class="drag-panel">
+			<div class="drag-panel__bot-state"></div>
+			<div class="drag-panel__buttons">
+				<button class="drag-panel__minimize" type="button" aria-label="Свернуть"></button>
+				<button class="drag-panel__close" type="button" aria-label="Закрыть"></button>
+			</div>
+		</div>
+		<!-- .drag-panel  -->
+		<nav class="menu">
+			<button class="menu__button" type="button" aria-controls="menu__list" aria-label="Открыть меню">
+				<span class="line"></span>
+				<span class="line"></span>
+				<span class="line"></span>
+			</button>
+			<ul class="menu__list" id="menu__list">
+				<li class="menu__item">
+					<a class="menu__link" href="./index.html" tabindex="-1">Главная</a>
+				</li>
+				<li class="menu__item">
+					<a class="menu__link" href="./fishing.html" tabindex="-1">Рыбалка</a>
+				</li>
+			</ul>
+		</nav>
+		<!-- .menu  -->
+		<div class="wrapper wrapper--flex">
+			<div class="price-update">
+				<time class="price-update__time">00:00:00</time>
+				<p class="price-update__description">до обновления цен</p>
+			</div>
+			<button class="bot-state-switch button" type="button">Включить бота [F7]</button>
+			<a class="assign-keys button" href="./assignKeys.html">Назначить клавиши</a>
+		</div>
+		<!-- .wrapper  -->
+
+		<script src="./js/index.js" type="module"></script>
+		<script src="./js/fishing/index.js" type="module"></script>
+	</body>
+	<!-- .page__body  -->
+</html>

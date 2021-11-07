@@ -1,0 +1,10 @@
+.wrapper {
+	overflow: hidden;
+	padding: var(--indent-main);
+}
+
+.wrapper--flex {
+	display: flex;
+	flex-flow: column;
+	row-gap: var(--indent-main);
+}

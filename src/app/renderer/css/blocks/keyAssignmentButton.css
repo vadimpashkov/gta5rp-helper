@@ -1,0 +1,14 @@
+.key-assignment-button {
+	box-sizing: border-box;
+	border: none;
+	background-color: var(--color-block);
+	border-radius: 18px;
+	padding: 18px 0;
+	width: 100%;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	cursor: pointer;
+	text-decoration: none;
+	text-align: center;
+}

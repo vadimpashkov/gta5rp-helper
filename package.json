@@ -2,14 +2,14 @@
 	"name": "gta5-helper",
 	"version": "1.0.0",
 	"description": "",
-	"main": "src/index.ts",
+	"main": "src/main.ts",
 	"scripts": {
 		"build:start": "npm run build & npm run start",
-		"start": "node build/index.js",
+		"start": "electron build/main.js",
 		"build": "npm run clean & npm run typescript & npm run copy-files",
 		"typescript": "tsc -p ./tsconfig.json",
 		"clean": "rimraf ./build",
-		"copy-files": "copyfiles -u 1 ./src/**/*.png ./build"
+		"copy-files": "copyfiles -u 1 ./src/**/*.png ./src/**/*.html ./src/**/*.woff ./src/**/*.woff2 ./src/**/*.css ./src/**/*.js ./build"
 	},
 	"contributors": [
 		{
@@ -28,6 +28,7 @@
 	},
 	"dependencies": {
 		"@nut-tree/nut-js": "^1.7.0",
+		"electron": "^13.6.1",
 		"module-alias": "^2.2.2"
 	},
 	"devDependencies": {

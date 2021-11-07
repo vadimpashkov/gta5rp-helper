@@ -1,0 +1,125 @@
+.menu::before {
+	--size: 60px;
+
+	content: '';
+	position: absolute;
+	display: block;
+	width: var(--size);
+	height: var(--size);
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: var(--indent-main);
+	background-color: var(--color-primary);
+	transform-origin: center center;
+	transition: transform 0.4s ease-in-out;
+	border-radius: 100%;
+}
+
+.menu--active::before {
+	transform: scale(100);
+}
+
+.menu__button {
+	--size: 60px;
+
+	z-index: var(--z-index-menu-button);
+
+	position: absolute;
+	bottom: var(--indent-main);
+	left: 50%;
+	transform: translateX(-50%);
+
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: center;
+	row-gap: 4px;
+
+	width: var(--size);
+	height: var(--size);
+
+	background-color: var(--color-primary);
+	border-radius: 100%;
+
+	border: none;
+
+	cursor: pointer;
+}
+
+.menu__button:focus {
+	outline: none;
+}
+
+.menu--active .menu__button {
+	background-color: var(--color-light);
+}
+
+.menu__button:hover,
+.menu__button:focus-visible {
+	background-color: var(--color-secondary);
+}
+
+.line {
+	height: 2px;
+	width: 24px;
+	background-color: var(--color-font);
+}
+
+.menu--active .line {
+	background-color: var(--color-primary);
+}
+
+.menu--active .menu__button:hover .line,
+.menu--active .menu__button:focus-visible .line {
+	background-color: var(--color-font);
+}
+
+.menu__list {
+	z-index: var(--z-index-menu-list);
+
+	position: absolute;
+
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: center;
+	row-gap: var(--indent-main);
+
+	margin: 0;
+	padding: 0;
+
+	width: 100%;
+	height: calc(100vh - var(--height-drag-panel));
+
+	list-style: none;
+
+	font-size: 24px;
+
+	transform: translateY(100vh) scale(0);
+	opacity: 0;
+	transition: transform 0.1s linear 0.4s, opacity 0.4s ease-in-out;
+}
+
+.menu--active .menu__list {
+	transition: opacity 0.4s ease-in-out;
+	transform: translateY(0);
+	opacity: 1;
+}
+
+.menu__item {
+	user-select: none;
+}
+
+.menu__link {
+	text-decoration: none;
+	color: inherit;
+}
+
+.menu__link:focus {
+	outline: none;
+}
+
+.menu__link:hover,
+.menu__link:focus-visible {
+	color: var(--color-block);
+}

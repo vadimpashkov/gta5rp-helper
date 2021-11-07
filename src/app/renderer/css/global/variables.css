@@ -1,0 +1,23 @@
+:root {
+	--z-index-drag-panel: 999;
+	--z-index-drag-panel-background: 1000;
+	--z-index-drag-panel-item: 1001;
+	--z-index-menu-list: 100;
+	--z-index-menu-button: 101;
+
+	--height-drag-panel: 30px;
+
+	--color-light: #ffffff;
+
+	--color-body: #070a28;
+	--color-block: #0f1732;
+	--color-block-secondary: #192039;
+	--color-font: var(--color-light);
+
+	--color-primary: #2a5de1;
+	--color-secondary: #e12a41;
+
+	--color-minimize: #e18d2a;
+
+	--indent-main: 20px;
+}
