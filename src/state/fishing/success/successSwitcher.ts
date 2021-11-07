@@ -1,6 +1,5 @@
-import { screen } from '@nut-tree/nut-js';
-
 import { createParam } from '@utils/parameterFactory';
+import { waitForImage } from '@utils/waitForImage';
 
 import { startState } from '../start';
 import { errorState } from '../error';
@@ -14,7 +13,7 @@ export const successSwitcher: FishingSwitch = async (config) => {
 	const successParam = createParam(successRegion, 0.93);
 
 	try {
-		const success = await screen.find('successful.png', successParam);
+		const success = await waitForImage('successful.png', 1000, successParam);
 		config.successRegion = success;
 		foundFish++;
 		config.messanger(`Поймано рыб: ${foundFish}`);
