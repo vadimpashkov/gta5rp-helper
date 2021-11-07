@@ -3,6 +3,7 @@ export type StateSwitch<T extends DefaultConfig> = (config: T) => Promise<State<
 
 export type State<T extends DefaultConfig> = {
 	name: string;
+	description: string;
 	iteration?: StateIteration<T>;
 	switcher: StateSwitch<T>;
 };
