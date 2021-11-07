@@ -13,7 +13,7 @@ export const successSwitcher: FishingSwitch = async (config) => {
 	const successParam = createParam(successRegion, 0.93);
 
 	try {
-		const success = await waitForImage('successful.png', 1000, successParam);
+		const success = await waitForImage('successful.png', 1200, successParam);
 		config.successRegion = success;
 		foundFish++;
 		config.messanger(`Поймано рыб: ${foundFish}`);
