@@ -1,10 +1,17 @@
+import 'module-alias/register';
 import { BrowserWindow, ipcMain, app } from 'electron';
 import path from 'path';
+
+import { start } from './state/fishing';
 
 let winMain;
 
 ipcMain.on('appMinimize', () => {
 	winMain.minimize();
+});
+
+ipcMain.on('botFishingStarted', () => {
+	start();
 });
 
 export function createMainWindow() {
@@ -21,7 +28,7 @@ export function createMainWindow() {
 			preload: path.join(__dirname, './app/preload/index.js'),
 		},
 	});
-	winMain.loadFile('./app/renderer/index.html');
+	winMain.loadFile(path.join(__dirname, './app/renderer/index.html'));
 }
 
 app.whenReady().then(() => {

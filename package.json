@@ -1,17 +1,20 @@
 {
 	"name": "gta5-helper",
+	"productName": "GTA 5 Helper",
 	"version": "1.0.0",
-	"description": "",
+	"description": "Helper for GTA 5 RP",
 	"main": "src/main.ts",
 	"scripts": {
 		"build:start": "npm run build & npm run start",
+		"build:prod": "npm run build & npm run build:electron",
+		"build:electron": "electron-builder",
 		"start": "electron build/main.js",
 		"build": "npm run clean & npm run typescript & npm run copy-files",
-		"typescript": "tsc -p ./tsconfig.json",
 		"clean": "rimraf ./build",
+		"typescript": "tsc -p ./tsconfig.json",
 		"copy-files": "copyfiles -u 1 ./src/**/*.png ./src/**/*.html ./src/**/*.woff ./src/**/*.woff2 ./src/**/*.css ./src/**/*.js ./build"
 	},
-	"contributors": [
+	"authors": [
 		{
 			"name": "Vadim Pashkov",
 			"email": "vadimpashkov.job@gmail.com",
@@ -28,13 +31,28 @@
 	},
 	"dependencies": {
 		"@nut-tree/nut-js": "^1.7.0",
-		"electron": "^13.6.1",
 		"module-alias": "^2.2.2"
 	},
 	"devDependencies": {
 		"@types/node": "^16.11.6",
 		"copyfiles": "^2.4.1",
+		"electron": "^13.6.1",
+		"electron-builder": "^22.13.1",
 		"rimraf": "^3.0.2",
 		"typescript": "^4.4.4"
+	},
+	"build": {
+		"appId": "com.electron.app",
+		"directories": {
+			"output": "prod"
+		},
+		"win": {
+			"target": "portable",
+			"icon": "build/app.ico"
+		},
+		"portable": {
+			"unicode": false,
+			"artifactName": "gta5-helper.exe"
+		}
 	}
 }
