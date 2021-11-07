@@ -1,6 +1,6 @@
 import { screen } from '@nut-tree/nut-js';
 
-import { createParam } from 'utils/parameterFactory';
+import { createParam } from '@utils/parameterFactory';
 
 import { startState } from '../start';
 import { waitLmdState } from '../waitLmd';

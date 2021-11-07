@@ -1,5 +1,5 @@
-import { waitForImage } from 'utils/waitForImage';
-import { createParam } from 'utils/parameterFactory';
+import { waitForImage } from '@utils/waitForImage';
+import { createParam } from '@utils/parameterFactory';
 
 import { clickingState } from '../clicking';
 

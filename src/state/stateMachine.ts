@@ -1,6 +1,6 @@
 import { State, DefaultConfig } from './types';
 
-export class Machine<T> {
+export class Machine<T extends DefaultConfig> {
 	currentState: State<T>;
 	config: DefaultConfig & T;
 
