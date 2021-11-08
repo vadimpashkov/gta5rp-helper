@@ -1,12 +1,13 @@
-import { keyboard, Key } from '@nut-tree/nut-js';
+import keycode from 'keycode';
 
+import { KeyTap } from '@utils/keyTap';
 import { waitLmdState } from '../waitLmd';
 
 import { FishingSwitch } from '../types';
 
 export const throwSwitch: FishingSwitch = () =>
 	new Promise(async (resolve) => {
-		await keyboard.type(Key.Backspace);
+		KeyTap(keycode.codes.backspace);
 
 		resolve(waitLmdState);
 	});
