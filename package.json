@@ -2,7 +2,7 @@
 	"name": "gta5-helper",
 	"version": "1.0.0",
 	"description": "Helper for GTA 5 RP",
-	"main": "build/main.js",
+	"main": "src/main.ts",
 	"scripts": {
 		"build:dev": "npm run clean:build & npm run build & npm run start",
 		"build:prod": "npm run clean:prod & npm run build & electron-builder",
