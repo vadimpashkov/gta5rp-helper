@@ -1,39 +1,34 @@
 {
 	"name": "gta5-helper",
-	"productName": "GTA 5 Helper",
 	"version": "1.0.0",
 	"description": "Helper for GTA 5 RP",
-	"main": "src/main.ts",
+	"main": "build/main.js",
 	"scripts": {
-		"build:start": "npm run build & npm run start",
-		"build:prod": "npm run build & npm run build:electron",
-		"build:electron": "electron-builder",
+		"build:dev": "npm run clean:build & npm run build & npm run start",
+		"build:prod": "npm run clean:prod & npm run build & electron-builder",
+		"clean:build": "rimraf ./build",
+		"clean:prod": "npm run clean:build & rimraf ./prod",
 		"start": "electron build/main.js",
-		"build": "npm run clean & npm run typescript & npm run copy-files",
-		"clean": "rimraf ./build",
-		"typescript": "tsc -p ./tsconfig.json",
+		"build": "npm run typescript & npm run copy-files",
+		"typescript": "tsc -p ./tsconfig.json & tscpaths -p tsconfig.json -s ./src -o ./build",
 		"copy-files": "copyfiles -u 1 ./src/**/*.png ./src/**/*.html ./src/**/*.woff ./src/**/*.woff2 ./src/**/*.css ./src/**/*.js ./build"
 	},
-	"authors": [
-		{
-			"name": "Vadim Pashkov",
-			"email": "vadimpashkov.job@gmail.com",
-			"url": "https://github.com/vadimpashkov"
-		},
+	"author": {
+		"name": "Vadim Pashkov",
+		"email": "vadimpashkov.job@gmail.com",
+		"url": "https://github.com/vadimpashkov"
+	},
+	"contributors": [
 		{
 			"name": "Yaniddze",
 			"url": "https://github.com/Yaniddze"
 		}
 	],
 	"license": "MIT",
-	"_moduleAliases": {
-		"@utils": "build/utils"
-	},
 	"dependencies": {
 		"@nut-tree/nut-js": "^1.7.0",
 		"ffi-napi": "^4.0.3",
 		"keycode": "^2.2.0",
-		"module-alias": "^2.2.2",
 		"node-key-sender": "^1.0.11",
 		"ref-napi": "^3.0.3",
 		"ref-struct-di": "^1.1.1",
@@ -46,20 +41,26 @@
 		"electron": "^13.6.1",
 		"electron-builder": "^22.13.1",
 		"rimraf": "^3.0.2",
+		"tscpaths": "^0.0.9",
 		"typescript": "^4.4.4"
 	},
 	"build": {
 		"appId": "com.electron.app",
+		"productName": "GTA 5 Helper",
+		"files": [
+			"build/**/*",
+			"!src"
+		],
 		"directories": {
 			"output": "prod"
 		},
 		"win": {
 			"target": "portable",
-			"icon": "build/app.ico"
+			"icon": "./assets/icons/app.png"
 		},
 		"portable": {
 			"unicode": false,
-			"artifactName": "gta5-helper.exe"
+			"artifactName": "GTA 5 Helper.exe"
 		}
 	}
 }

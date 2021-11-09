@@ -1,4 +1,3 @@
-import 'module-alias/register';
 import { BrowserWindow, ipcMain, app } from 'electron';
 import path from 'path';
 
