@@ -12,7 +12,7 @@ export class Machine<T extends DefaultConfig> {
 	switchState = async () => {
 		const nextState = await this.currentState.switcher(this.config);
 		this.currentState = nextState;
-		this.config.messanger(`Новое состояние: ${nextState.name}`);
+		this.config.messanger(nextState.name);
 	};
 
 	iteration = async () => {

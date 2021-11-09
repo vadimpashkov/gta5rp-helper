@@ -11,16 +11,21 @@ export const initFishingConfig = initConfig;
 screen.config.resourceDirectory += `/build/img/`;
 mouse.config.mouseSpeed = 3000;
 
+let emiter = (msg: string, data: any) => null;
+let sendStatus = (msg: string) => emiter('newStatus', msg);
+
 let iterationTimeout;
 let isWorking = false;
 
-export const start = async () => {
+export const start = async (emit: (msg: string, data: any) => void) => {
+	emiter = emit;
+	sendStatus('Запуск бота...');
 	isWorking = true;
 
 	const width = await screen.width();
 	const height = await screen.height();
 
-	const config = initFishingConfig(width, height, console.log);
+	const config = initFishingConfig(width, height, sendStatus);
 
 	const machine = new Machine<FishingConfig>(startFishingState, config);
 
@@ -36,6 +41,7 @@ export const start = async () => {
 };
 
 export const stop = () => {
+	sendStatus('Бот остановлен');
 	isWorking = false;
 
 	clearTimeout(iterationTimeout);

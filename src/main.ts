@@ -3,14 +3,14 @@ import path from 'path';
 
 import { start } from './state/fishing';
 
-let winMain;
+let winMain: BrowserWindow;
 
 ipcMain.on('appMinimize', () => {
 	winMain.minimize();
 });
 
 ipcMain.on('botFishingStarted', () => {
-	start();
+	start(winMain.webContents.send.bind(winMain.webContents));
 });
 
 export function createMainWindow() {
