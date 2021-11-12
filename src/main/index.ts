@@ -1,7 +1,7 @@
 import { BrowserWindow, ipcMain, app } from 'electron';
 import path from 'path';
 
-import { start, stop } from './state/fishing';
+import { start, stop } from '@state/fishing';
 
 let winMain: BrowserWindow;
 let winFishingPower: BrowserWindow;
@@ -44,28 +44,6 @@ export function createMainWindow() {
 	winMain.loadFile(path.join(__dirname, './app/renderer/index.html'));
 }
 
-export function createFishingPowerWindow() {
-	winFishingPower = new BrowserWindow({
-		width: 80,
-		height: 176,
-		title: 'GTA 5 Helper | Fishing',
-		show: false,
-		transparent: true,
-		frame: false,
-		alwaysOnTop: true,
-		minimizable: false,
-		// resizable: false,
-		autoHideMenuBar: true,
-		webPreferences: {
-			nodeIntegration: true,
-			preload: path.join(__dirname, './app/preload/fishingPower.js'),
-		},
-	});
-	winFishingPower.setIcon(path.join(__dirname, 'assets/icons/app.png'));
-	winFishingPower.loadFile(path.join(__dirname, 'app/renderer/fishingPower.html'));
-}
-
 app.whenReady().then(() => {
 	createMainWindow();
-	createFishingPowerWindow();
 });

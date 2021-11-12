@@ -1,17 +1,24 @@
 {
 	"compilerOptions": {
-		"target": "es6",
+		"target": "es5",
 		"module": "commonjs",
-		"baseUrl": "src",
-		"outDir": "build",
+		"baseUrl": ".",
+		"outDir": "dist",
+		"jsx": "react-jsx",
+		"moduleResolution": "node",
+		"noImplicitAny": true,
+		"allowSyntheticDefaultImports": true,
 		"sourceMap": true,
 		"esModuleInterop": true,
 		"allowJs": true,
-		"lib": ["es2021", "dom"],
+		"strict": true,
+		"resolveJsonModule": true,
+		"lib": ["es2021", "dom", "dom.iterable"],
 		"paths": {
-			"@utils/*": ["utils/*"]
+			"@utils/*": ["src/utils/*"],
+			"@state/*": ["src/state/*"]
 		}
 	},
 	"include": ["src"],
-	"exclude": ["node_modules", "build", "src/app/renderer"]
+	"exclude": ["node_modules", "prod"]
 }

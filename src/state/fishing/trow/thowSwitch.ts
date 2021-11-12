@@ -1,9 +1,9 @@
 import keycode from 'keycode';
 
 import { KeyTap } from '@utils/keyTap';
-import { waitLmdState } from '../waitLmd';
 
-import { FishingSwitch } from '../types';
+import { waitLmdState } from '@state/fishing/waitLmd';
+import { FishingSwitch } from '@state/fishing/types';
 
 export const throwSwitch: FishingSwitch = () =>
 	new Promise(async (resolve) => {

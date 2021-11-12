@@ -1,9 +1,8 @@
 import { waitForImageGone } from '@utils/waitForImageGone';
 import { createParam } from '@utils/parameterFactory';
 
-import { successState } from '../success';
-
-import { FishingSwitch } from '../types';
+import { successState } from '@state/fishing/success';
+import { FishingSwitch } from '@state/fishing/types';
 
 export const clickingSwitch: FishingSwitch = async (config) => {
 	const { lmbRegion } = config;

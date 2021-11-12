@@ -1,10 +1,9 @@
 import { createParam } from '@utils/parameterFactory';
 import { waitForImage } from '@utils/waitForImage';
 
-import { startState } from '../start';
-import { errorState } from '../error';
-
-import { FishingSwitch } from '../types';
+import { startState } from '@state/fishing/start';
+import { errorState } from '@state/fishing/error';
+import { FishingSwitch } from '@state/fishing/types';
 
 let foundFish = 0;
 
