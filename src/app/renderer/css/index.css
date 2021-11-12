@@ -1,8 +1,1 @@
-@import 'global/variables.css';
-@import 'global/fonts.css';
-
-@import 'globalBlocks/page.css';
-@import 'globalBlocks/wrapper.css';
-@import 'globalBlocks/dragPanel.css';
-@import 'globalBlocks/menu.css';
-@import 'globalBlocks/button.css';
+@import 'blocks/closeIcon.css';

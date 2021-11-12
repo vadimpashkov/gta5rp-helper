@@ -1,4 +1,4 @@
-export * from './buttonStateSwitch';
+export * from './powerOn';
 import { ipcRenderer } from 'electron';
 
 ipcRenderer.on('newStatus', (_, newStatus) => {

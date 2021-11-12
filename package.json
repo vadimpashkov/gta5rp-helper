@@ -11,7 +11,7 @@
 		"start": "electron build/main.js",
 		"build": "npm run typescript & npm run copy-files",
 		"typescript": "tsc -p ./tsconfig.json & tscpaths -p tsconfig.json -s ./src -o ./build",
-		"copy-files": "copyfiles -u 1 ./src/**/*.png ./src/**/*.html ./src/**/*.woff ./src/**/*.woff2 ./src/**/*.css ./src/**/*.js ./build"
+		"copy-files": "copyfiles -u 1 ./src/**/*.png ./src/**/*.html ./src/**/*.woff ./src/**/*.woff2 ./src/**/*.css ./src/**/*.js ./src/**/*.svg ./build"
 	},
 	"author": {
 		"name": "Vadim Pashkov",

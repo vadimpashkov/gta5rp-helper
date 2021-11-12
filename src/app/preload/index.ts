@@ -1,8 +1,7 @@
-import { appClose, appMinimize } from './dragAndDrop';
-import { buttonStateSwitch } from './fishing';
+import { appClose } from './appClose';
+import { powerOn as fishingBotPowerOn } from './fishing';
 
 window.addEventListener('DOMContentLoaded', () => {
-	appMinimize();
 	appClose();
-	buttonStateSwitch();
+	fishingBotPowerOn();
 });
