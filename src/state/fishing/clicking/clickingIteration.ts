@@ -1,4 +1,4 @@
-import { left, mouse, right } from '@nut-tree/nut-js';
+import { mouse, up, right, down, left } from '@nut-tree/nut-js';
 import { mouseClick } from '@utils/mouseClick';
 
 import { getRandomIntInclusive } from '@utils/getRandomIntInclusive';
@@ -6,11 +6,21 @@ import { FishingIteration } from '../types';
 
 export const clickingIteration: FishingIteration = async (config) => {
 	const { clickingDirection: direction } = config;
-	const moveSize = getRandomIntInclusive(100, 200);
+	const moveSize = getRandomIntInclusive(80, 140);
 
-	await mouse.move(direction ? left(moveSize) : right(moveSize));
+	await mouse.move(
+		direction === 'up'
+			? up(moveSize)
+			: direction === 'right'
+			? right(moveSize)
+			: direction === 'down'
+			? down(moveSize)
+			: left(moveSize),
+	);
 
 	mouseClick(config.startMousePosition.x, config.startMousePosition.y);
 
-	config.clickingDirection = !direction;
+	config.clickingDirection =
+		direction === 'up' ? 'right' : direction === 'right' ? 'down' : direction === 'down' ? 'left' : 'up';
+	// config.clickingDirection = !direction;
 };

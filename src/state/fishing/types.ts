@@ -7,7 +7,8 @@ export type FishingConfig = {
 	successRegion: Region;
 	errorRegion: Region;
 	startMousePosition: Point;
-	clickingDirection: boolean;
+	clickingDirection: string;
+	numberOfFish: number;
 } & DefaultConfig;
 
 export type FishingIteration = StateIteration<FishingConfig>;

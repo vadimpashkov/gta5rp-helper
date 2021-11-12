@@ -10,7 +10,7 @@ let foundFish = 0;
 
 export const successSwitcher: FishingSwitch = async (config) => {
 	const { successRegion } = config;
-	const successParam = createParam(successRegion, 0.83);
+	const successParam = createParam(successRegion, 0.8);
 
 	try {
 		const success = await waitForImage('successful.png', 1200, successParam);

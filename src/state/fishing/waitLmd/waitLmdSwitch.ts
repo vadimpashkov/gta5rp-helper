@@ -8,7 +8,7 @@ import { FishingSwitch } from '../types';
 
 export const waitLmdSwitch: FishingSwitch = async (config) => {
 	const { lmbRegion } = config;
-	const lmbSearchParam = createParam(lmbRegion, 0.99);
+	const lmbSearchParam = createParam(lmbRegion, 0.97);
 
 	try {
 		const lmbIndicator = await waitForImage('lmb.png', 65000, lmbSearchParam);

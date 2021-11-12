@@ -9,6 +9,7 @@ export const initFishingConfig = (screenWidth: number, screenHeight: number, mes
 	successRegion: new Region(0, 0, screenWidth, screenHeight),
 	errorRegion: new Region(0, 0, screenWidth, screenHeight),
 	startMousePosition: new Point(screenWidth / 2, screenHeight / 2),
-	clickingDirection: false,
+	clickingDirection: 'up',
 	messanger,
+	numberOfFish: 0,
 });
