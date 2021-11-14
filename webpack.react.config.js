@@ -5,15 +5,15 @@ const CopyPlugin = require('copy-webpack-plugin');
 const GoogleFontsPlugin = require('@beyonk/google-fonts-webpack-plugin');
 
 module.exports = {
-	mode: 'none',
-	target: 'node',
-	entry: {
-		app: path.join(__dirname, '/src/renderer/index.tsx'),
-	},
+	mode: 'development',
 	resolve: {
-		extensions: ['.ts', '.tsx', '.js'],
+		extensions: ['.ts', '.tsx'],
 		plugins: [new TsconfigPathsPlugin()],
 	},
+	entry: {
+		index: path.join(__dirname, '/src/renderer/index.tsx'),
+	},
+	target: 'electron-renderer',
 	module: {
 		rules: [
 			{
@@ -25,7 +25,7 @@ module.exports = {
 	},
 	output: {
 		filename: '[name].js',
-		path: path.resolve(__dirname, 'dist'),
+		path: path.resolve(__dirname, 'dist/renderer'),
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
@@ -47,7 +47,7 @@ module.exports = {
 		new CopyPlugin({
 			patterns: [
 				{
-					from: path.join(__dirname, 'src/assets/img'),
+					from: path.join(__dirname, 'src/assets'),
 					to: 'assets',
 				},
 			],
