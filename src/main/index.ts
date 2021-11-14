@@ -37,11 +37,11 @@ export function createMainWindow() {
 		autoHideMenuBar: true,
 		webPreferences: {
 			nodeIntegration: true,
-			preload: path.join(__dirname, '@dist/preload/index.js'),
+			preload: path.join(__dirname, '../preload/index.js'),
 		},
 	});
-	winMain.setIcon(path.join(__dirname, 'assets/icons/app.png'));
-	winMain.loadFile(path.join(__dirname, '@dist/renderer/index.html'));
+	winMain.setIcon(path.join(__dirname, '../assets/img/hunger.png'));
+	winMain.loadFile(path.join(__dirname, '../renderer/index.html'));
 }
 
 app.whenReady().then(() => {

@@ -1,5 +1,12 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 
-export const App: FC = () => {
-	return <h1>Hello, world!</h1>;
-};
+import { HomePage } from './pages';
+
+export const App: FC = () => (
+	<HashRouter>
+		<Routes>
+			<Route path="/" element={<HomePage />} />
+		</Routes>
+	</HashRouter>
+);
