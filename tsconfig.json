@@ -4,7 +4,7 @@
 		"module": "commonjs",
 		"baseUrl": ".",
 		"outDir": "build",
-		"jsx": "react",
+		"jsx": "react-jsx",
 		"moduleResolution": "node",
 		"noImplicitAny": true,
 		"allowSyntheticDefaultImports": true,
@@ -15,7 +15,9 @@
 		"resolveJsonModule": true,
 		"paths": {
 			"@utils/*": ["src/utils/*"],
-			"@state/*": ["src/state/*"]
+			"@state/*": ["src/state/*"],
+			"@assets/*": ["src/assets/*"],
+			"@components/*": ["src/renderer/components/*"]
 		},
 		"lib": ["es2021", "dom", "dom.iterable"]
 	},

@@ -4,11 +4,12 @@
 	"description": "Helper for GTA 5 RP",
 	"main": "build/main/index.js",
 	"scripts": {
-		"build": "rimraf build & npm run build:electron &  npm run build:react",
-		"build:electron": "tsc --project ./tsconfig.json & tsc-alias -p ./tsconfig.json & copyfiles -u 1 ./src/**/*.svg ./src/**/*.png ./build",
-		"build:react": "webpack --config ./webpack.js",
+		"build": "rimraf build & npm run build:electron & npm run build:react & npm run copy-files",
+		"build:electron": "tsc --project ./tsconfig.json & tscpaths -p tsconfig.json -s ./src -o ./build",
+		"build:react": "webpack --config ./webpack.config.js",
 		"build:prod": "",
-		"start": "npm run build && electron ./build/main/index.js"
+		"start": "npm run build & electron ./build/main/index.js",
+		"copy-files": "copyfiles -u 1 ./src/**/*.svg ./src/**/*.png ./build"
 	},
 	"author": {
 		"name": "Vadim Pashkov",
@@ -34,14 +35,14 @@
 		"@nut-tree/nut-js": "^1.7.0",
 		"ffi-napi": "^4.0.3",
 		"keycode": "^2.2.0",
-		"module-alias": "^2.2.2",
 		"node-key-sender": "^1.0.11",
 		"react": "^17.0.2",
 		"react-router-dom": "^6.0.2",
 		"ref-napi": "^3.0.3",
 		"ref-struct-di": "^1.1.1",
 		"ref-struct-napi": "^1.1.1",
-		"ref-union-napi": "^1.0.2"
+		"ref-union-napi": "^1.0.2",
+		"styled-components": "^5.3.3"
 	},
 	"devDependencies": {
 		"@beyonk/google-fonts-webpack-plugin": "^1.7.0",
@@ -50,8 +51,8 @@
 		"@types/react": "^17.0.34",
 		"@types/react-dom": "^17.0.11",
 		"@types/ref-napi": "^3.0.4",
+		"@types/styled-components": "^5.1.15",
 		"@types/webpack": "^5.28.0",
-		"@zerollup/ts-transform-paths": "^1.7.18",
 		"copy-webpack-plugin": "^9.1.0",
 		"copyfiles": "^2.4.1",
 		"electron": "^13.6.1",
@@ -59,11 +60,9 @@
 		"html-webpack-plugin": "^5.5.0",
 		"rimraf": "^3.0.2",
 		"source-map-loader": "^3.0.0",
+		"svg-url-loader": "^7.1.1",
 		"ts-loader": "^9.2.6",
 		"ts-node": "^10.4.0",
-		"tsc-alias": "^1.4.0",
-		"tsconfig-paths": "^3.11.0",
-		"tsconfig-paths-webpack-plugin": "^3.5.1",
 		"tscpaths": "^0.0.9",
 		"typescript": "^4.4.4",
 		"webpack": "^5.64.0",
@@ -81,7 +80,7 @@
 		},
 		"win": {
 			"target": "portable",
-			"icon": "./public/favicon512.png"
+			"icon": "./build/assets/icon/favicon512.png"
 		},
 		"portable": {
 			"unicode": false,

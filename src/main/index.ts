@@ -4,17 +4,6 @@ import path from 'path';
 import { start, stop } from '@state/fishing';
 
 let winMain: BrowserWindow;
-let winFishingPower: BrowserWindow;
-
-ipcMain.on('showFishingWindow', () => {
-	winMain.hide();
-	winFishingPower.show();
-});
-
-ipcMain.on('hideFishingWindow', () => {
-	winFishingPower.hide();
-	winMain.show();
-});
 
 ipcMain.on('botFishingStarted', () => {
 	start(winMain.webContents.send.bind(winMain.webContents));
@@ -40,7 +29,7 @@ export function createMainWindow() {
 			preload: path.join(__dirname, '../preload/index.js'),
 		},
 	});
-	winMain.setIcon(path.join(__dirname, '../assets/img/hunger.png'));
+	winMain.setIcon(path.join(__dirname, '../assets/icon/favicon512.png'));
 	winMain.loadFile(path.join(__dirname, '../renderer/index.html'));
 }
 
