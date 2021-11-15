@@ -1,8 +1,0 @@
-/* .wrapper {
-	overflow: hidden;
-} */
-
-.wrapper--flex {
-	display: flex;
-	flex-flow: column;
-}

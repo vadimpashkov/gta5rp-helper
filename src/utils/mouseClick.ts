@@ -1,5 +1,7 @@
 import FFI from 'ffi-napi';
 import StructType from 'ref-struct-napi';
+
+// @ts-ignore
 import UnionType from 'ref-union-napi';
 import ref from 'ref-napi';
 

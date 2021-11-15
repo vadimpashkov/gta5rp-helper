@@ -1,8 +1,8 @@
 import { mouse, up, right, down, left } from '@nut-tree/nut-js';
-import { mouseClick } from '@utils/mouseClick';
 
+import { mouseClick } from '@utils/mouseClick';
 import { getRandomIntInclusive } from '@utils/getRandomIntInclusive';
-import { FishingConfig, FishingIteration } from '../types';
+import { FishingConfig, FishingIteration } from '@state/fishing/types';
 import { createCancelable } from '@utils/rejectablePromiseCreator';
 
 export const clickingIteration: FishingIteration = createCancelable<FishingConfig, void>(async (config) => {

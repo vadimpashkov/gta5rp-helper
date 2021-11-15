@@ -2,10 +2,9 @@ import { createParam } from '@utils/parameterFactory';
 import { waitForImage } from '@utils/waitForImage';
 import { createCancelable } from '@utils/rejectablePromiseCreator';
 
-import { startState } from '../start';
-import { errorState } from '../error';
-
-import { FishingConfig, FishingState, FishingSwitch } from '../types';
+import { startState } from '@state/fishing/start';
+import { errorState } from '@state/fishing/error';
+import { FishingConfig, FishingState, FishingSwitch } from '@state/fishing/types';
 
 let foundFish = 0;
 

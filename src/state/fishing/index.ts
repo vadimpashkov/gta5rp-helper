@@ -1,17 +1,16 @@
 import { screen, mouse } from '@nut-tree/nut-js';
 import { startState } from './start';
 import { initFishingConfig as initConfig } from './initFishingConfig';
-import { Machine } from '../stateMachine';
-import { FishingConfig } from 'state/fishing/types';
+import { Machine } from '@state/stateMachine';
+import { FishingConfig } from '@state/fishing/types';
 
-export * from '../stateMachine';
+export * from '@state/stateMachine';
 export const startFishingState = startState;
 export const initFishingConfig = initConfig;
 
-screen.config.resourceDirectory += `/build/img/`;
-mouse.config.mouseSpeed = 3000;
+screen.config.resourceDirectory += `/assets/`;
 
-let emiter = (msg: string, data: any) => null;
+let emiter = (msg: string, data: any) => {};
 let sendStatus = (msg: string) => emiter('newStatus', msg);
 
 export const start = async (emit: (msg: string, data: any) => void) => {

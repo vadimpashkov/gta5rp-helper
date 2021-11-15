@@ -1,6 +1,6 @@
 import { Point, Region } from '@nut-tree/nut-js';
 
-import { Messanger } from 'state/types';
+import { Messanger } from '@state/types';
 import { FishingConfig } from './types';
 
 export const initFishingConfig = (screenWidth: number, screenHeight: number, messanger: Messanger): FishingConfig => ({

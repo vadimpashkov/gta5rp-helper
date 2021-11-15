@@ -1,17 +1,26 @@
 {
 	"compilerOptions": {
-		"target": "es6",
+		"target": "es5",
 		"module": "commonjs",
-		"baseUrl": "src",
+		"baseUrl": ".",
 		"outDir": "build",
-		"sourceMap": true,
+		"jsx": "react-jsx",
+		"moduleResolution": "node",
+		"noImplicitAny": true,
+		"allowSyntheticDefaultImports": true,
 		"esModuleInterop": true,
 		"allowJs": true,
-		"lib": ["es2021", "dom"],
+		"sourceMap": true,
+		"strict": true,
+		"resolveJsonModule": true,
 		"paths": {
-			"@utils/*": ["utils/*"]
-		}
+			"@utils/*": ["src/utils/*"],
+			"@state/*": ["src/state/*"],
+			"@assets/*": ["src/assets/*"],
+			"@components/*": ["src/renderer/components/*"]
+		},
+		"lib": ["es2021", "dom", "dom.iterable"]
 	},
 	"include": ["src"],
-	"exclude": ["node_modules", "build", "src/app/renderer"]
+	"exclude": ["node_modules", "build", "src/renderer"]
 }
