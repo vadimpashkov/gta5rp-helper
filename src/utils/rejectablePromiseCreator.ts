@@ -1,5 +1,5 @@
 export const createCancelable = <TData, TOut>(work: (data: TData) => Promise<TOut>) => {
-	let rejectFn;
+	let rejectFn: any;
 
 	const launch = (data: TData) =>
 		new Promise<TOut>((resolve, reject) => {

@@ -4,7 +4,7 @@ export class Machine<T extends DefaultConfig> {
 	isWorking = false;
 	iterationInterval = 190;
 
-	private iterationTimeout: NodeJS.Timeout = null;
+	private iterationTimeout: NodeJS.Timeout | null = null;
 	private currentState: State<T>;
 	private config: DefaultConfig & T;
 
@@ -28,7 +28,7 @@ export class Machine<T extends DefaultConfig> {
 	};
 
 	stop = () => {
-		this.currentState.iteration.cancel();
+		this.currentState.iteration?.cancel();
 		if (this.iterationTimeout !== null) {
 			clearTimeout(this.iterationTimeout);
 		}

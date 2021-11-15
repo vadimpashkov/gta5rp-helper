@@ -13,6 +13,8 @@ screen.config.resourceDirectory += `/assets/`;
 let emiter = (msg: string, data: any) => {};
 let sendStatus = (msg: string) => emiter('newStatus', msg);
 
+let machine: Machine<FishingConfig> | null = null;
+
 export const start = async (emit: (msg: string, data: any) => void) => {
 	emiter = emit;
 	sendStatus('Запуск бота...');
@@ -22,7 +24,11 @@ export const start = async (emit: (msg: string, data: any) => void) => {
 
 	const config = initFishingConfig(width, height, sendStatus);
 
-	const machine = new Machine<FishingConfig>(startFishingState, config);
+	machine = new Machine<FishingConfig>(startFishingState, config);
 
 	machine.start();
+};
+
+export const stop = () => {
+	machine?.stop();
 };
