@@ -1,12 +1,13 @@
 import { waitForImage } from '@utils/waitForImage';
 import { createParam } from '@utils/parameterFactory';
+import { createCancelable } from '@utils/rejectablePromiseCreator';
 
 import { clickingState } from '../clicking';
 import { startState } from '../start';
 
-import { FishingSwitch } from '../types';
+import { FishingConfig, FishingState } from '../types';
 
-export const waitLmdSwitch: FishingSwitch = async (config) => {
+export const waitLmdSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
 	const { lmbRegion } = config;
 	const lmbSearchParam = createParam(lmbRegion, 0.97);
 
@@ -18,4 +19,4 @@ export const waitLmdSwitch: FishingSwitch = async (config) => {
 	} catch {
 		return startState;
 	}
-};
+});

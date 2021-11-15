@@ -1,13 +1,16 @@
 import keycode from 'keycode';
 
+import { createCancelable } from '@utils/rejectablePromiseCreator';
 import { KeyTap } from '@utils/keyTap';
 import { waitLmdState } from '../waitLmd';
 
-import { FishingSwitch } from '../types';
+import { FishingConfig, FishingState, FishingSwitch } from '../types';
 
-export const throwSwitch: FishingSwitch = () =>
-	new Promise(async (resolve) => {
-		KeyTap(keycode.codes.backspace);
+export const throwSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(
+	() =>
+		new Promise(async (resolve) => {
+			KeyTap(keycode.codes.backspace);
 
-		resolve(waitLmdState);
-	});
+			resolve(waitLmdState);
+		}),
+);

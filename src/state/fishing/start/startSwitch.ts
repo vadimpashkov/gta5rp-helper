@@ -1,11 +1,12 @@
 import { waitForImage } from '@utils/waitForImage';
 import { createParam } from '@utils/parameterFactory';
+import { createCancelable } from '@utils/rejectablePromiseCreator';
 
 import { throwState } from '../trow';
 
-import { FishingSwitch } from '../types';
+import { FishingConfig, FishingState, FishingSwitch } from '../types';
 
-export const startSwitch: FishingSwitch = async (config) => {
+export const startSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
 	const { fishingPlaceRegion } = config;
 	const fishingPlaceSearchParam = createParam(fishingPlaceRegion, 0.87);
 	const fishingPlaceIndicator = await waitForImage('fishingPlace.png', 10000, fishingPlaceSearchParam);
@@ -13,4 +14,4 @@ export const startSwitch: FishingSwitch = async (config) => {
 	config.fishingPlaceRegion = fishingPlaceIndicator;
 
 	return throwState;
-};
+});

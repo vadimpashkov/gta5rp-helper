@@ -1,13 +1,14 @@
 import { screen } from '@nut-tree/nut-js';
 
 import { createParam } from '@utils/parameterFactory';
+import { createCancelable } from '@utils/rejectablePromiseCreator';
 
 import { startState } from '../start';
 import { waitLmdState } from '../waitLmd';
 
-import { FishingSwitch } from '../types';
+import { FishingConfig, FishingState, FishingSwitch } from '../types';
 
-export const errorSwitcher: FishingSwitch = async (config) => {
+export const errorSwitcher: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
 	const { errorRegion } = config;
 	const errorParam = createParam(errorRegion, 0.93);
 
@@ -20,4 +21,4 @@ export const errorSwitcher: FishingSwitch = async (config) => {
 	} catch {}
 
 	return waitLmdState;
-};
+});

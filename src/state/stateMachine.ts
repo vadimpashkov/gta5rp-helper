@@ -1,8 +1,12 @@
 import { State, DefaultConfig } from './types';
 
 export class Machine<T extends DefaultConfig> {
-	currentState: State<T>;
-	config: DefaultConfig & T;
+	isWorking = false;
+	iterationInterval = 190;
+
+	private iterationTimeout: NodeJS.Timeout = null;
+	private currentState: State<T>;
+	private config: DefaultConfig & T;
 
 	constructor(initialState: State<T>, config: DefaultConfig & T) {
 		this.currentState = initialState;
@@ -10,12 +14,39 @@ export class Machine<T extends DefaultConfig> {
 	}
 
 	switchState = async () => {
-		const nextState = await this.currentState.switcher(this.config);
+		if (!this.isWorking) return;
+		const nextState = await this.currentState.switcher.launch(this.config);
+		if (!this.isWorking) return;
+
 		this.currentState = nextState;
 		this.config.messanger(nextState.name);
 	};
 
 	iteration = async () => {
-		if (this.currentState.iteration !== undefined) await this.currentState.iteration(this.config);
+		if (this.isWorking && this.currentState.iteration !== undefined)
+			await this.currentState.iteration.launch(this.config);
+	};
+
+	stop = () => {
+		this.currentState.iteration.cancel();
+		if (this.iterationTimeout !== null) {
+			clearTimeout(this.iterationTimeout);
+		}
+		this.currentState.switcher.cancel();
+		this.isWorking = false;
+	};
+
+	start = () => {
+		this.isWorking = true;
+		this.createTimeout();
+		this.switchState();
+	};
+
+	private createTimeout = () => {
+		this.iteration();
+
+		if (this.isWorking) {
+			this.iterationTimeout = setTimeout(this.createTimeout, this.iterationInterval);
+		}
 	};
 }

@@ -2,9 +2,10 @@ import { mouse, up, right, down, left } from '@nut-tree/nut-js';
 import { mouseClick } from '@utils/mouseClick';
 
 import { getRandomIntInclusive } from '@utils/getRandomIntInclusive';
-import { FishingIteration } from '../types';
+import { FishingConfig, FishingIteration } from '../types';
+import { createCancelable } from '@utils/rejectablePromiseCreator';
 
-export const clickingIteration: FishingIteration = async (config) => {
+export const clickingIteration: FishingIteration = createCancelable<FishingConfig, void>(async (config) => {
 	const { clickingDirection: direction } = config;
 	const moveSize = getRandomIntInclusive(80, 140);
 
@@ -23,4 +24,4 @@ export const clickingIteration: FishingIteration = async (config) => {
 	config.clickingDirection =
 		direction === 'up' ? 'right' : direction === 'right' ? 'down' : direction === 'down' ? 'left' : 'up';
 	// config.clickingDirection = !direction;
-};
+});
