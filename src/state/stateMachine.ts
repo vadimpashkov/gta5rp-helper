@@ -20,6 +20,8 @@ export class Machine<T extends DefaultConfig> {
 
 		this.currentState = nextState;
 		this.config.messanger(nextState.name);
+
+		this.switchState();
 	};
 
 	iteration = async () => {

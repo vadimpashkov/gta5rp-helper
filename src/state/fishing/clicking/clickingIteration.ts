@@ -19,7 +19,9 @@ export const clickingIteration: FishingIteration = createCancelable<FishingConfi
 			: left(moveSize),
 	);
 
-	mouseClick(config.startMousePosition.x, config.startMousePosition.y);
+	// mouseClick(config.startMousePosition.x, config.startMousePosition.y);
+
+	await mouse.leftClick();
 
 	config.clickingDirection =
 		direction === 'up' ? 'right' : direction === 'right' ? 'down' : direction === 'down' ? 'left' : 'up';

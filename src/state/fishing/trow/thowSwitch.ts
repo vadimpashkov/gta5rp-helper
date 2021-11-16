@@ -1,16 +1,12 @@
-import keycode from 'keycode';
+import { keyboard, Key } from '@nut-tree/nut-js';
 
 import { createCancelable } from '@utils/rejectablePromiseCreator';
-import { KeyTap } from '@utils/keyTap';
 
 import { waitLmdState } from '@state/fishing/waitLmd';
 import { FishingConfig, FishingState, FishingSwitch } from '@state/fishing/types';
 
-export const throwSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(
-	() =>
-		new Promise(async (resolve) => {
-			KeyTap(keycode.codes.backspace);
+export const throwSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async () => {
+	await keyboard.type(Key.Backspace);
 
-			resolve(waitLmdState);
-		}),
-);
+	return waitLmdState;
+});

@@ -3,12 +3,13 @@ import { startState } from './start';
 import { initFishingConfig as initConfig } from './initFishingConfig';
 import { Machine } from '@state/stateMachine';
 import { FishingConfig } from '@state/fishing/types';
+import path from 'path';
 
 export * from '@state/stateMachine';
 export const startFishingState = startState;
 export const initFishingConfig = initConfig;
 
-screen.config.resourceDirectory += `/assets/`;
+screen.config.resourceDirectory = path.join(__dirname, `../../assets/img/`);
 
 let emiter = (msg: string, data: any) => {};
 let sendStatus = (msg: string) => emiter('newStatus', msg);
