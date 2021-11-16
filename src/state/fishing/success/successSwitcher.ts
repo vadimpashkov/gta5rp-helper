@@ -13,7 +13,7 @@ export const successSwitcher: FishingSwitch = createCancelable<FishingConfig, Fi
 	const successParam = createParam(successRegion, 0.8);
 
 	try {
-		const success = await waitForImage('successful.png', 1200, successParam);
+		const success = await waitForImage('successful.png', 1000, successParam);
 		config.successRegion = success;
 		foundFish++;
 		config.messanger(`Поймано рыб: ${foundFish}`);

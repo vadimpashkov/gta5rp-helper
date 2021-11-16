@@ -7,9 +7,11 @@ import { createCancelable } from '@utils/rejectablePromiseCreator';
 
 export const clickingIteration: FishingIteration = createCancelable<FishingConfig, void>(async (config) => {
 	const { clickingDirection: direction } = config;
-	const moveSize = getRandomIntInclusive(80, 140);
+	const moveSize = getRandomIntInclusive(10, 30);
 
-	await mouse.move(
+	await mouse.leftClick();
+
+	mouse.move(
 		direction === 'up'
 			? up(moveSize)
 			: direction === 'right'
@@ -20,8 +22,6 @@ export const clickingIteration: FishingIteration = createCancelable<FishingConfi
 	);
 
 	// mouseClick(config.startMousePosition.x, config.startMousePosition.y);
-
-	await mouse.leftClick();
 
 	config.clickingDirection =
 		direction === 'up' ? 'right' : direction === 'right' ? 'down' : direction === 'down' ? 'left' : 'up';

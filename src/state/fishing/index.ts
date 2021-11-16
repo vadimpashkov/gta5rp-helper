@@ -10,6 +10,7 @@ export const startFishingState = startState;
 export const initFishingConfig = initConfig;
 
 screen.config.resourceDirectory = path.join(__dirname, `../../assets/img/`);
+mouse.config.mouseSpeed = 8000;
 
 let emiter = (msg: string, data: any) => {};
 let sendStatus = (msg: string) => emiter('newStatus', msg);
