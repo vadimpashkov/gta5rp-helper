@@ -1,9 +1,10 @@
-import { FC } from 'react';
-import { Link } from 'react-router-dom';
+import { FC, useState } from 'react';
 
 import { Wrapper, Navigation, List, ListItem, Button, Icon } from './FishingPage.elements';
 
 import { DragPanel } from '../../components';
+
+import { sendEvent } from '../../utils';
 
 // @ts-ignore
 import SvgPower from '../../../assets/svg/power.svg';
@@ -16,17 +17,28 @@ type FishingPageProps = {
 	className?: string;
 };
 export const FishingPage: FC<FishingPageProps> = ({ className }: FishingPageProps) => {
+	const [started, setStarted] = useState(false);
+
+	const handleClick = () => {
+		setStarted((old) => {
+			sendEvent(old ? 'botFishingStopped' : 'botFishingStarted');
+
+			return !old;
+		});
+	};
+
 	return (
 		<Wrapper>
 			<DragPanel />
 			<Navigation className={className}>
 				<List>
 					<ListItem>
-						<Button>
+						<Button onClick={handleClick}>
 							<Icon>
 								<use href={SvgPower + '#outline'} />
 								<use href={SvgPower + '#fill'} />
 							</Icon>
+							{started ? 'Yes' : 'No'}
 						</Button>
 					</ListItem>
 					<ListItem>
