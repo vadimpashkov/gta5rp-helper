@@ -20,7 +20,6 @@ export function createMainWindow() {
 		title: 'GTA 5 Helper',
 		transparent: true,
 		frame: false,
-		alwaysOnTop: true,
 		minimizable: false,
 		// resizable: false,
 		autoHideMenuBar: true,
@@ -29,6 +28,9 @@ export function createMainWindow() {
 			preload: path.join(__dirname, '../preload/index.js'),
 		},
 	});
+
+	winMain.setAlwaysOnTop(true, 'screen-saver');
+
 	winMain.setIcon(path.join(__dirname, '../assets/icon/favicon512.png'));
 	winMain.loadFile(path.join(__dirname, '../renderer/index.html'));
 }
