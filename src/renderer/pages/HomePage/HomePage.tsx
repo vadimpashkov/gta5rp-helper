@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { Wrapper, Navigation, List, ListItem, Button, Icon } from './HomePage.elements';
 
+import { MainLayout } from '../Layouts';
 import { DragPanel } from '../../components';
 
 // @ts-ignore
@@ -15,10 +16,10 @@ import SvgClose from '../../../assets/svg/close.svg';
 type HomePageProps = {
 	className?: string;
 };
+
 export const HomePage: FC<HomePageProps> = ({ className }: HomePageProps) => {
 	return (
-		<Wrapper>
-			<DragPanel />
+		<MainLayout>
 			<Navigation className={className}>
 				<List>
 					<ListItem>
@@ -47,6 +48,6 @@ export const HomePage: FC<HomePageProps> = ({ className }: HomePageProps) => {
 					</ListItem>
 				</List>
 			</Navigation>
-		</Wrapper>
+		</MainLayout>
 	);
 };

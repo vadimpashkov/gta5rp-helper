@@ -42,14 +42,4 @@ export const GlobalStyles = createGlobalStyle`
 		margin: 0;
 		background-color: transparent;
 	}
-
-	.visually-hidden {
-		position: absolute !important;
-		overflow: hidden;
-		border: 0 !important;
-		padding: 0 !important;
-		width: 1px !important;
-		height: 1px !important;
-		clip: rect(1px, 1px, 1px, 1px);
-	}
 `;

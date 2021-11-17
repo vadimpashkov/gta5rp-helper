@@ -3,7 +3,7 @@ import { startSwitch } from './startSwitch';
 import { FishingState } from '@state/fishing/types';
 
 export const startState: FishingState = {
-	name: 'Начало бота',
+	name: 'Запуск',
 	description: 'Начало бота',
 	switcher: startSwitch,
 };

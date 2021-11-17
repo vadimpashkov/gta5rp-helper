@@ -9,7 +9,7 @@
 		"build:react": "webpack --config ./webpack.config.js",
 		"build:prod": "",
 		"start": "npm run build & electron ./build/main/index.js",
-		"start:run": "electron ./build/main/index.js",
+		"start:electron": "electron ./build/main/index.js",
 		"copy-files": "copyfiles -u 1 ./src/**/*.svg ./src/**/*.png ./build"
 	},
 	"author": {

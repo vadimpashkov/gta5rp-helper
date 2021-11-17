@@ -1,6 +1,15 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+type WrapperProps = {
+	dragPanel?: string;
+};
+
+export const Wrapper = styled.div<WrapperProps>`
+	${({ dragPanel }) =>
+		dragPanel === 'active'
+			? '--color-drag-panel: var(--color-dark);'
+			: dragPanel === 'power' && '--color-drag-panel: var(--color-primary);'};
+
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -14,6 +23,8 @@ export const Wrapper = styled.div`
 	-webkit-app-region: drag;
 
 	&::after {
+		${({ dragPanel }) => dragPanel && '--color-drag-panel-line: var(--color-light);'};
+
 		--height: 2px;
 
 		content: '';
