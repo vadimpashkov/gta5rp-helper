@@ -1,6 +1,6 @@
 import { successSwitcher } from './successSwitcher';
 
-import { FishingState } from '@state/fishing/types';
+import { FishingState } from '../types';
 
 export const successState: FishingState = {
 	name: 'Проверка на успешную поимку рыбы',

@@ -8,9 +8,17 @@ type MainLayoutProps = {
 	dragPanel?: string;
 };
 
-export const MainLayout: FC<MainLayoutProps> = ({ children, dragPanel }: MainLayoutProps) => (
-	<>
-		<DragPanel dragPanel={dragPanel} />
-		{children}
-	</>
-);
+export const MainLayout: FC<MainLayoutProps> = ({ children, dragPanel }: MainLayoutProps) => {
+	history.pushState(null, '', location.href);
+
+	window.onpopstate = (event) => {
+		history.go(1);
+	};
+
+	return (
+		<>
+			<DragPanel dragPanel={dragPanel} />
+			{children}
+		</>
+	);
+};

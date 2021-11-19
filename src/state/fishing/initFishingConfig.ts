@@ -1,6 +1,6 @@
 import { Point, Region } from '@nut-tree/nut-js';
 
-import { Messanger } from '@state/types';
+import { Messanger } from '../types';
 import { FishingConfig } from './types';
 
 export const initFishingConfig = (screenWidth: number, screenHeight: number, messanger: Messanger): FishingConfig => ({
@@ -9,7 +9,7 @@ export const initFishingConfig = (screenWidth: number, screenHeight: number, mes
 	successRegion: new Region(0, 0, screenWidth, screenHeight),
 	errorRegion: new Region(0, 0, screenWidth, screenHeight),
 	startMousePosition: new Point(screenWidth / 2, screenHeight / 2),
-	clickingDirection: 'up',
+	mouseDirection: false,
 	messanger,
 	numberOfFish: 0,
 });

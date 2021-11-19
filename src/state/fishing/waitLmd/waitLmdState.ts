@@ -1,6 +1,6 @@
 import { waitLmdSwitch } from './waitLmdSwitch';
 
-import { FishingState } from '@state/fishing/types';
+import { FishingState } from '../types';
 
 export const waitLmdState: FishingState = {
 	name: 'Ждем левой кнопки мыши',

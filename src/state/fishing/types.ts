@@ -7,7 +7,7 @@ export type FishingConfig = {
 	successRegion: Region;
 	errorRegion: Region;
 	startMousePosition: Point;
-	clickingDirection: string;
+	mouseDirection: boolean;
 	numberOfFish: number;
 } & DefaultConfig;
 

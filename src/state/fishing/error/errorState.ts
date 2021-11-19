@@ -1,6 +1,6 @@
 import { errorSwitcher } from './errorSwitcher';
 
-import { FishingState } from '@state/fishing/types';
+import { FishingState } from '../types';
 
 export const errorState: FishingState = {
 	name: 'Ошибка при поимке рыбы',

@@ -14,21 +14,20 @@ import { MainLayout } from '../Layouts';
 import { sendEvent } from '../../utils';
 
 import SvgPower from '../../assets/power.svg';
-import SvgHotkeys from '../../assets/keyboard.svg';
-import SvgComeback from '../../assets/undo.svg';
+import SvgInfo from '../../assets/info.svg';
 
-type FishingPageProps = {
+type BotEnabledProps = {
 	className?: string;
 };
 
-export const FishingPage: FC<FishingPageProps> = ({ className }: FishingPageProps) => {
+export const BotEnabled: FC<BotEnabledProps> = ({ className }: BotEnabledProps) => {
 	return (
-		<MainLayout>
+		<MainLayout dragPanel="power">
 			<Navigation className={className}>
 				<NavigationList>
 					<NavigationListItem>
-						<Button as={Link} to="/botEnabled" onClick={() => sendEvent('botFishingStarted')}>
-							<Icon>
+						<Button as={Link} to="/fishing" onClick={() => sendEvent('botFishingStopped')} state="power">
+							<Icon state="power">
 								<use href={SvgPower + '#outline'} />
 								<use href={SvgPower + '#fill'} />
 							</Icon>
@@ -37,16 +36,8 @@ export const FishingPage: FC<FishingPageProps> = ({ className }: FishingPageProp
 					<NavigationListItem>
 						<Button>
 							<Icon>
-								<use href={SvgHotkeys + '#outline'} />
-								<use href={SvgHotkeys + '#fill'} />
-							</Icon>
-						</Button>
-					</NavigationListItem>
-					<NavigationListItem>
-						<Button as={Link} to="/">
-							<Icon>
-								<use href={SvgComeback + '#outline'} />
-								<use href={SvgComeback + '#fill'} />
+								<use href={SvgInfo + '#outline'} />
+								<use href={SvgInfo + '#fill'} />
 							</Icon>
 						</Button>
 					</NavigationListItem>

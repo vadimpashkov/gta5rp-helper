@@ -1,0 +1,54 @@
+import path from 'path';
+import { BrowserWindow, ipcMain, app, session } from 'electron';
+import { searchDevtools } from 'electron-search-devtools';
+
+import { start, stop } from './state/fishing';
+
+const isDev = process.env.NODE_ENV === 'development';
+
+let winMain: BrowserWindow;
+
+ipcMain.on('botFishingStarted', () => {
+	start(winMain.webContents.send.bind(winMain.webContents));
+});
+
+ipcMain.on('botFishingStopped', () => {
+	stop();
+});
+
+export function createMainWindow() {
+	winMain = new BrowserWindow({
+		width: 80,
+		height: 256,
+		title: 'GTA 5 Helper',
+		transparent: true,
+		frame: false,
+		minimizable: false,
+		resizable: false,
+		autoHideMenuBar: true,
+		webPreferences: {
+			nodeIntegration: true,
+			preload: path.join(__dirname, './preload.js'),
+		},
+	});
+
+	winMain.setAlwaysOnTop(true, 'screen-saver');
+
+	winMain.setIcon(path.join(__dirname, '../assets/favicon512.png'));
+	winMain.loadFile(path.join(__dirname, './index.html'));
+
+	if (isDev) winMain.webContents.openDevTools({ mode: 'detach' });
+}
+
+app.whenReady().then(async () => {
+	if (isDev) {
+		const devtools = await searchDevtools('REACT');
+		if (devtools) {
+			await session.defaultSession.loadExtension(devtools, {
+				allowFileAccess: true,
+			});
+		}
+	}
+
+	createMainWindow();
+});

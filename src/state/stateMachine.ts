@@ -2,7 +2,7 @@ import { State, DefaultConfig } from './types';
 
 export class Machine<T extends DefaultConfig> {
 	isWorking = false;
-	iterationInterval = 190;
+	iterationInterval = 15;
 
 	private iterationTimeout: NodeJS.Timeout | null = null;
 	private currentState: State<T>;

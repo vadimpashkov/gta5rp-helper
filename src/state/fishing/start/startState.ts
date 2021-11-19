@@ -1,6 +1,6 @@
 import { startSwitch } from './startSwitch';
 
-import { FishingState } from '@state/fishing/types';
+import { FishingState } from '../types';
 
 export const startState: FishingState = {
 	name: 'Запуск',

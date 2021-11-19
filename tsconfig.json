@@ -1,26 +1,22 @@
 {
 	"compilerOptions": {
-		"target": "es5",
-		"module": "commonjs",
-		"baseUrl": ".",
-		"outDir": "build",
-		"jsx": "react-jsx",
-		"moduleResolution": "node",
-		"noImplicitAny": true,
-		"allowSyntheticDefaultImports": true,
+		"baseUrl": "./",
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "Node",
 		"esModuleInterop": true,
-		"allowJs": true,
-		"sourceMap": true,
+		"lib": ["DOM", "ESNext", "ES2021"],
+		"jsx": "react-jsx",
 		"strict": true,
+		"sourceMap": true,
+		"skipLibCheck": true,
 		"resolveJsonModule": true,
-		"paths": {
-			"@utils/*": ["src/utils/*"],
-			"@state/*": ["src/state/*"],
-			"@assets/*": ["src/assets/*"],
-			"@components/*": ["src/renderer/components/*"]
-		},
-		"lib": ["es2021", "dom", "dom.iterable"]
+		"forceConsistentCasingInFileNames": true
 	},
-	"include": ["src"],
-	"exclude": ["node_modules", "build", "src/renderer"]
+	"ts-node": {
+		"compilerOptions": {
+			"target": "ES2015",
+			"module": "CommonJS"
+		}
+	}
 }

@@ -1,10 +1,4 @@
-import { appClose } from './appClose';
-
 import { contextBridge, ipcRenderer } from 'electron';
-
-window.addEventListener('DOMContentLoaded', () => {
-	appClose();
-});
 
 // Expose protected methods that allow the renderer process to use
 // the ipcRenderer without exposing the entire object

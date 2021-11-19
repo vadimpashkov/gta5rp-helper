@@ -6,7 +6,7 @@ type WrapperProps = {
 
 export const Wrapper = styled.div<WrapperProps>`
 	${({ dragPanel }) =>
-		dragPanel === 'active'
+		dragPanel === 'select'
 			? '--color-drag-panel: var(--color-dark);'
 			: dragPanel === 'power' && '--color-drag-panel: var(--color-primary);'};
 
@@ -19,6 +19,7 @@ export const Wrapper = styled.div<WrapperProps>`
 	border-top-left-radius: var(--border-radius-main);
 	border-top-right-radius: var(--border-radius-main);
 	cursor: pointer;
+	transition: background-color var(--transition-standard);
 
 	-webkit-app-region: drag;
 
