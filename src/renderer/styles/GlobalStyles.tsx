@@ -43,3 +43,16 @@ export const GlobalStyles = createGlobalStyle`
 		background-color: transparent;
 	}
 `;
+
+type MainWrapperProps = {
+	opacity?: number;
+};
+
+export const MainWrapper = styled.div<MainWrapperProps>`
+	opacity: ${({ opacity }) => opacity};
+	transition: opacity var(--transition-standard);
+
+	&:hover {
+		opacity: 1;
+	}
+`;
