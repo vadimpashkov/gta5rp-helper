@@ -1,4 +1,5 @@
 import { Point, Region } from '@nut-tree/nut-js';
+import { getSettings } from '../../store';
 
 import { Messanger } from '../types';
 import { FishingConfig } from './types';
@@ -12,4 +13,5 @@ export const initFishingConfig = (screenWidth: number, screenHeight: number, mes
 	mouseDirection: false,
 	messanger,
 	numberOfFish: 0,
+	doubleClick: getSettings().doubleClick,
 });

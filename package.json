@@ -37,9 +37,12 @@
 		"node": "~16.13.0"
 	},
 	"dependencies": {
+		"@nanostores/react": "^0.1.2",
 		"@nut-tree/nut-js": "^1.7.0",
+		"electron-store": "^8.0.1",
 		"ffi-napi": "^4.0.3",
 		"keycode": "^2.2.0",
+		"nanostores": "^0.5.6",
 		"node-key-sender": "^1.0.11",
 		"react": "^17.0.2",
 		"react-router-dom": "^6.0.2",

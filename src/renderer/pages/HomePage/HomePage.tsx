@@ -33,7 +33,7 @@ export const HomePage: FC<HomePageProps> = ({ className }: HomePageProps) => {
 						</Button>
 					</NavigationListItem>
 					<NavigationListItem>
-						<Button>
+						<Button as={Link} to="/settings">
 							<Icon>
 								<use href={SvgSettings + '#outline'} />
 								<use href={SvgSettings + '#fill'} />

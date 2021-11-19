@@ -1,20 +1,13 @@
 import path from 'path';
-import { BrowserWindow, ipcMain, app, session } from 'electron';
+import { BrowserWindow, app, session } from 'electron';
+
 import { searchDevtools } from 'electron-search-devtools';
 
-import { start, stop } from './state/fishing';
+import { subscribe } from './events';
 
 const isDev = process.env.NODE_ENV === 'development';
 
 let winMain: BrowserWindow;
-
-ipcMain.on('botFishingStarted', () => {
-	start(winMain.webContents.send.bind(winMain.webContents));
-});
-
-ipcMain.on('botFishingStopped', () => {
-	stop();
-});
 
 export function createMainWindow() {
 	winMain = new BrowserWindow({
@@ -51,4 +44,6 @@ app.whenReady().then(async () => {
 	}
 
 	createMainWindow();
+
+	subscribe(winMain);
 });

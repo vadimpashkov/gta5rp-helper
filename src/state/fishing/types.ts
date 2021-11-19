@@ -9,6 +9,7 @@ export type FishingConfig = {
 	startMousePosition: Point;
 	mouseDirection: boolean;
 	numberOfFish: number;
+	doubleClick: boolean;
 } & DefaultConfig;
 
 export type FishingIteration = StateIteration<FishingConfig>;
