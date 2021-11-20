@@ -3,7 +3,7 @@ import path from 'path';
 import { recognize } from 'tesseract.js';
 import { readFile } from 'fs';
 
-export const extractTextFromRegion = async (region: Region): Promise<string> =>
+export const extractTextFromRegion = async (region: Region, lang: string = 'rus'): Promise<string> =>
 	new Promise<string>(async (resolve, reject) => {
 		await screen.captureRegion('temp.png', region);
 
@@ -12,7 +12,7 @@ export const extractTextFromRegion = async (region: Region): Promise<string> =>
 				console.log(err);
 				reject();
 			}
-			const result = await recognize(data, 'rus');
+			const result = await recognize(data, lang);
 
 			resolve(result.data.text);
 		});
