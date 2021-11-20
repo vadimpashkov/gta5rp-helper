@@ -2,11 +2,9 @@ import { createParam } from '../../../utils/parameterFactory';
 import { waitForImage } from '../../../utils/waitForImage';
 import { createCancelable } from '../../../utils/rejectablePromiseCreator';
 
-import { startState } from '../start';
+import { findFishState } from '../findFish';
 import { errorState } from '../error';
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
-
-let foundFish = 0;
 
 export const successSwitcher: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
 	const { successRegion } = config;
@@ -14,11 +12,10 @@ export const successSwitcher: FishingSwitch = createCancelable<FishingConfig, Fi
 
 	try {
 		const success = await waitForImage('successful.png', 1000, successParam);
-		config.successRegion = success;
-		foundFish++;
-		config.messanger(`Поймано рыб: ${foundFish}`);
 
-		return startState;
+		config.successRegion = success;
+
+		return findFishState;
 	} catch {}
 
 	return errorState;

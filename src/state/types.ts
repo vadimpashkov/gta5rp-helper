@@ -12,6 +12,8 @@ export type Messanger = (message: string) => void;
 
 export type DefaultConfig = {
 	messanger: Messanger;
+	screenWidth: number;
+	screenHeight: number;
 };
 
 export type RejectablePromise<TData, TOut> = {

@@ -14,4 +14,6 @@ export const initFishingConfig = (screenWidth: number, screenHeight: number, mes
 	messanger,
 	numberOfFish: 0,
 	doubleClick: getSettings().doubleClick,
+	screenWidth,
+	screenHeight,
 });
