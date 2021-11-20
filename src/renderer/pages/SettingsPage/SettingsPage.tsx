@@ -19,7 +19,7 @@ export const SettingsPage = () => {
 	};
 
 	return (
-		<MainLayout>
+		<MainLayout size={{ width: 80, height: 170 }}>
 			<div style={{ background: 'white' }}>
 				doble click
 				<input checked={settings.data.doubleClick} onChange={handleChange} type="checkbox" />

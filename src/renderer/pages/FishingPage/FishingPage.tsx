@@ -23,7 +23,7 @@ type FishingPageProps = {
 };
 
 export const FishingPage: FC<FishingPageProps> = ({ className }: FishingPageProps) => (
-	<MainLayout>
+	<MainLayout size={{ width: 80, height: 250 }}>
 		<Navigation className={className}>
 			<NavigationList>
 				<NavigationListItem>
