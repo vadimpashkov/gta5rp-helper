@@ -22,7 +22,7 @@ type BotEnabledProps = {
 
 export const BotEnabled: FC<BotEnabledProps> = ({ className }: BotEnabledProps) => {
 	return (
-		<MainLayout dragPanel="power">
+		<MainLayout size={{ width: 80, height: 170 }} dragPanel="power">
 			<Navigation className={className}>
 				<NavigationList>
 					<NavigationListItem>

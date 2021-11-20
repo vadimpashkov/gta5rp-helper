@@ -19,7 +19,9 @@ export const GlobalStyles = createGlobalStyle`
 
 		--font-family: 'Segoe UI', sans-serif;
 
-		--size-button-main: 80px;
+		--width-main: 80px;
+
+		--size-button-main: var(--width-main);
 		--size-button-main-icon: 28px;
 
 		--border-radius-main: 14px;
@@ -41,18 +43,5 @@ export const GlobalStyles = createGlobalStyle`
 	body {
 		margin: 0;
 		background-color: transparent;
-	}
-`;
-
-type MainWrapperProps = {
-	opacity?: number;
-};
-
-export const MainWrapper = styled.div<MainWrapperProps>`
-	opacity: ${({ opacity }) => opacity};
-	transition: opacity var(--transition-standard);
-
-	&:hover {
-		opacity: 1;
 	}
 `;

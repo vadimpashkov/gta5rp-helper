@@ -14,6 +14,7 @@ export const Wrapper = styled.div<WrapperProps>`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	width: var(--width-main);
 	height: var(--height-drag-panel);
 	background-color: var(--color-drag-panel);
 	border-top-left-radius: var(--border-radius-main);

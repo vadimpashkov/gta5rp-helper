@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 
-import { GlobalStyles, MainWrapper } from './styles/GlobalStyles';
+import { MainWrapper } from './components';
+import { GlobalStyles } from './styles/GlobalStyles';
 
 import { HomePage, FishingPage, BotEnabled, SettingsPage } from './pages';
 

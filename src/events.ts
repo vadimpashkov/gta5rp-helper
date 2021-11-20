@@ -14,4 +14,11 @@ export const subscribe = (window: BrowserWindow) => {
 	ipcMain.on('newSettings', (_, args) => {
 		setSettings(args);
 	});
+
+	ipcMain.on('appSize', (_, args) => {
+		const { width, height } = args;
+
+		window.setSize(width, height);
+		window.setBounds(args);
+	});
 };

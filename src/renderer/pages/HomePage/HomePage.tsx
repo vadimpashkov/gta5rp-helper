@@ -21,7 +21,7 @@ type HomePageProps = {
 
 export const HomePage: FC<HomePageProps> = ({ className }: HomePageProps) => {
 	return (
-		<MainLayout>
+		<MainLayout size={{ width: 80, height: 250 }}>
 			<Navigation className={className}>
 				<NavigationList>
 					<NavigationListItem>
