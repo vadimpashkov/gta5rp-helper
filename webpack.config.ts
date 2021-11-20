@@ -36,6 +36,7 @@ const base: Configuration = {
 	},
 	optimization: { minimize: !isDev },
 	devtool: isDev ? 'inline-source-map' : undefined,
+	stats: 'none',
 };
 
 const main: Configuration = {

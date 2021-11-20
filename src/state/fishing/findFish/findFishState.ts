@@ -1,4 +1,4 @@
-import { findFishSwitch } from './fisdFishSwitch';
+import { findFishSwitch } from './findFishSwitch';
 
 import { FishingState } from '../types';
 

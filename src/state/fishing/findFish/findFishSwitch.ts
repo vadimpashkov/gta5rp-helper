@@ -4,9 +4,10 @@ import { createCancelable } from '../../../utils/rejectablePromiseCreator';
 import { extractTextFromRegion } from '../../../utils/extractTextFromRegion';
 
 import { findFish } from '../../../core';
-import { addFish } from '../../../store';
+import { addFish, addSessionFish } from '../../../store';
 
-import { startState } from '../start';
+import { placeState } from '../place';
+
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
 
 export const findFishSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
@@ -24,8 +25,9 @@ export const findFishSwitch: FishingSwitch = createCancelable<FishingConfig, Fis
 
 		const foundFish = findFish(message);
 
+		addSessionFish(foundFish);
 		addFish(foundFish);
 	} catch {}
 
-	return startState;
+	return placeState;
 });
