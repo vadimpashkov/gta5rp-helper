@@ -15,13 +15,13 @@ export const findFishSwitch: FishingSwitch = createCancelable<FishingConfig, Fis
 
 	try {
 		const regionToFind = new Region(
-			successRegion.left,
+			successRegion.left + 50,
 			successRegion.top,
-			successRegion.width + screenWidth * 0.25,
+			successRegion.width + screenWidth * 0.2,
 			successRegion.height,
 		);
 
-		const message = await extractTextFromRegion(regionToFind);
+		const message = await extractTextFromRegion(regionToFind, 'xyu');
 		emiter('log', message);
 
 		const foundFish = findFish(message);

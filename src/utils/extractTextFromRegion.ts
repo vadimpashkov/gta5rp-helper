@@ -12,7 +12,7 @@ export const extractTextFromRegion = async (region: Region, lang: string = 'rus'
 
 		const jimp = await read(filePath);
 		jimp.greyscale()
-			.contrast(0.2)
+			.contrast(0.1)
 			.write(filePath, () => {
 				readFile(filePath, async (err, data) => {
 					if (err) {
