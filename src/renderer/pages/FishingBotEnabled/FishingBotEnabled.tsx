@@ -23,29 +23,22 @@ type FishingBotEnabledProps = {
 
 export const FishingBotEnabled: FC<FishingBotEnabledProps> = ({ className }: FishingBotEnabledProps) => {
 	return (
-		<>
-			<MainLayout dragPanel="power">
-				<Navigation className={className}>
-					<NavigationList>
-						<NavigationListItem>
-							<Button
-								as={Link}
-								to="/fishing"
-								onClick={() => sendEvent('botFishingStopped')}
-								state="power"
-							>
-								<Icon state="power">
-									<use href={SvgPower + '#outline'} />
-									<use href={SvgPower + '#fill'} />
-								</Icon>
-							</Button>
-						</NavigationListItem>
-						<NavigationListItem>
-							<Stats />
-						</NavigationListItem>
-					</NavigationList>
-				</Navigation>
-			</MainLayout>
-		</>
+		<MainLayout dragPanel="power">
+			<Navigation className={className}>
+				<NavigationList>
+					<NavigationListItem>
+						<Button as={Link} to="/fishing" onClick={() => sendEvent('botFishingStopped')} state="power">
+							<Icon state="power">
+								<use href={SvgPower + '#outline'} />
+								<use href={SvgPower + '#fill'} />
+							</Icon>
+						</Button>
+					</NavigationListItem>
+					<NavigationListItem>
+						<Stats />
+					</NavigationListItem>
+				</NavigationList>
+			</Navigation>
+		</MainLayout>
 	);
 };
