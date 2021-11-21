@@ -9,9 +9,11 @@ export type State<T extends DefaultConfig> = {
 };
 
 export type Messanger = (message: string) => void;
+export type Emiter = <T>(event: string, data: T) => void;
 
 export type DefaultConfig = {
 	messanger: Messanger;
+	emiter: Emiter;
 	screenWidth: number;
 	screenHeight: number;
 };

@@ -24,7 +24,7 @@ export const start = async (emit: (msg: string, data: any) => void) => {
 	const width = await screen.width();
 	const height = await screen.height();
 
-	const config = initFishingConfig(width, height, sendStatus);
+	const config = initFishingConfig(width, height, sendStatus, emiter);
 
 	machine = new Machine<FishingConfig>(startFishingState, config);
 

@@ -27,5 +27,5 @@ export const getTotalFish = (): TotalFish =>
 export const addFish = (fish: Fish) => {
 	const totalFish = getTotalFish() as { [key: string]: number };
 	const fishName = fish.storedName;
-	store.set('totalFish', { ...totalFish, [fishName]: totalFish[fishName]++ });
+	store.set('totalFish', { ...totalFish, [fishName]: totalFish[fishName] + 1 });
 };

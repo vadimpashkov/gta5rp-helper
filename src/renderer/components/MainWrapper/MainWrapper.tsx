@@ -12,7 +12,6 @@ type MainWrapperProps = {
 
 function updateSize(ref: React.RefObject<HTMLDivElement>) {
 	if (ref.current) {
-		console.log(ref.current.clientWidth, ref.current.clientHeight);
 		sendEvent('appSize', { width: ref.current.clientWidth, height: ref.current.clientHeight });
 	}
 }

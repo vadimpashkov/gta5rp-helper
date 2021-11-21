@@ -11,7 +11,7 @@ import { placeState } from '../place';
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
 
 export const findFishSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
-	const { successRegion, screenWidth } = config;
+	const { successRegion, screenWidth, emiter } = config;
 
 	try {
 		const regionToFind = new Region(
@@ -25,8 +25,11 @@ export const findFishSwitch: FishingSwitch = createCancelable<FishingConfig, Fis
 
 		const foundFish = findFish(message);
 
+		console.log(foundFish.storedName);
+
 		addSessionFish(foundFish);
 		addFish(foundFish);
+		emiter('newFish', foundFish);
 	} catch {}
 
 	return placeState;
