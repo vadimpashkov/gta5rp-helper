@@ -33,7 +33,7 @@ export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig,
 	} catch {}
 
 	// Закрываем инвентарь
-	await keyboard.type(Key.C);
+	await keyboard.type(Key.I);
 
 	return placeState;
 });
