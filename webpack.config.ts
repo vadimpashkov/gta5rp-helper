@@ -4,8 +4,6 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const isDev = process.env.NODE_ENV === 'development';
 
-console.log(path.resolve(__dirname, 'src/assets'));
-
 const base: Configuration = {
 	mode: isDev ? 'development' : 'production',
 	node: {

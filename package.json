@@ -41,6 +41,7 @@
 		"@nut-tree/nut-js": "^1.7.0",
 		"electron-store": "^8.0.1",
 		"ffi-napi": "^4.0.3",
+		"jimp": "^0.16.1",
 		"keycode": "^2.2.0",
 		"nanostores": "^0.5.6",
 		"node-key-sender": "^1.0.11",
