@@ -12,6 +12,8 @@ type FishingCardProps = {
 };
 
 export const FishingCard: FC<FishingCardProps> = ({ className, percent, name, count }: FishingCardProps) => {
+	percent = Number(parseFloat(percent.toString()).toFixed(1));
+
 	return (
 		<Wrapper className={className}>
 			<PieChart percent={percent}>{percent}%</PieChart>

@@ -15,7 +15,7 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 		config.yourItemsRegion = await waitForImage('yourItems.png', 2000, param);
 	} catch {
 		// Открытие инвентаря
-		await keyboard.type(Key.I);
+		await keyboard.type(Key.C);
 		config.yourItemsRegion = await waitForImage('yourItems.png', 2000, param);
 	}
 
