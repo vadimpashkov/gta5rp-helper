@@ -11,13 +11,26 @@ import { useFish } from '../../stores';
 
 export const Stats = () => {
 	const [open, setOpen] = useState(false);
-	const fish = useFish();
-
-	console.log(fish);
 
 	const handleClick = () => {
 		setOpen((old) => !old);
 	};
+
+	return (
+		<>
+			<Button onClick={handleClick}>
+				<Icon>
+					<use href={SvgInfo + '#outline'} />
+					<use href={SvgInfo + '#fill'} />
+				</Icon>
+			</Button>
+			{open && <Dashboard />}
+		</>
+	);
+};
+
+const Dashboard = () => {
+	const fish = useFish();
 
 	const totalFishCount = Object.keys(fish).reduce(
 		(acc, item) => (acc += (fish as { [key: string]: number })[item]),
@@ -34,15 +47,5 @@ export const Stats = () => {
 		return <FishingCard key={key} percent={percent} name={foundFish.name} count={count} />;
 	});
 
-	return (
-		<>
-			<Button onClick={handleClick}>
-				<Icon>
-					<use href={SvgInfo + '#outline'} />
-					<use href={SvgInfo + '#fill'} />
-				</Icon>
-			</Button>
-			{open && <FishingDashboard>{cards}</FishingDashboard>}
-		</>
-	);
+	return <FishingDashboard>{cards}</FishingDashboard>;
 };
