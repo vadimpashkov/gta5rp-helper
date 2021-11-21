@@ -25,8 +25,6 @@ export type Fish = {
 const store = atom<TotalFish>(getInitialFish());
 
 receiveEvent<Fish>('newFish', (data) => {
-	console.log(`new fish ${data.name}`);
-
 	const storeValue = store.get() as { [key: string]: number };
 
 	store.set({
