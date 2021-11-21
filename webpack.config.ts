@@ -27,7 +27,7 @@ const base: Configuration = {
 				use: 'ts-loader',
 			},
 			{
-				test: /\.(png|svg)$/,
+				test: /\.(png|svg|woff2)$/,
 				type: 'asset/resource',
 			},
 		],

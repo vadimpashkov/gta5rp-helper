@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Navigation, NavigationList, NavigationListItem, MainButton as Button } from '../../styles';
@@ -6,7 +7,6 @@ import { MainLayout } from '../Layouts';
 
 import { Comeback } from '../../components';
 import { useSettings } from '../../stores';
-import React from 'react';
 
 export const SettingsPage = () => {
 	const settings = useSettings();
@@ -19,7 +19,7 @@ export const SettingsPage = () => {
 	};
 
 	return (
-		<MainLayout size={{ width: 80, height: 170 }}>
+		<MainLayout>
 			<div style={{ background: 'white' }}>
 				doble click
 				<input checked={settings.data.doubleClick} onChange={handleChange} type="checkbox" />

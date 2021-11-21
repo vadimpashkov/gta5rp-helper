@@ -4,7 +4,7 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 import { MainWrapper } from './components';
 import { GlobalStyles } from './styles/GlobalStyles';
 
-import { HomePage, FishingPage, BotEnabled, SettingsPage } from './pages';
+import { HomePage, FishingPage, FishingBotEnabled, SettingsPage } from './pages';
 
 export const App: FC = () => (
 	<HashRouter>
@@ -13,7 +13,7 @@ export const App: FC = () => (
 				<Route path="/" element={<HomePage />} />
 				<Route path="/fishing" element={<FishingPage />} />
 				<Route path="/settings" element={<SettingsPage />} />
-				<Route path="/botEnabled" element={<BotEnabled />} />
+				<Route path="/fishingBotEnabled" element={<FishingBotEnabled />} />
 			</Routes>
 		</MainWrapper>
 		<GlobalStyles />

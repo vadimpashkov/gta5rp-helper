@@ -1,6 +1,14 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
+import { fontFace } from './mixins';
+
+import MontserratSemiBold from '../assets/fonts/Montserrat/Montserrat-SemiBold.woff2';
+import MontserratExtraBold from '../assets/fonts/Montserrat/Montserrat-ExtraBold.woff2';
+
 export const GlobalStyles = createGlobalStyle`
+	${fontFace({ src: MontserratSemiBold, family: 'Montserrat', weight: 600 })}
+	${fontFace({ src: MontserratExtraBold, family: 'Montserrat', weight: 800 })}
+
 	:root {
 		--height-drag-panel: 10px;
 
@@ -17,14 +25,28 @@ export const GlobalStyles = createGlobalStyle`
 		--color-drag-panel: var(--color-light);
 		--color-drag-panel-line: var(--color-dark);
 
-		--font-family: 'Segoe UI', sans-serif;
+
+		--font-primary-family: 'Montserrat', sans-serif;
+		--font-primary-size: 14px;
+		--font-primary-weight: 600;
+		--font-secondary-family: 'Montserrat', sans-serif;
+		--font-secondary-size: 10px;
+		--font-secondary-weight: 600;
+		--font-accent-family: 'Montserrat', sans-serif;
+		--font-accent-size: 14px;
+		--font-accent-weight: 800;
+
+		--gap-main: 10px;
+
+		--padding-main: 16px;
+		--padding-secondary: var(--gap-main);
 
 		--width-main: 80px;
 
+		--border-radius-main: 14px;
+
 		--size-button-main: var(--width-main);
 		--size-button-main-icon: 28px;
-
-		--border-radius-main: 14px;
 
 		--transition-time-standard: 0.15s;
 

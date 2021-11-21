@@ -11,9 +11,10 @@ import {
 
 import { MainLayout } from '../Layouts';
 
-import SvgFish from '../../assets/fish.svg';
-import SvgSettings from '../../assets/settings.svg';
-import SvgClose from '../../assets/close.svg';
+import { CloseButton } from '../../components';
+
+import SvgFish from '../../assets/svg/fish.svg';
+import SvgSettings from '../../assets/svg/settings.svg';
 
 type HomePageProps = {
 	className?: string;
@@ -21,7 +22,7 @@ type HomePageProps = {
 
 export const HomePage: FC<HomePageProps> = ({ className }: HomePageProps) => {
 	return (
-		<MainLayout size={{ width: 80, height: 250 }}>
+		<MainLayout>
 			<Navigation className={className}>
 				<NavigationList>
 					<NavigationListItem>
@@ -41,12 +42,7 @@ export const HomePage: FC<HomePageProps> = ({ className }: HomePageProps) => {
 						</Button>
 					</NavigationListItem>
 					<NavigationListItem>
-						<Button onClick={() => window.close()}>
-							<Icon>
-								<use href={SvgClose + '#outline'} />
-								<use href={SvgClose + '#fill'} />
-							</Icon>
-						</Button>
+						<CloseButton />
 					</NavigationListItem>
 				</NavigationList>
 			</Navigation>

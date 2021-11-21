@@ -15,10 +15,9 @@ export const subscribe = (window: BrowserWindow) => {
 		setSettings(args);
 	});
 
-	ipcMain.on('appSize', (_, args) => {
-		const { width, height } = args;
-
-		window.setSize(width, height);
-		window.setBounds(args);
+	ipcMain.on('appSize', (_, size: { width: number; height: number }) => {
+		if (!window.isDestroyed()) {
+			window.setBounds(size);
+		}
 	});
 };

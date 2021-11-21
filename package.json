@@ -10,7 +10,6 @@
 		"dev:webpack": "webpack --watch --progress",
 		"predev": "rimraf build & copyfiles -u 1 ./src/**/*.png ./build",
 		"clean": "rimraf build prod",
-		"build": "cross-env NODE_ENV=\"development\" webpack --config webpack.config.ts --progress",
 		"build:pack": "ts-node ./scripts/build.ts"
 	},
 	"author": {

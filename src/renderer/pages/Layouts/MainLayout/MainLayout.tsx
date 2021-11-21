@@ -1,22 +1,16 @@
 import { FC } from 'react';
 
-import { sendEvent } from '../../../utils';
+import { Wrapper } from './MainLayout.elements';
 
 import { DragPanel } from '../../../components';
 
 type MainLayoutProps = {
 	children: React.ReactNode;
 	className?: string;
-	dragPanel?: string;
-	size: {
-		width: number;
-		height: number;
-	};
+	dragPanel?: 'select' | 'power';
 };
 
-export const MainLayout: FC<MainLayoutProps> = ({ children, dragPanel, size }: MainLayoutProps) => {
-	sendEvent('appSize', size);
-
+export const MainLayout: FC<MainLayoutProps> = ({ children, dragPanel }: MainLayoutProps) => {
 	history.pushState(null, '', location.href);
 
 	window.onpopstate = (event) => {
@@ -24,9 +18,9 @@ export const MainLayout: FC<MainLayoutProps> = ({ children, dragPanel, size }: M
 	};
 
 	return (
-		<>
+		<Wrapper>
 			<DragPanel dragPanel={dragPanel} />
 			{children}
-		</>
+		</Wrapper>
 	);
 };

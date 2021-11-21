@@ -1,6 +1,8 @@
-import { FC } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 
 import { MainWrapperContainer } from './MainWrapper.elements';
+
+import { sendEvent } from '../../utils';
 
 type MainWrapperProps = {
 	children: React.ReactNode;
@@ -8,9 +10,26 @@ type MainWrapperProps = {
 	opacity: number;
 };
 
+function updateSize(ref: React.RefObject<HTMLDivElement>) {
+	if (ref.current) {
+		console.log(ref.current.clientWidth, ref.current.clientHeight);
+		sendEvent('appSize', { width: ref.current.clientWidth, height: ref.current.clientHeight });
+	}
+}
+
 export const MainWrapper: FC<MainWrapperProps> = ({ children, className, opacity }: MainWrapperProps) => {
+	const [forceRerender, setForceRerender] = useState(false);
+	const targetRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => updateSize(targetRef), [children, forceRerender]);
+
 	return (
-		<MainWrapperContainer className={className} opacity={opacity}>
+		<MainWrapperContainer
+			ref={targetRef}
+			className={className}
+			opacity={opacity}
+			onClick={() => setForceRerender((old) => !old)}
+		>
 			{children}
 		</MainWrapperContainer>
 	);

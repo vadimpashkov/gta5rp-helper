@@ -1,6 +1,6 @@
 import { MainButtonIcon as Icon } from '../../styles';
 
-import SvgComeback from '../../assets/undo.svg';
+import SvgComeback from '../../assets/svg/undo.svg';
 
 export const Comeback = () => (
 	<Icon>

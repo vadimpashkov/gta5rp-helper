@@ -4,7 +4,7 @@ import { Wrapper } from './DragPanel.elements';
 
 type DragPanelProps = {
 	className?: string;
-	dragPanel?: string;
+	dragPanel?: 'select' | 'power';
 };
 
 export const DragPanel: FC<DragPanelProps> = ({ className, dragPanel }: DragPanelProps) => {

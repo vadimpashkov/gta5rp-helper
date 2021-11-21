@@ -11,10 +11,10 @@ let winMain: BrowserWindow;
 
 export function createMainWindow() {
 	winMain = new BrowserWindow({
-		width: 0,
-		height: 0,
 		title: 'GTA 5 Helper',
-		transparent: true,
+		// transparent: true,
+		transparent: false,
+		backgroundColor: '#ff0000',
 		frame: false,
 		minimizable: false,
 		resizable: false,
