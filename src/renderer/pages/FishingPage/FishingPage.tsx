@@ -16,7 +16,8 @@ import { MainLayout } from '../Layouts';
 import { sendEvent } from '../../utils';
 
 import SvgPower from '../../assets/svg/power.svg';
-import SvgHotkeys from '../../assets/svg/keyboard.svg';
+import SvgInfo from '../../assets/svg/info.svg';
+import SvgSettings from '../../assets/svg/settings.svg';
 
 type FishingPageProps = {
 	className?: string;
@@ -37,8 +38,16 @@ export const FishingPage: FC<FishingPageProps> = ({ className }: FishingPageProp
 					<NavigationListItem>
 						<Button>
 							<Icon>
-								<use href={SvgHotkeys + '#outline'} />
-								<use href={SvgHotkeys + '#fill'} />
+								<use href={SvgInfo + '#outline'} />
+								<use href={SvgInfo + '#fill'} />
+							</Icon>
+						</Button>
+					</NavigationListItem>
+					<NavigationListItem>
+						<Button>
+							<Icon>
+								<use href={SvgSettings + '#outline'} />
+								<use href={SvgSettings + '#fill'} />
 							</Icon>
 						</Button>
 					</NavigationListItem>

@@ -13,15 +13,22 @@ import { MainLayout } from '../Layouts';
 
 import { sendEvent } from '../../utils';
 
-import { Stats } from '../../components';
+import { FishingDashboard } from '../../components';
 
 import SvgPower from '../../assets/svg/power.svg';
+import SvgInfo from '../../assets/svg/info.svg';
 
 type FishingBotEnabledProps = {
 	className?: string;
 };
 
 export const FishingBotEnabled: FC<FishingBotEnabledProps> = ({ className }: FishingBotEnabledProps) => {
+	const [infoOpen, setInfoOpen] = useState(false);
+
+	const handleClick = () => {
+		setInfoOpen((old) => !old);
+	};
+
 	return (
 		<>
 			<MainLayout dragPanel="power">
@@ -41,11 +48,17 @@ export const FishingBotEnabled: FC<FishingBotEnabledProps> = ({ className }: Fis
 							</Button>
 						</NavigationListItem>
 						<NavigationListItem>
-							<Stats />
+							<Button state={infoOpen ? 'power' : ''} onClick={handleClick}>
+								<Icon state={infoOpen ? 'power' : ''}>
+									<use href={SvgInfo + '#outline'} />
+									<use href={SvgInfo + '#fill'} />
+								</Icon>
+							</Button>
 						</NavigationListItem>
 					</NavigationList>
 				</Navigation>
 			</MainLayout>
+			{infoOpen && <FishingDashboard />}
 		</>
 	);
 };
