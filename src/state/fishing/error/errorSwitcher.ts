@@ -4,7 +4,6 @@ import { createParam } from '../../../utils/parameterFactory';
 import { createCancelable } from '../../../utils/rejectablePromiseCreator';
 
 import { placeState } from '../place';
-import { waitLmdState } from '../waitLmd';
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
 
 export const errorSwitcher: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
@@ -15,9 +14,7 @@ export const errorSwitcher: FishingSwitch = createCancelable<FishingConfig, Fish
 		const error = await screen.find('error.png', errorParam);
 		config.errorRegion = error;
 		config.messanger(`Ошибка при поимке рыбы`);
-
-		return placeState;
 	} catch {}
 
-	return waitLmdState;
+	return placeState;
 });
