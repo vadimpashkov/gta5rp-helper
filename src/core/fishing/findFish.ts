@@ -1,14 +1,26 @@
-import { AvailableFish } from './fishes';
+import { AvailableFish, NotFoundFish } from './fishes';
+import { Fish } from './types';
+
+import { inaccurateStringComparison } from '../../utils/inaccurateStringComparison';
 
 export const findFish = (text: string) => {
-	const lowerText = text.toLowerCase();
-	let found = AvailableFish.filter((fish) => lowerText.includes(fish.name.toLowerCase()));
+	const result = AvailableFish.reduce(
+		(acum, fish) => {
+			const stringComparison = inaccurateStringComparison(fish.name, text.split(':')[1]);
 
-	if (found.length === 0) {
-		found = AvailableFish.filter((fish) => lowerText.includes(fish.name.toLowerCase().replaceAll('ё', 'е')));
-	}
+			if (stringComparison.distance < acum.mostAccurateDistance) {
+				return {
+					fish,
+					mostAccurateDistance: stringComparison.distance,
+				};
+			}
 
-	if (found === undefined || found.length > 1) throw Error('Ошибка в поиске рыбы');
+			return acum;
+		},
+		{ fish: NotFoundFish, mostAccurateDistance: Number.MAX_VALUE },
+	);
 
-	return found[0];
+	if (result.mostAccurateDistance >= 10) throw Error('Ошибка распозновании рыбы');
+
+	return result.fish;
 };

@@ -24,6 +24,8 @@ export const FishingDashboard: FC<FishingDashboardProps> = ({ className }: Fishi
 		const count = (fish as { [key: string]: number })[key];
 		const percent = (count / totalFishCount) * 100;
 
+		console.log(foundFish, key);
+
 		return <FishingCard key={key} percent={percent} name={foundFish.name} count={count} />;
 	});
 

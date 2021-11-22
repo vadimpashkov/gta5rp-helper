@@ -1,5 +1,13 @@
 import { Fish } from './types';
 
+export const NotFoundFish: Fish = {
+	name: 'Не найдена',
+	storedName: 'NotFound',
+	minPrice: 0,
+	maxPrice: 0,
+	weight: 0.5,
+};
+
 export const Sterlyad: Fish = {
 	name: 'Стерлядь',
 	storedName: 'Sterlyad',
