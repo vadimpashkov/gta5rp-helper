@@ -4,4 +4,5 @@ export const Wrapper = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: var(--gap-main);
+	padding-bottom: 20px;
 `;

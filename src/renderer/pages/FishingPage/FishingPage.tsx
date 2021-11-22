@@ -9,7 +9,7 @@ import {
 	MainButtonIcon as Icon,
 } from '../../styles';
 
-import { ComebackButton, FishingTotalDashboard } from '../../components';
+import { ComebackButton, FishingInformation } from '../../components';
 
 import { MainLayout } from '../Layouts';
 
@@ -63,7 +63,7 @@ export const FishingPage: FC<FishingPageProps> = ({ className }: FishingPageProp
 					</NavigationList>
 				</Navigation>
 			</MainLayout>
-			{infoOpen && <FishingTotalDashboard />}
+			{infoOpen && <FishingInformation />}
 		</>
 	);
 };
