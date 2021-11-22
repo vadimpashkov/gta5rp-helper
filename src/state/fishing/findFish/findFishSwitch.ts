@@ -28,6 +28,10 @@ export const findFishSwitch: FishingSwitch = createCancelable<FishingConfig, Fis
 		addSessionFish(foundFish);
 		addFish(foundFish);
 		emiter('newSessionFish', foundFish);
+
+		if (config.mainInventory.current + foundFish.weight <= config.mainInventory.total) {
+			config.mainInventory.current += foundFish.weight;
+		}
 	} catch {}
 
 	return placeState;
