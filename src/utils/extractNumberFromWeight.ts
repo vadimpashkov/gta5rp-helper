@@ -1,5 +1,5 @@
 export const extractNumbersFromWeight = (weight: string) => {
-	const preparedText = weight.replaceAll(' ', '');
+	const preparedText = weight.replaceAll(' ', '').replaceAll(':', '.');
 
 	const match = preparedText.match(/(\d.\d+)\/(\d+(.\d+)?)/);
 

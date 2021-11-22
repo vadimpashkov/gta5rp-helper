@@ -25,8 +25,8 @@ export const fishToBackpackSwitch: FishingSwitch = createCancelable<FishingConfi
 		config.yourInventoryRegion = new Region(
 			leftDownAngle.x - 10,
 			rightUpperAngle.y - 10,
-			rightUpperAngle.x - leftDownAngle.x,
-			leftDownAngle.y - rightUpperAngle.y,
+			rightUpperAngle.x - leftDownAngle.x + 20,
+			leftDownAngle.y - rightUpperAngle.y + 20,
 		);
 	}
 
@@ -41,11 +41,11 @@ export const fishToBackpackSwitch: FishingSwitch = createCancelable<FishingConfi
 			y: rightUpperAngle.y + 178,
 		};
 
-		config.backpackRegion = new Region(
+		config.backpackInventoryRegion = new Region(
 			leftDownAngle.x - 10,
 			rightUpperAngle.y - 10,
-			rightUpperAngle.x - leftDownAngle.x,
-			leftDownAngle.y - rightUpperAngle.y,
+			rightUpperAngle.x - leftDownAngle.x + 20,
+			leftDownAngle.y - rightUpperAngle.y + 20,
 		);
 	}
 
@@ -54,7 +54,7 @@ export const fishToBackpackSwitch: FishingSwitch = createCancelable<FishingConfi
 	const foundFishRegion = await waitForImage(`${lastFish!.storedName}.png`, 500, foundFishParam);
 
 	let regionToPlace: Region;
-	const foundBackpackFishParam = new OptionalSearchParameters(config.backpackRegion, 0.8);
+	const foundBackpackFishParam = new OptionalSearchParameters(config.backpackInventoryRegion, 0.8);
 
 	try {
 		regionToPlace = await waitForImage(`${lastFish!.storedName}.png`, 500, foundBackpackFishParam);
