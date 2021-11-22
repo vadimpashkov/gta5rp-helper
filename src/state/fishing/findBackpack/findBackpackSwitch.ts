@@ -8,7 +8,7 @@ import { placeState } from '../place';
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
 
 export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
-	const param = new OptionalSearchParameters(config.backpackRegion, 0.9);
+	const param = new OptionalSearchParameters(config.backpackRegion, 0.8);
 
 	try {
 		// Поиск если инвентарь уже открыт
@@ -16,10 +16,10 @@ export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig,
 
 		const backpackSize = await extractTextFromRegion(
 			new Region(
-				config.backpackRegion.left - config.screenWidth * 0.2,
-				config.backpackRegion.top,
-				config.backpackRegion.width + config.screenWidth * 0.2,
-				config.backpackRegion.height,
+				config.backpackRegion.left - config.screenWidth * 0.15,
+				config.backpackRegion.top - 10,
+				config.backpackRegion.width + config.screenWidth * 0.15,
+				config.backpackRegion.height + 20,
 			),
 			'eng',
 		);

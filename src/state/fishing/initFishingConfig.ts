@@ -15,7 +15,7 @@ export const initFishingConfig = (
 	successRegion: new Region(0, 0, screenWidth, screenHeight),
 	errorRegion: new Region(0, 0, screenWidth, screenHeight),
 	yourItemsRegion: new Region(0, 0, screenWidth, screenHeight - screenHeight * 0.5),
-	backpackRegion: new Region(0, screenHeight - screenHeight * 0.5, screenWidth, screenHeight - screenHeight * 0.5),
+	backpackRegion: new Region(0, screenHeight * 0.5, screenWidth, screenHeight - screenHeight * 0.5),
 	startMousePosition: new Point(screenWidth / 2, screenHeight / 2),
 	mouseDirection: false,
 	messanger,
