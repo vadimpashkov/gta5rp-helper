@@ -1,4 +1,4 @@
-import { Settings, TotalFish } from '../stores';
+import { Settings } from '../stores';
 
 export const sendEvent = (e: string, data?: any) => {
 	// @ts-ignore
@@ -13,8 +13,4 @@ export const receiveEvent = <T>(e: string, handler: (data: T) => void) => {
 // @ts-ignore
 const initialSettings = window.api.settings;
 
-// @ts-ignore
-const initialFish = window.api.fish;
-
 export const getInitialSettings = (): Settings => initialSettings;
-export const getInitialFish = (): TotalFish => initialFish;

@@ -3,11 +3,15 @@ import { createCancelable } from '../../../utils/rejectablePromiseCreator';
 import { waitForImage } from '../../../utils/waitForImage';
 import { extractTextFromRegion } from '../../../utils/extractTextFromRegion';
 import { extractNumbersFromWeight } from '../../../utils/extractNumberFromWeight';
+import { clearSessionFish } from '../../../store';
 
 import { findBackpackState } from '../findBackpack';
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
 
 export const startSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
+	clearSessionFish();
+	config.emiter('setSessionFish', []);
+
 	const param = new OptionalSearchParameters(config.yourItemsRegion, 0.9);
 
 	try {
@@ -15,7 +19,7 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 		config.yourItemsRegion = await waitForImage('yourItems.png', 2000, param);
 	} catch {
 		// Открытие инвентаря
-		await keyboard.type(Key.C);
+		await keyboard.type(Key.I);
 		config.yourItemsRegion = await waitForImage('yourItems.png', 5000, param);
 	}
 

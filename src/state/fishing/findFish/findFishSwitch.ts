@@ -23,15 +23,11 @@ export const findFishSwitch: FishingSwitch = createCancelable<FishingConfig, Fis
 
 		const message = await extractTextFromRegion(regionToFind, 'fish-v8');
 
-		emiter('log', message);
-
 		const foundFish = findFish(message);
-
-		console.log(foundFish.storedName);
 
 		addSessionFish(foundFish);
 		addFish(foundFish);
-		emiter('newFish', foundFish);
+		emiter('newSessionFish', foundFish);
 	} catch {}
 
 	return placeState;

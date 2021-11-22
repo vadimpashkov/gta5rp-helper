@@ -1,7 +1,11 @@
 import { Fish } from '../../core';
 
-const catchFish: Fish[] = [];
+let catchFish: Fish[] = [];
 
 export const addSessionFish = (fish: Fish) => catchFish.push(fish);
+
+export const clearSessionFish = () => {
+	catchFish = [];
+};
 
 export const getSessionFish = () => catchFish;

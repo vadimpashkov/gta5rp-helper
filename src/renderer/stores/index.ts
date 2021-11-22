@@ -1,2 +1,3 @@
 export * from './settingStore';
-export * from './fishStore';
+export * from './totalFishStore';
+export * from './sessionFishStore';
