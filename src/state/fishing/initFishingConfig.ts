@@ -12,6 +12,7 @@ export const initFishingConfig = (
 ): FishingConfig => ({
 	fishingPlaceRegion: new Region(0, 0, screenWidth, screenHeight),
 	lmbRegion: new Region(0, 0, screenWidth, screenHeight),
+	mouseRegion: new Region(0, 0, screenWidth, screenHeight),
 	successRegion: new Region(0, 0, screenWidth, screenHeight),
 	errorRegion: new Region(0, 0, screenWidth, screenHeight),
 	yourItemsRegion: new Region(0, 0, screenWidth, screenHeight - screenHeight * 0.5),

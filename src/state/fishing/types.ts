@@ -12,6 +12,7 @@ export type FishingConfig = {
 
 type Regions = {
 	lmbRegion: Region;
+	mouseRegion: Region;
 	fishingPlaceRegion: Region;
 	successRegion: Region;
 	errorRegion: Region;
