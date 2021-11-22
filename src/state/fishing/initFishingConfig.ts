@@ -1,4 +1,4 @@
-import { Point, Region } from '@nut-tree/nut-js';
+import { Key, Point, Region } from '@nut-tree/nut-js';
 import { getSettings } from '../../store';
 
 import { Emiter, Messanger } from '../types';
@@ -17,6 +17,8 @@ export const initFishingConfig = (
 	errorRegion: new Region(0, 0, screenWidth, screenHeight),
 	yourItemsRegion: new Region(0, 0, screenWidth, screenHeight - screenHeight * 0.5),
 	backpackRegion: new Region(0, screenHeight * 0.5, screenWidth, screenHeight - screenHeight * 0.5),
+	yourInventoryRegion: null,
+	backpackInventoryRegion: null,
 	startMousePosition: new Point(screenWidth / 2, screenHeight / 2),
 	mouseDirection: false,
 	messanger,
@@ -25,6 +27,7 @@ export const initFishingConfig = (
 	doubleClick: getSettings().doubleClick,
 	screenWidth,
 	screenHeight,
+	lastFish: null,
 	backpack: {
 		available: false,
 		size: {
@@ -36,4 +39,5 @@ export const initFishingConfig = (
 		current: 0,
 		total: 0,
 	},
+	openInventoryKey: Key.I,
 });

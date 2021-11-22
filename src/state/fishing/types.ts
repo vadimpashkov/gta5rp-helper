@@ -1,4 +1,5 @@
-import { Point, Region } from '@nut-tree/nut-js';
+import { Key, Point, Region } from '@nut-tree/nut-js';
+import { Fish } from '../../core';
 import { State, StateIteration, StateSwitch, DefaultConfig } from '../types';
 
 export type FishingConfig = {
@@ -6,9 +7,11 @@ export type FishingConfig = {
 	mouseDirection: boolean;
 	numberOfFish: number;
 	doubleClick: boolean;
+	lastFish: Fish | null;
 } & DefaultConfig &
 	Weight &
-	Regions;
+	Regions &
+	Keys;
 
 type Regions = {
 	lmbRegion: Region;
@@ -18,6 +21,8 @@ type Regions = {
 	errorRegion: Region;
 	yourItemsRegion: Region;
 	backpackRegion: Region;
+	yourInventoryRegion: Region | null;
+	backpackInventoryRegion: Region | null;
 };
 
 type Weight = {
@@ -31,6 +36,10 @@ type Weight = {
 type Size = {
 	current: number;
 	total: number;
+};
+
+type Keys = {
+	openInventoryKey: Key;
 };
 
 export type FishingIteration = StateIteration<FishingConfig>;

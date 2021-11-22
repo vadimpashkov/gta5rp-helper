@@ -22,7 +22,7 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 		config.yourItemsRegion = await waitForImage('yourItems.png', 2000, param);
 	} catch {
 		// Открытие инвентаря
-		await keyboard.type(Key.I);
+		await keyboard.type(config.openInventoryKey);
 		config.yourItemsRegion = await waitForImage('yourItems.png', 5000, param);
 	}
 
@@ -36,10 +36,12 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 		'eng',
 	);
 
+	console.log(yourItemsSize);
+
 	const mainWeight = extractNumbersFromWeight(yourItemsSize);
 
 	if (Number.isNaN(mainWeight.current) || Number.isNaN(mainWeight.total) || mainWeight.total < mainWeight.current) {
-		await keyboard.type(Key.I);
+		await keyboard.type(config.openInventoryKey);
 
 		const randomX = getRandomIntInclusive(-100, 100);
 		const randomY = getRandomIntInclusive(-100, 100);
