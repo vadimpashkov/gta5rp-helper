@@ -14,6 +14,7 @@ export const Wrapper = styled.div`
 	border-radius: var(--border-radius);
 	background-color: var(--background-color);
 	box-sizing: border-box;
+	user-select: none;
 `;
 
 export const Content = styled.div`
@@ -31,7 +32,6 @@ export const ContentName = styled.p`
 	font-family: var(--font-family);
 	font-size: var(--font-size);
 	font-weight: var(--font-weight);
-	user-select: none;
 `;
 
 export const ContentCount = styled(ContentName)`

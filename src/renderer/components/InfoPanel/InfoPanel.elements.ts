@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
 	min-width: 270px;
 	border-radius: var(--border-radius-main);
 	background-color: var(--color-button-main);
+	user-select: none;
 `;
 
 export const Title = styled.h2`
