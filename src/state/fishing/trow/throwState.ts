@@ -4,6 +4,6 @@ import { FishingState } from '../types';
 
 export const throwState: FishingState = {
 	name: 'Закидываем удочку',
-	description: 'Закидываем удочку',
+	description: 'Нашимаем кнопку, для закидывания удочки',
 	switcher: throwSwitch,
 };

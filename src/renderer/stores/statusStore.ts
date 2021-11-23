@@ -4,8 +4,8 @@ import { useStore } from '@nanostores/react';
 import { receiveEvent } from '../utils';
 
 const store = atom({
-	name: 'Бот не работает',
-	description: '',
+	name: 'Запуск бота',
+	description: 'Поиск первичных данных',
 });
 
 receiveEvent<{ name: string; description: string }>('newState', (data) => {
@@ -18,8 +18,8 @@ export const useStatus = () => {
 		status,
 		reset: () =>
 			store.set({
-				name: 'Бот не работает',
-				description: '',
+				name: 'Бот выключен',
+				description: 'Нет данных для запуска бота',
 			}),
 	};
 };

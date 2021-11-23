@@ -5,7 +5,7 @@ import { FishingState } from '../types';
 
 export const clickingState: FishingState = {
 	name: 'Ловим рыбу',
-	description: 'Тыкаем на ЛКМ пока на экране есть мышка',
+	description: 'Клик ЛКМ, пока есть индикатор',
 	switcher: clickingSwitch,
 	iteration: clickingIteration,
 };

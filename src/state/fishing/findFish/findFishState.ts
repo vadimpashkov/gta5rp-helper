@@ -3,7 +3,7 @@ import { findFishSwitch } from './findFishSwitch';
 import { FishingState } from '../types';
 
 export const findFishState: FishingState = {
-	name: 'Поиск пойманой рыбы',
-	description: 'Ищем на экране текст о поимке рыбы',
+	name: 'Идентификация рыбы',
+	description: 'Смотрим, какая рыба поймана',
 	switcher: findFishSwitch,
 };
