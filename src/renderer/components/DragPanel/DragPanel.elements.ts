@@ -17,8 +17,6 @@ export const Wrapper = styled.div<WrapperProps>`
 	width: var(--width-main);
 	height: var(--height-drag-panel);
 	background-color: var(--color-drag-panel);
-	border-top-left-radius: var(--border-radius-main);
-	border-top-right-radius: var(--border-radius-main);
 	cursor: pointer;
 	transition: background-color var(--transition-standard);
 
@@ -33,6 +31,5 @@ export const Wrapper = styled.div<WrapperProps>`
 		background-color: var(--color-drag-panel-line);
 		height: var(--height);
 		width: var(--size-button-main-icon);
-		border-radius: var(--height);
 	}
 `;

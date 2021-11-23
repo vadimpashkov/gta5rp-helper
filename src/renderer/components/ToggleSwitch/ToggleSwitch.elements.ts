@@ -24,7 +24,6 @@ export const Slider = styled.span`
 	width: var(--width);
 	height: var(--height);
 	background-color: var(--color-disabled);
-	border-radius: var(--height);
 	transition: background-color var(--transition);
 
 	&::after {

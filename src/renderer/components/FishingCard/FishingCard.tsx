@@ -16,7 +16,7 @@ export const FishingCard: FC<FishingCardProps> = ({ className, percent, name, co
 
 	return (
 		<Wrapper className={className}>
-			<PieChart percent={percent}>{percent}%</PieChart>
+			<PieChart percent={percent} />
 			<Content>
 				<ContentName>{name}</ContentName>
 				<ContentCount>{count} шт.</ContentCount>

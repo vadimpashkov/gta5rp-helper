@@ -1,15 +1,41 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+export const moveLeft = keyframes`
+	from {
+		transform: translateX(160%);
+	}
+	to {
+		transform: translateX(0);
+	}
+`;
+
+export const moveRight = keyframes`
+	from {
+		transform: translateX(-160%);
+	}
+	to {
+		transform: translateX(0);
+	}
+`;
 
 export const Wrapper = styled.div`
+	z-index: var(--z-index-info-panel);
 	display: flex;
 	flex-flow: column;
 	align-items: center;
 	justify-content: center;
 	padding: var(--padding-main);
-	min-width: 270px;
-	border-radius: var(--border-radius-main);
+	min-width: 160px;
 	background-color: var(--color-button-main);
 	user-select: none;
+
+	&:nth-child(odd) {
+		animation: ${moveRight} var(--animation-standard);
+	}
+
+	&:nth-child(even) {
+		animation: ${moveLeft} var(--animation-standard);
+	}
 `;
 
 export const Title = styled.h2`

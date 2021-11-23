@@ -9,7 +9,7 @@ import {
 	MainButtonIcon as Icon,
 } from '../../styles';
 
-import { ComebackButton, FishingInformation } from '../../components';
+import { ComebackButton, FishingTotalInformation } from '../../components';
 
 import { MainLayout } from '../Layouts';
 
@@ -43,7 +43,7 @@ export const FishingPage: FC<FishingPageProps> = ({ className }: FishingPageProp
 						</NavigationListItem>
 						<NavigationListItem>
 							<Button state={infoOpen ? 'power' : ''} onClick={handleClick}>
-								<Icon>
+								<Icon state={infoOpen}>
 									<use href={SvgInfo + '#outline'} />
 									<use href={SvgInfo + '#fill'} />
 								</Icon>
@@ -63,7 +63,7 @@ export const FishingPage: FC<FishingPageProps> = ({ className }: FishingPageProp
 					</NavigationList>
 				</Navigation>
 			</MainLayout>
-			{infoOpen && <FishingInformation />}
+			{infoOpen && <FishingTotalInformation />}
 		</>
 	);
 };

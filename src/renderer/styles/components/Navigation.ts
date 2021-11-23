@@ -12,9 +12,4 @@ export const NavigationList = styled.ul`
 
 export const NavigationListItem = styled.li`
 	overflow: hidden;
-
-	&:last-of-type {
-		border-bottom-left-radius: var(--border-radius-main);
-		border-bottom-right-radius: var(--border-radius-main);
-	}
 `;

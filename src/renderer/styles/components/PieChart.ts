@@ -1,8 +1,19 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 type PieChartProps = {
 	percent: number;
 };
+
+export const editPrecent = keyframes`
+	to {
+		transform: rotate(360deg);
+		/* background: linear-gradient(var(--chart-background-color), var(--chart-background-color)) content-box,
+		linear-gradient(360deg, var(--chart-remnant-color) 100%, transparent 0); */
+	}
+	from {
+		transform: rotate(0);
+	}
+`;
 
 export const PieChart = styled.div<PieChartProps>`
 	--size: 46px;
@@ -31,6 +42,7 @@ export const PieChart = styled.div<PieChartProps>`
 	font-weight: var(--font-weight);
 	color: var(--color);
 	border-radius: 50%;
+	animation: ${editPrecent} var(--animation) 1.3s forwards;
 	background: linear-gradient(var(--chart-background-color), var(--chart-background-color)) content-box,
 		linear-gradient(var(--degree), var(--chart-remnant-color) 50%, transparent 0) 0 /
 			min(100%, (50 - var(--percent)) * 100%),
@@ -38,4 +50,8 @@ export const PieChart = styled.div<PieChartProps>`
 			min(100%, (var(--percent) - 50) * 100%),
 		linear-gradient(to right, var(--chart-remnant-color) 50%, var(--chart-progress-color) 0);
 	user-select: none;
+
+	&::after {
+		content: '${({ percent }) => `${percent}%`}';
+	}
 `;

@@ -49,7 +49,7 @@ export const FishingBotEnabled: FC<FishingBotEnabledProps> = ({ className }: Fis
 						</NavigationListItem>
 						<NavigationListItem>
 							<Button state={infoOpen ? 'power' : ''} onClick={handleClick}>
-								<Icon state={infoOpen ? 'power' : ''}>
+								<Icon state={infoOpen}>
 									<use href={SvgInfo + '#outline'} />
 									<use href={SvgInfo + '#fill'} />
 								</Icon>

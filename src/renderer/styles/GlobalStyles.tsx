@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 import { fontFace } from './mixins';
 
@@ -10,6 +10,9 @@ export const GlobalStyles = createGlobalStyle`
 	${fontFace({ src: MontserratExtraBold, family: 'Montserrat', weight: 800 })}
 
 	:root {
+		--z-index-primary: 100;
+		--z-index-info-panel: 99;
+
 		--height-drag-panel: 10px;
 
 		--color-primary: #14cc9e;
@@ -43,8 +46,6 @@ export const GlobalStyles = createGlobalStyle`
 
 		--width-main: 80px;
 
-		--border-radius-main: 14px;
-
 		--size-button-main: var(--width-main);
 		--size-button-main-icon: 28px;
 
@@ -53,6 +54,13 @@ export const GlobalStyles = createGlobalStyle`
 		--transition-bezier-rubber: cubic-bezier(1, 0.17, 0.16, 0.83);
 
 		--transition-standard: var(--transition-time-standard) var(--transition-bezier-rubber);
+
+		--animation-time-standard: 0.5s;
+
+		--animation-bezier-rubber: cubic-bezier(1, 0.17, 0.16, 0.83);
+		--animation-bezier-hit: cubic-bezier(0.54, -0.31, 0.51, 0.93);
+
+		--animation-standard: var(--animation-time-standard) var(--animation-bezier-hit);
 	}
 
 	html {

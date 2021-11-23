@@ -1,1 +1,1 @@
-export * from './FishingInformation';
+export * from './FishingTotalInformation';
