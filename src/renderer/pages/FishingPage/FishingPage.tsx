@@ -14,6 +14,7 @@ import { ComebackButton, FishingTotalInformation } from '../../components';
 import { MainLayout } from '../Layouts';
 
 import { sendEvent } from '../../utils';
+import { useStatus } from '../../stores';
 
 import SvgPower from '../../assets/svg/power.svg';
 import SvgInfo from '../../assets/svg/info.svg';
@@ -24,17 +25,24 @@ type FishingPageProps = {
 };
 export const FishingPage: FC<FishingPageProps> = ({ className }: FishingPageProps) => {
 	const [infoOpen, setInfoOpen] = useState(false);
+	const { reset } = useStatus();
 
 	const handleClick = () => {
 		setInfoOpen((old) => !old);
 	};
+
+	const handleStartClick = () => {
+		reset();
+		sendEvent('botFishingStarted');
+	};
+
 	return (
 		<>
 			<MainLayout>
 				<Navigation className={className}>
 					<NavigationList>
 						<NavigationListItem>
-							<Button as={Link} to="/fishingBotEnabled" onClick={() => sendEvent('botFishingStarted')}>
+							<Button as={Link} to="/fishingBotEnabled" onClick={handleStartClick}>
 								<Icon>
 									<use href={SvgPower + '#outline'} />
 									<use href={SvgPower + '#fill'} />

@@ -21,6 +21,7 @@ type Regions = {
 	errorRegion: Region;
 	yourItemsRegion: Region;
 	backpackRegion: Region;
+	trunkRegion: Region;
 	yourInventoryRegion: Region | null;
 	backpackInventoryRegion: Region | null;
 };
@@ -28,6 +29,10 @@ type Regions = {
 type Weight = {
 	mainInventory: Size;
 	backpack: {
+		available: boolean;
+		size: Size;
+	};
+	boat: {
 		available: boolean;
 		size: Size;
 	};
@@ -40,6 +45,7 @@ type Size = {
 
 type Keys = {
 	openInventoryKey: Key;
+	openBoatKey: Key;
 };
 
 export type FishingIteration = StateIteration<FishingConfig>;

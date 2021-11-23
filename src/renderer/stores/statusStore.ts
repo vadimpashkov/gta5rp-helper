@@ -12,4 +12,14 @@ receiveEvent<{ name: string; description: string }>('newState', (data) => {
 	store.set(data);
 });
 
-export const useStatus = () => useStore(store);
+export const useStatus = () => {
+	const status = useStore(store);
+	return {
+		status,
+		reset: () =>
+			store.set({
+				name: 'Бот не работает',
+				description: '',
+			}),
+	};
+};

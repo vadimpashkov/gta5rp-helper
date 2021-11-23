@@ -10,6 +10,7 @@ export const initFishingConfig = (screenWidth: number, screenHeight: number, emi
 	mouseRegion: new Region(0, 0, screenWidth, screenHeight),
 	successRegion: new Region(0, 0, screenWidth, screenHeight),
 	errorRegion: new Region(0, 0, screenWidth, screenHeight),
+	trunkRegion: new Region(0, 0, screenWidth, screenHeight),
 	yourItemsRegion: new Region(0, 0, screenWidth, screenHeight - screenHeight * 0.5),
 	backpackRegion: new Region(0, screenHeight * 0.5, screenWidth, screenHeight - screenHeight * 0.5),
 	yourInventoryRegion: null,
@@ -29,9 +30,17 @@ export const initFishingConfig = (screenWidth: number, screenHeight: number, emi
 			total: 0,
 		},
 	},
+	boat: {
+		available: false,
+		size: {
+			current: 0,
+			total: 0,
+		},
+	},
 	mainInventory: {
 		current: 0,
 		total: 0,
 	},
 	openInventoryKey: Key.I,
+	openBoatKey: Key.H,
 });

@@ -4,8 +4,8 @@ import { waitForImage } from '../../../utils/waitForImage';
 import { extractTextFromRegion } from '../../../utils/extractTextFromRegion';
 import { extractNumbersFromWeight } from '../../../utils/extractNumberFromWeight';
 
-import { placeState } from '../place';
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
+import { findBoatState } from '../findBoat';
 
 export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
 	const param = new OptionalSearchParameters(config.backpackRegion, 0.8);
@@ -35,5 +35,5 @@ export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig,
 	// Закрываем инвентарь
 	await keyboard.type(config.openInventoryKey);
 
-	return placeState;
+	return findBoatState;
 });

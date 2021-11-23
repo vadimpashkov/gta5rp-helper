@@ -1,5 +1,5 @@
-import { FC, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { FC, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import {
 	Navigation,
@@ -12,6 +12,7 @@ import {
 import { MainLayout } from '../Layouts';
 
 import { sendEvent } from '../../utils';
+import { useStatus } from '../../stores';
 
 import { FishingDashboard } from '../../components';
 
@@ -24,6 +25,14 @@ type FishingBotEnabledProps = {
 
 export const FishingBotEnabled: FC<FishingBotEnabledProps> = ({ className }: FishingBotEnabledProps) => {
 	const [infoOpen, setInfoOpen] = useState(false);
+	const { status } = useStatus();
+	const redirect = useNavigate();
+
+	useEffect(() => {
+		if (status.name === 'Выключен') {
+			redirect('/fishing');
+		}
+	}, [status.name]);
 
 	const handleClick = () => {
 		setInfoOpen((old) => !old);

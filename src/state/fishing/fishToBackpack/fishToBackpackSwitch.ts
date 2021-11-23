@@ -76,6 +76,8 @@ export const fishToBackpackSwitch: FishingSwitch = createCancelable<FishingConfi
 
 	await keyboard.type(openInventoryKey);
 
+	config.backpack.size.current += config.lastFish!.weight;
+
 	config.lastFish = null;
 
 	return waitLmdState;

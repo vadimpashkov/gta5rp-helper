@@ -12,7 +12,7 @@ type FishingDashboardProps = {
 
 export const FishingDashboard: FC<FishingDashboardProps> = ({ className }: FishingDashboardProps) => {
 	const fish = useSessionFish();
-	const status = useStatus();
+	const { status } = useStatus();
 
 	const fishCount = fish.reduce((acc, item) => (acc += item.count), 0);
 

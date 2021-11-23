@@ -14,14 +14,18 @@ export class Machine<T extends DefaultConfig> {
 	}
 
 	switchState = async () => {
-		if (!this.isWorking) return;
-		const nextState = await this.currentState.switcher.launch(this.config);
-		if (!this.isWorking) return;
+		try {
+			if (!this.isWorking) return;
+			const nextState = await this.currentState.switcher.launch(this.config);
+			if (!this.isWorking) return;
 
-		this.currentState = nextState;
-		this.config.emiter('newState', { name: nextState.name, description: nextState.description });
+			this.currentState = nextState;
+			this.config.emiter('newState', { name: nextState.name, description: nextState.description });
 
-		this.switchState();
+			this.switchState();
+		} catch {
+			this.config.emiter('newState', { name: 'Выключен', description: '' });
+		}
 	};
 
 	iteration = async () => {
