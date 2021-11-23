@@ -1,12 +1,13 @@
-import { OptionalSearchParameters, Region, keyboard, Key } from '@nut-tree/nut-js';
+import { OptionalSearchParameters, Region, keyboard, mouse, left, up } from '@nut-tree/nut-js';
 import { createCancelable } from '../../../utils/rejectablePromiseCreator';
 import { waitForImage } from '../../../utils/waitForImage';
 import { extractTextFromRegion } from '../../../utils/extractTextFromRegion';
 import { extractNumbersFromWeight } from '../../../utils/extractNumberFromWeight';
+import { getRandomIntInclusive } from '../../../utils/getRandomIntInclusive';
 
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
-import { findBoatState } from '../findBoat';
 import { placeState } from '../place';
+import { findBackpackState } from '.';
 
 export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
 	const param = new OptionalSearchParameters(config.backpackRegion, 0.8);
@@ -26,6 +27,27 @@ export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig,
 		);
 
 		const backpackWeight = extractNumbersFromWeight(backpackSize);
+
+		const retry = async () => {
+			await keyboard.type(config.openInventoryKey);
+
+			const randomX = getRandomIntInclusive(-100, 100);
+			const randomY = getRandomIntInclusive(-100, 100);
+
+			await mouse.move(left(randomX));
+			await mouse.move(up(randomY));
+			await keyboard.type(config.openInventoryKey);
+
+			return findBackpackState;
+		};
+
+		if (
+			Number.isNaN(backpackWeight.current) ||
+			Number.isNaN(backpackWeight.total) ||
+			backpackWeight.total < backpackWeight.current
+		) {
+			return await retry();
+		}
 
 		config.backpack = {
 			available: true,

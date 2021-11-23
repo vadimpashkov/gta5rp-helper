@@ -3,7 +3,7 @@ import { timeout } from './timeout';
 
 export const waitForImage = (image: string, timeToOut: number, param: OptionalSearchParameters) =>
 	timeout<Region>(
-		8,
+		15,
 		timeToOut,
 		() => {
 			const found = screen.find(image, param);
