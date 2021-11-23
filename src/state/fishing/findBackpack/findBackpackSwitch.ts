@@ -6,6 +6,7 @@ import { extractNumbersFromWeight } from '../../../utils/extractNumberFromWeight
 
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
 import { findBoatState } from '../findBoat';
+import { placeState } from '../place';
 
 export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
 	const param = new OptionalSearchParameters(config.backpackRegion, 0.8);
@@ -35,5 +36,5 @@ export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig,
 	// Закрываем инвентарь
 	await keyboard.type(config.openInventoryKey);
 
-	return findBoatState;
+	return placeState;
 });
