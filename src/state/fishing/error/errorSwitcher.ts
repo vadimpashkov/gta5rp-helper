@@ -13,7 +13,6 @@ export const errorSwitcher: FishingSwitch = createCancelable<FishingConfig, Fish
 	try {
 		const error = await screen.find('error.png', errorParam);
 		config.errorRegion = error;
-		config.messanger(`Ошибка при поимке рыбы`);
 	} catch {}
 
 	return placeState;

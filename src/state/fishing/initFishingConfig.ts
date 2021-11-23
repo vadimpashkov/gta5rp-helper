@@ -1,15 +1,10 @@
 import { Key, Point, Region } from '@nut-tree/nut-js';
 import { getSettings } from '../../store';
 
-import { Emiter, Messanger } from '../types';
+import { Emiter } from '../types';
 import { FishingConfig } from './types';
 
-export const initFishingConfig = (
-	screenWidth: number,
-	screenHeight: number,
-	messanger: Messanger,
-	emiter: Emiter,
-): FishingConfig => ({
+export const initFishingConfig = (screenWidth: number, screenHeight: number, emiter: Emiter): FishingConfig => ({
 	fishingPlaceRegion: new Region(0, 0, screenWidth, screenHeight),
 	lmbRegion: new Region(0, 0, screenWidth, screenHeight),
 	mouseRegion: new Region(0, 0, screenWidth, screenHeight),
@@ -21,7 +16,6 @@ export const initFishingConfig = (
 	backpackInventoryRegion: null,
 	startMousePosition: new Point(screenWidth / 2, screenHeight / 2),
 	mouseDirection: false,
-	messanger,
 	emiter,
 	numberOfFish: 0,
 	doubleClick: getSettings().doubleClick,

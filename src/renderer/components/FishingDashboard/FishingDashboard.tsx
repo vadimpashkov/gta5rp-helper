@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { Wrapper, FishCountPanel } from './FishingDashboard.elements';
 
-import { useSessionFish } from '../../stores';
+import { useSessionFish, useStatus } from '../../stores';
 
 import { FishingCard, InfoPanel } from '../';
 
@@ -12,6 +12,7 @@ type FishingDashboardProps = {
 
 export const FishingDashboard: FC<FishingDashboardProps> = ({ className }: FishingDashboardProps) => {
 	const fish = useSessionFish();
+	const status = useStatus();
 
 	const fishCount = fish.reduce((acc, item) => (acc += item.count), 0);
 
@@ -24,6 +25,7 @@ export const FishingDashboard: FC<FishingDashboardProps> = ({ className }: Fishi
 
 	return (
 		<Wrapper className={className}>
+			<InfoPanel title={status.name} description={status.description} />
 			<FishCountPanel as={InfoPanel} title={fishCount.toString()} description="рыб поймано" />
 			{cards}
 		</Wrapper>

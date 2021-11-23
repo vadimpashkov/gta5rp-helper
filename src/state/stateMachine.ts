@@ -19,7 +19,7 @@ export class Machine<T extends DefaultConfig> {
 		if (!this.isWorking) return;
 
 		this.currentState = nextState;
-		this.config.messanger(nextState.name);
+		this.config.emiter('newState', { name: nextState.name, description: nextState.description });
 
 		this.switchState();
 	};

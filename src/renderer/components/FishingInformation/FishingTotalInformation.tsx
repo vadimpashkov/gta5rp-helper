@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { Wrapper, Panels } from './FishingInformation.elements';
 
-import { BeforeTheFishPriceUpdate, InfoPanel, FishingTotalDashboard } from '..';
+import { BeforeTheFishPriceUpdate, FishingTotalDashboard } from '..';
 
 type FishingInformationProps = {
 	className?: string;
@@ -13,7 +13,6 @@ export const FishingTotalInformation: FC<FishingInformationProps> = ({ className
 		<Wrapper className={className}>
 			<Panels>
 				<BeforeTheFishPriceUpdate />
-				<InfoPanel title="Я есть бот" description="статус" />
 			</Panels>
 			<FishingTotalDashboard />
 		</Wrapper>

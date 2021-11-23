@@ -8,11 +8,9 @@ export type State<T extends DefaultConfig> = {
 	switcher: StateSwitch<T>;
 };
 
-export type Messanger = (message: string) => void;
 export type Emiter = <T>(event: string, data: T) => void;
 
 export type DefaultConfig = {
-	messanger: Messanger;
 	emiter: Emiter;
 	screenWidth: number;
 	screenHeight: number;

@@ -4,6 +4,7 @@ import { startState } from './start';
 import { initFishingConfig as initConfig } from './initFishingConfig';
 import { Machine } from '../stateMachine';
 import { FishingConfig } from './types';
+import { State } from '../types';
 
 export * from '../stateMachine';
 export const startFishingState = startState;
@@ -14,7 +15,6 @@ mouse.config.mouseSpeed = 200000;
 mouse.config.autoDelayMs = 1;
 
 let emiter = (msg: string, data: any) => {};
-let sendStatus = (msg: string) => emiter('newStatus', msg);
 
 let machine: Machine<FishingConfig> | null = null;
 
@@ -24,7 +24,7 @@ export const start = async (emit: (msg: string, data: any) => void) => {
 	const width = await screen.width();
 	const height = await screen.height();
 
-	const config = initFishingConfig(width, height, sendStatus, emiter);
+	const config = initFishingConfig(width, height, emiter);
 
 	machine = new Machine<FishingConfig>(startFishingState, config);
 

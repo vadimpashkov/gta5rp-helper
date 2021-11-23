@@ -36,11 +36,12 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 		'eng',
 	);
 
-	console.log(yourItemsSize);
+	let mainWeight: {
+		current: number;
+		total: number;
+	};
 
-	const mainWeight = extractNumbersFromWeight(yourItemsSize);
-
-	if (Number.isNaN(mainWeight.current) || Number.isNaN(mainWeight.total) || mainWeight.total < mainWeight.current) {
+	const retry = async () => {
 		await keyboard.type(config.openInventoryKey);
 
 		const randomX = getRandomIntInclusive(-100, 100);
@@ -50,6 +51,16 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 		await mouse.move(up(randomY));
 
 		return startState;
+	};
+
+	try {
+		mainWeight = extractNumbersFromWeight(yourItemsSize);
+	} catch {
+		return await retry();
+	}
+
+	if (Number.isNaN(mainWeight.current) || Number.isNaN(mainWeight.total) || mainWeight.total < mainWeight.current) {
+		return await retry();
 	}
 
 	config.mainInventory = mainWeight;
