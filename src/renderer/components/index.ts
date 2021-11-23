@@ -1,3 +1,4 @@
+export * from './Button';
 export * from './ToggleSwitch';
 export * from './InfoPanel';
 
@@ -11,5 +12,3 @@ export * from './FishingCard';
 export * from './FishingDashboard';
 export * from './FishingInformation';
 export * from './BeforeTheFishPriceUpdate';
-
-export * from './Svg';

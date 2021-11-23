@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { MainButton, MainButtonIcon } from '../../styles';
+import { Button } from '../../components';
 
 import Svg from '../../assets/svg/close.svg';
 
@@ -9,12 +9,5 @@ type CloseButtonProps = {
 };
 
 export const CloseButton: FC<CloseButtonProps> = ({ className }: CloseButtonProps) => {
-	return (
-		<MainButton className={className} onClick={() => window.close()}>
-			<MainButtonIcon>
-				<use href={Svg + '#outline'} />
-				<use href={Svg + '#fill'} />
-			</MainButtonIcon>
-		</MainButton>
-	);
+	return <Button className={className} srcIcon={Svg} onClick={() => window.close()} />;
 };

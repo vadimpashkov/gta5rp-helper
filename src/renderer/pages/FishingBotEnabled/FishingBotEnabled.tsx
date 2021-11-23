@@ -1,20 +1,12 @@
 import { FC, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-
-import {
-	Navigation,
-	NavigationList,
-	NavigationListItem,
-	MainButton as Button,
-	MainButtonIcon as Icon,
-} from '../../styles';
+import { useNavigate } from 'react-router-dom';
 
 import { MainLayout } from '../Layouts';
 
 import { sendEvent } from '../../utils';
 import { useStatus } from '../../stores';
 
-import { FishingDashboard } from '../../components';
+import { Button, FishingDashboard } from '../../components';
 
 import SvgPower from '../../assets/svg/power.svg';
 import SvgInfo from '../../assets/svg/info.svg';
@@ -40,32 +32,14 @@ export const FishingBotEnabled: FC<FishingBotEnabledProps> = ({ className }: Fis
 
 	return (
 		<>
-			<MainLayout dragPanel="power">
-				<Navigation className={className}>
-					<NavigationList>
-						<NavigationListItem>
-							<Button
-								as={Link}
-								to="/fishing"
-								onClick={() => sendEvent('botFishingStopped')}
-								state="power"
-							>
-								<Icon state="power">
-									<use href={SvgPower + '#outline'} />
-									<use href={SvgPower + '#fill'} />
-								</Icon>
-							</Button>
-						</NavigationListItem>
-						<NavigationListItem>
-							<Button state={infoOpen ? 'power' : ''} onClick={handleClick}>
-								<Icon state={infoOpen}>
-									<use href={SvgInfo + '#outline'} />
-									<use href={SvgInfo + '#fill'} />
-								</Icon>
-							</Button>
-						</NavigationListItem>
-					</NavigationList>
-				</Navigation>
+			<MainLayout>
+				<Button
+					srcIcon={SvgPower}
+					to="/fishing"
+					isSelect={true}
+					onClick={() => sendEvent('botFishingStopped')}
+				/>
+				<Button srcIcon={SvgInfo} isSelect={infoOpen} onClick={handleClick} />
 			</MainLayout>
 			{infoOpen && <FishingDashboard />}
 		</>

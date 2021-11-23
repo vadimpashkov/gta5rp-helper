@@ -1,7 +1,5 @@
 import path from 'path';
-import { BrowserWindow, app, session } from 'electron';
-
-import { searchDevtools } from 'electron-search-devtools';
+import { BrowserWindow, app } from 'electron';
 
 import { subscribe } from './events';
 
@@ -34,15 +32,6 @@ export function createMainWindow() {
 }
 
 app.whenReady().then(async () => {
-	if (isDev) {
-		const devtools = await searchDevtools('REACT');
-		if (devtools) {
-			await session.defaultSession.loadExtension(devtools, {
-				allowFileAccess: true,
-			});
-		}
-	}
-
 	createMainWindow();
 
 	subscribe(winMain);

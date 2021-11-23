@@ -10,8 +10,9 @@ export const GlobalStyles = createGlobalStyle`
 	${fontFace({ src: MontserratExtraBold, family: 'Montserrat', weight: 800 })}
 
 	:root {
-		--z-index-primary: 100;
-		--z-index-info-panel: 99;
+		--z-index-drag-panel: 100;
+		--z-index-layout: 99;
+		--z-index-info-panel: 98;
 
 		--height-drag-panel: 10px;
 
@@ -24,10 +25,10 @@ export const GlobalStyles = createGlobalStyle`
 
 		--color-button-main: var(--color-light);
 		--color-button-main-hover: var(--color-dark);
+		--color-button-main-select: var(--color-primary);
 
 		--color-drag-panel: var(--color-light);
 		--color-drag-panel-line: var(--color-dark);
-
 
 		--font-primary-family: 'Montserrat', sans-serif;
 		--font-primary-size: 14px;

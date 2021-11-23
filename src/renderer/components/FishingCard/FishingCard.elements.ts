@@ -11,7 +11,6 @@ export const moveTop = keyframes`
 export const Wrapper = styled.div`
 	--padding: var(--padding-main);
 	--gap: var(--gap-main);
-	--border-radius: var(--border-radius-main);
 	--background-color: var(--color-button-main);
 	--animation: var(--animation-standard);
 
@@ -21,7 +20,6 @@ export const Wrapper = styled.div`
 	row-gap: var(--gap);
 	padding: var(--padding);
 	min-width: 140px;
-	/* border-radius: var(--border-radius); */
 	background-color: var(--background-color);
 	box-sizing: border-box;
 	user-select: none;

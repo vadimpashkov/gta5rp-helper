@@ -18,3 +18,21 @@ export const MainWrapperContainer = styled.div<MainWrapperProps>`
 		opacity: 1;
 	}
 `;
+
+export const DragPanel = styled.div`
+	--height: var(--height-drag-panel);
+	--width: calc(var(--height) * 2);
+
+	--background-color: var(--color-light);
+
+	z-index: var(--z-index-drag-panel);
+	position: absolute;
+	width: var(--width);
+	height: var(--height);
+	background-color: var(--background-color);
+	border-radius: 50%;
+	top: 0;
+	left: calc(var(--size-button-main) / 2);
+	transform: translateX(-50%);
+	-webkit-app-region: drag;
+`;

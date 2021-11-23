@@ -8,7 +8,7 @@ import { HomePage, FishingPage, FishingBotEnabled, SettingsPage } from './pages'
 
 export const App: FC = () => (
 	<HashRouter>
-		<MainWrapper opacity={0.5}>
+		<MainWrapper opacity={1.0}>
 			<Routes>
 				<Route path="/" element={<HomePage />} />
 				<Route path="/fishing" element={<FishingPage />} />

@@ -1,35 +1,31 @@
 import styled from 'styled-components';
 
-type WrapperProps = {
-	dragPanel?: string;
-};
+export const Wrapper = styled.div`
+	--width: var(--width-main);
+	--height: var(--height-drag-panel);
 
-export const Wrapper = styled.div<WrapperProps>`
-	${({ dragPanel }) =>
-		dragPanel === 'select'
-			? '--color-drag-panel: var(--color-dark);'
-			: dragPanel === 'power' && '--color-drag-panel: var(--color-primary);'};
+	--background-color: var(--color-light);
+	--color-line: var(--color-dark);
 
 	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: var(--width-main);
-	height: var(--height-drag-panel);
-	background-color: var(--color-drag-panel);
+	width: var(--width);
+	height: var(--height);
+	background-color: transparent;
 	cursor: pointer;
 	transition: background-color var(--transition-standard);
 
 	-webkit-app-region: drag;
 
 	&::after {
-		${({ dragPanel }) => dragPanel && '--color-drag-panel-line: var(--color-light);'};
-
+		--width: var(--size-button-main-icon);
 		--height: 2px;
 
 		content: '';
-		background-color: var(--color-drag-panel-line);
+		background-color: var(--color-line);
 		height: var(--height);
-		width: var(--size-button-main-icon);
+		width: var(--width);
 	}
 `;

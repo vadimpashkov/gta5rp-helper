@@ -1,6 +1,6 @@
 import { FC, useEffect, useRef, useState } from 'react';
 
-import { MainWrapperContainer } from './MainWrapper.elements';
+import { MainWrapperContainer, DragPanel } from './MainWrapper.elements';
 
 import { sendEvent } from '../../utils';
 
@@ -29,6 +29,7 @@ export const MainWrapper: FC<MainWrapperProps> = ({ children, className, opacity
 			opacity={opacity}
 			onClick={() => setForceRerender((old) => !old)}
 		>
+			<DragPanel />
 			{children}
 		</MainWrapperContainer>
 	);

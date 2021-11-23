@@ -1,11 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
-import { Navigation, NavigationList, NavigationListItem, MainButton as Button } from '../../styles';
 
 import { MainLayout } from '../Layouts';
 
-import { Comeback } from '../../components';
+import { ComebackButton } from '../../components';
+
 import { useSettings } from '../../stores';
 
 export const SettingsPage = () => {
@@ -20,19 +18,8 @@ export const SettingsPage = () => {
 
 	return (
 		<MainLayout>
-			<div style={{ background: 'white' }}>
-				doble click
-				<input checked={settings.data.doubleClick} onChange={handleChange} type="checkbox" />
-			</div>
-			<Navigation>
-				<NavigationList>
-					<NavigationListItem>
-						<Button as={Link} to="/">
-							<Comeback />
-						</Button>
-					</NavigationListItem>
-				</NavigationList>
-			</Navigation>
+			{/* <input checked={settings.data.doubleClick} onChange={handleChange} type="checkbox" /> */}
+			<ComebackButton to="/" />
 		</MainLayout>
 	);
 };
