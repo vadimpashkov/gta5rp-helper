@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-	display: grid;
-	grid-template: auto 1fr / 1fr 1fr 1fr;
-	gap: var(--gap-main);
-	padding-bottom: 20px;
+	display: flex;
+	flex-flow: column;
+	row-gap: var(--gap-main);
 `;
 
-export const FishCountPanel = styled.div`
-	grid-column: 1 / -1;
+export const Panels = styled.div`
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+	column-gap: var(--gap-main);
 `;

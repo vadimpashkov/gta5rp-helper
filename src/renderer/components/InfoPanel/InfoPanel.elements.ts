@@ -26,6 +26,8 @@ export const Wrapper = styled.div`
 	justify-content: center;
 	padding: var(--padding-main);
 	min-width: 160px;
+	text-align: center;
+	line-height: 1;
 	background-color: var(--color-button-main);
 	user-select: none;
 
@@ -43,6 +45,7 @@ export const Title = styled.h2`
 	font-family: var(--font-accent-family);
 	font-size: var(--font-accent-size);
 	font-weight: var(--font-accent-weight);
+	margin-bottom: 3px;
 `;
 
 export const Description = styled.p`

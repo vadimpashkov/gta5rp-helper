@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 
-import { Button, ComebackButton, FishingTotalInformation } from '../../components';
+import { Button, ComebackButton, FishingTotalDashboard } from '../../components';
 
 import { MainLayout } from '../Layouts';
 
@@ -34,7 +34,7 @@ export const FishingPage: FC<FishingPageProps> = ({ className }: FishingPageProp
 				<Button srcIcon={SvgInfo} isSelect={infoOpen} onClick={handleClick} />
 				<ComebackButton to="/" />
 			</MainLayout>
-			{infoOpen && <FishingTotalInformation />}
+			{infoOpen && <FishingTotalDashboard />}
 		</>
 	);
 };
