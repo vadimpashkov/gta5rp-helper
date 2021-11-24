@@ -11,7 +11,7 @@ export const MainWrapperContainer = styled.div<MainWrapperProps>`
 	display: flex;
 	column-gap: var(--gap-main);
 	opacity: ${({ opacity }) => opacity};
-	transition: opacity var(--transition-standard);
+	transition: opacity var(--transition-duration-standard) var(--transition-bezier-rubber);
 	filter: url(${svgFilter + '#gooey-rect'});
 
 	&:hover {

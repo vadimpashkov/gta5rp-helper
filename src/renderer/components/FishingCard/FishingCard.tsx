@@ -1,6 +1,6 @@
-import { FC } from 'react';
+import { FC, memo, useState } from 'react';
 
-import { PieChart } from '../../styles';
+import { RingDiagram } from '../RingDiagram';
 
 import { Wrapper, Content, ContentName, ContentCount } from './FishingCard.elements';
 
@@ -11,16 +11,16 @@ type FishingCardProps = {
 	count: number;
 };
 
-export const FishingCard: FC<FishingCardProps> = ({ className, percent, name, count }: FishingCardProps) => {
+export const FishingCard: FC<FishingCardProps> = memo(({ className, percent, name, count }: FishingCardProps) => {
 	percent = Number(parseFloat(percent.toString()).toFixed(1));
 
 	return (
 		<Wrapper className={className}>
-			<PieChart percent={percent} />
+			<RingDiagram size={46} percent={percent} />
 			<Content>
 				<ContentName>{name}</ContentName>
 				<ContentCount>{count} шт.</ContentCount>
 			</Content>
 		</Wrapper>
 	);
-};
+});
