@@ -26,7 +26,7 @@ export const Wrapper = styled.button<ButtonProps>`
 	--background-color-select: var(--color-button-main-select);
 	--color: var(--color-button-main-hover);
 	--color-select: var(--color-button-main);
-	--transition: var(--transition-standard);
+	--transition: var(--transition-duration-standard) var(--transition-bezier-rubber);
 
 	position: relative;
 	display: grid;
@@ -49,7 +49,7 @@ export const Wrapper = styled.button<ButtonProps>`
 	}
 
 	& use {
-		transition: opacity var(--transition-standard);
+		transition: opacity var(--transition);
 	}
 
 	& use:first-of-type {

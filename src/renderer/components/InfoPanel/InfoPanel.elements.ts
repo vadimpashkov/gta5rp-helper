@@ -19,6 +19,8 @@ export const moveRight = keyframes`
 `;
 
 export const Wrapper = styled.div`
+	--animation: var(--animation-duration-standard) var(--animation-bezier-hit);
+
 	z-index: var(--z-index-info-panel);
 	display: flex;
 	flex-flow: column;
@@ -32,11 +34,11 @@ export const Wrapper = styled.div`
 	user-select: none;
 
 	&:nth-child(odd) {
-		animation: ${moveRight} var(--animation-standard);
+		animation: ${moveRight} var(--animation);
 	}
 
 	&:nth-child(even) {
-		animation: ${moveLeft} var(--animation-standard);
+		animation: ${moveLeft} var(--animation);
 	}
 `;
 
@@ -53,4 +55,5 @@ export const Description = styled.p`
 	font-family: var(--font-secondary-family);
 	font-size: var(--font-secondary-size);
 	font-weight: var(--font-secondary-weight);
+	text-transform: lowercase;
 `;

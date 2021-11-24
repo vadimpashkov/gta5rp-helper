@@ -9,7 +9,7 @@ export const Wrapper = styled.label`
 	--color-enabled: var(--color-primary);
 	--color-disabled: var(--color-button-main-hover);
 
-	--transition: var(--transition-standard);
+	--transition: var(--transition-duration-standard) var(--transition-bezier-rubber);
 
 	--toggle-size: calc(var(--height) - var(--padding) * 2);
 	--toggle-color: var(--color-font-hover);

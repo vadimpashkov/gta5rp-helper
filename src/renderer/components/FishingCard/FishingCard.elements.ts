@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
 	--padding: var(--padding-main);
 	--gap: var(--gap-main);
 	--background-color: var(--color-button-main);
-	--animation: var(--animation-standard);
+	--animation: var(--animation-duration-standard) var(--animation-bezier-hit);
 
 	z-index: var(--z-index);
 	display: flex;
