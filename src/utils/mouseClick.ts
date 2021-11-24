@@ -1,5 +1,6 @@
 import FFI from 'ffi-napi';
 import StructType from 'ref-struct-napi';
+import { getProcess } from '../store';
 
 // @ts-ignore
 import UnionType from 'ref-union-napi';
@@ -73,30 +74,42 @@ const user32 = FFI.Library('user32.dll', {
 	//   _In_reads_(cInputs) LPINPUT pInputs,  // array of inputs
 	//   _In_ int cbSize);                      // sizeof(INPUT)
 	SendInput: ['uint32', ['int32', 'pointer', 'int32']],
+	SendMessageA: ['int32', ['long', 'int32', 'uint32', 'uint32']],
+	PostMessageA: ['int32', ['long', 'int32', 'uint32', 'uint32']],
+	FindWindowA: ['int32', ['string', 'string']],
 });
 
+function MAKELPARAM(x: any, y: any) {
+	return (y << 16) | (x & 0xffff);
+}
+
+export const findWindow = (ss: string) => user32.FindWindowA(null, ss);
+
 export const mouseClick = (x: number, y: number) => {
-	const inputDown = MOUSEINPUT({
-		dx: x,
-		dy: y,
-		dwFlags: 0x8002,
-		mouseData: 0,
-		time: 0,
-		dwExtraInfo: ref.NULL_POINTER,
-	});
+	console.log(getProcess());
 
-	const keyDownInputDown = INPUT({ type: 0, union: INPUT_UNION({ mi: inputDown }) });
-	user32.SendInput(1, keyDownInputDown.ref(), (INPUT as any).size);
+	user32.SendMessageA(getProcess(), 0x0201, 1, MAKELPARAM(x, y));
+	user32.SendMessageA(getProcess(), 0x0202, 0, MAKELPARAM(x, y));
+	// const inputDown = MOUSEINPUT({
+	// 	dx: x,
+	// 	dy: y,
+	// 	dwFlags: 0x8002,
+	// 	mouseData: 0,
+	// 	time: 0,
+	// 	dwExtraInfo: ref.NULL_POINTER,
+	// });i
+	// const keyDownInputDown = INPUT({ type: 0, union: INPUT_UNION({ mi: inputDown }) });
+	// user32.SendInput(1, keyDownInputDown.ref(), (INPUT as any).size);
 
-	const inputUp = MOUSEINPUT({
-		dx: x,
-		dy: y,
-		dwFlags: 0x8004,
-		mouseData: 0,
-		time: 0,
-		dwExtraInfo: ref.NULL_POINTER,
-	});
+	// const inputUp = MOUSEINPUT({
+	// 	dx: x,
+	// 	dy: y,
+	// 	dwFlags: 0x8004,
+	// 	mouseData: 0,
+	// 	time: 0,
+	// 	dwExtraInfo: ref.NULL_POINTER,
+	// });
 
-	const keyDownInputUp = INPUT({ type: 0, union: INPUT_UNION({ mi: inputUp }) });
-	user32.SendInput(1, keyDownInputUp.ref(), (INPUT as any).size);
+	// const keyDownInputUp = INPUT({ type: 0, union: INPUT_UNION({ mi: inputUp }) });
+	// user32.SendInput(1, keyDownInputUp.ref(), (INPUT as any).size);
 };
