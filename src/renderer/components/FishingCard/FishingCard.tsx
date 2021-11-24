@@ -1,4 +1,4 @@
-import { FC, memo, useState } from 'react';
+import { FC } from 'react';
 
 import { RingDiagram } from '../RingDiagram';
 
@@ -11,9 +11,7 @@ type FishingCardProps = {
 	count: number;
 };
 
-export const FishingCard: FC<FishingCardProps> = memo(({ className, percent, name, count }: FishingCardProps) => {
-	percent = Number(parseFloat(percent.toString()).toFixed(1));
-
+export const FishingCard: FC<FishingCardProps> = ({ className, percent, name, count }: FishingCardProps) => {
 	return (
 		<Wrapper className={className}>
 			<RingDiagram size={46} percent={percent} />
@@ -23,4 +21,4 @@ export const FishingCard: FC<FishingCardProps> = memo(({ className, percent, nam
 			</Content>
 		</Wrapper>
 	);
-});
+};

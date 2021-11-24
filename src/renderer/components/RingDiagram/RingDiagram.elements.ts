@@ -42,7 +42,7 @@ export const Wrapper = styled.div<RingDiagramProps>`
 	--color-remains: var(--color-font);
 	--color-progress: var(--color-primary);
 
-	--transition: var(--transition-duration-very-long) var(--transition-bezier-rubber) var(--transition-delay-very-long);
+	--transition: var(--transition-duration-very-long) var(--transition-bezier-rubber);
 
 	position: relative;
 	display: flex;
@@ -56,12 +56,12 @@ export const Wrapper = styled.div<RingDiagramProps>`
 	color: var(--color);
 
 	${Remains} {
-		stroke-dasharray: ${({ circumferenceLength, circleOffset }) => `${circumferenceLength} ${circumferenceLength}`};
+		stroke-dasharray: ${({ circumferenceLength }) => `${circumferenceLength} ${circumferenceLength}`};
 		stroke-dashoffset: ${({ circumferenceLength, circleOffset }) => (circumferenceLength - circleOffset) * -1};
 	}
 
 	${Progress} {
-		stroke-dasharray: ${({ circumferenceLength, circleOffset }) => `${circumferenceLength} ${circumferenceLength}`};
-		stroke-dashoffset: ${({ circumferenceLength, circleOffset }) => circleOffset};
+		stroke-dasharray: ${({ circumferenceLength }) => `${circumferenceLength} ${circumferenceLength}`};
+		stroke-dashoffset: ${({ circleOffset }) => circleOffset};
 	}
 `;
