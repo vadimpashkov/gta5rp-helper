@@ -1,7 +1,8 @@
 import { FC, useEffect, useState } from 'react';
 
 import { priceUpdateTime } from './priceUpdateTime';
-import { InfoPanel } from '../';
+
+import { InfoPanel } from '../InfoPanel';
 
 type BeforeTheFishPriceUpdateProps = {
 	className?: string;
@@ -20,5 +21,5 @@ export const BeforeTheFishPriceUpdate: FC<BeforeTheFishPriceUpdateProps> = ({
 		return () => clearInterval(intervalValue);
 	}, []);
 
-	return <InfoPanel className={className} title={time} description="до обновления цен" />;
+	return <InfoPanel className={className} title={time} description="До обновления цен" />;
 };

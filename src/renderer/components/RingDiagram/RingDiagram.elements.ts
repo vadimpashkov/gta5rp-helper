@@ -10,7 +10,7 @@ export const Meaning = styled.p`
 	margin: 0;
 `;
 
-export const Circle = styled.circle`
+const Circle = styled.circle`
 	fill: transparent;
 	transform-origin: center;
 	transform: rotate(-90deg);
@@ -36,13 +36,12 @@ export const Wrapper = styled.div<RingDiagramProps>`
 	--font-family: var(--font-secondary-family);
 	--font-size: var(--font-secondary-size);
 	--font-weight: var(--font-secondary-weight);
+	--color: var(--font-primary-color);
 
-	--color: var(--color-font);
+	--color-remains: var(--color);
+	--color-progress: ${({ color }) => color};
 
-	--color-remains: var(--color-font);
-	--color-progress: var(--color-primary);
-
-	--transition: var(--transition-duration-very-long) var(--transition-bezier-rubber);
+	--transition: var(--time-very-long) var(--bezier-rubber);
 
 	position: relative;
 	display: flex;

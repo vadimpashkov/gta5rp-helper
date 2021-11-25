@@ -1,10 +1,10 @@
 import { FC, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { MainLayout } from '../Layouts';
-
 import { sendEvent } from '../../utils';
 import { useStatus } from '../../stores';
+
+import { MainLayout } from '../Layouts';
 
 import { Button, FishingDashboard } from '../../components';
 
@@ -32,7 +32,7 @@ export const FishingBotEnabled: FC<FishingBotEnabledProps> = ({ className }: Fis
 
 	return (
 		<>
-			<MainLayout>
+			<MainLayout className={className}>
 				<Button
 					srcIcon={SvgPower}
 					to="/fishing"

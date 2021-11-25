@@ -14,6 +14,7 @@ export const addDefaultFish = (fish: GroupedFish[]): GroupedFish[] => {
 				weightForOne: item.weight,
 				weightTotal: 0,
 				count: 0,
+				color: 'var(--color-primary)',
 			});
 		}
 	});

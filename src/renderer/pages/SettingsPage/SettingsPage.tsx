@@ -1,20 +1,18 @@
-import React from 'react';
-
 import { MainLayout } from '../Layouts';
 
 import { ComebackButton } from '../../components';
 
-import { useSettings } from '../../stores';
+// import { useSettings } from '../../stores';
 
 export const SettingsPage = () => {
-	const settings = useSettings();
+	// const settings = useSettings();
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		settings.setSettings({
-			...settings.data,
-			doubleClick: e.target.checked,
-		});
-	};
+	// const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+	// 	settings.setSettings({
+	// 		...settings.data,
+	// 		doubleClick: event.target.checked,
+	// 	});
+	// };
 
 	return (
 		<MainLayout>

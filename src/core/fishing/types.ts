@@ -4,6 +4,7 @@ export type Fish = {
 	minPrice: number;
 	maxPrice: number;
 	weight: number;
+	color: string;
 };
 
 export type TotalFish = {
@@ -24,4 +25,5 @@ export type GroupedFish = {
 	weightTotal: number;
 	minPrice: number;
 	maxPrice: number;
+	color: string;
 };

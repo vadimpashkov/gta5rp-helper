@@ -1,11 +1,11 @@
 import { FC, useState } from 'react';
 
-import { Button, ComebackButton, FishingTotalDashboard } from '../../components';
+import { sendEvent } from '../../utils';
+import { useStatus } from '../../stores';
 
 import { MainLayout } from '../Layouts';
 
-import { sendEvent } from '../../utils';
-import { useStatus } from '../../stores';
+import { Button, ComebackButton, FishingTotalDashboard } from '../../components';
 
 import SvgPower from '../../assets/svg/power.svg';
 import SvgInfo from '../../assets/svg/info.svg';
@@ -29,7 +29,7 @@ export const FishingPage: FC<FishingPageProps> = ({ className }: FishingPageProp
 
 	return (
 		<>
-			<MainLayout>
+			<MainLayout className={className}>
 				<Button srcIcon={SvgPower} to="/fishingBotEnabled" onClick={handleStartClick} />
 				<Button srcIcon={SvgInfo} isSelect={infoOpen} onClick={handleClick} />
 				<ComebackButton to="/" />

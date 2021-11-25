@@ -1,22 +1,5 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.label`
-	--width: 30px;
-	--height: calc(var(--width) / 2);
-
-	--padding: calc(var(--height) / 8);
-
-	--color-enabled: var(--color-primary);
-	--color-disabled: var(--color-button-main-hover);
-
-	--transition: var(--transition-duration-standard) var(--transition-bezier-rubber);
-
-	--toggle-size: calc(var(--height) - var(--padding) * 2);
-	--toggle-color: var(--color-font-hover);
-
-	cursor: pointer;
-`;
-
 export const Slider = styled.span`
 	box-sizing: border-box;
 	padding: var(--padding);
@@ -48,4 +31,21 @@ export const Checkbox = styled.input`
 	&:checked + ${Slider}::after {
 		transform: translateX(calc(var(--width) / 2));
 	}
+`;
+
+export const Wrapper = styled.label`
+	--width: 30px;
+	--height: calc(var(--width) / 2);
+
+	--padding: calc(var(--height) / 8);
+
+	--color-enabled: var(--button-color-select);
+	--color-disabled: var(--button-color-hover);
+
+	--transition: var(--time-standard) var(--bezier-rubber);
+
+	--toggle-size: calc(var(--height) - var(--padding) * 2);
+	--toggle-color: var(--button-color);
+
+	cursor: pointer;
 `;

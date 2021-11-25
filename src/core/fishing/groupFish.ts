@@ -19,6 +19,7 @@ export const groupFish = (fish: Fish[]): GroupedFish[] => {
 				weightForOne: localFish.weight,
 				minPrice: localFish.minPrice,
 				maxPrice: localFish.maxPrice,
+				color: localFish.color,
 			});
 		}
 	});

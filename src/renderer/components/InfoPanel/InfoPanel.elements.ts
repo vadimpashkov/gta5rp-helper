@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 
-export const moveLeft = keyframes`
+const moveLeft = keyframes`
 	from {
 		transform: translateX(160%);
 	}
@@ -9,7 +9,7 @@ export const moveLeft = keyframes`
 	}
 `;
 
-export const moveRight = keyframes`
+const moveRight = keyframes`
 	from {
 		transform: translateX(-160%);
 	}
@@ -18,19 +18,49 @@ export const moveRight = keyframes`
 	}
 `;
 
-export const Wrapper = styled.div`
-	--animation: var(--animation-duration-standard) var(--animation-bezier-hit);
+const Text = styled.p`
+	--font-family: var(--font-secondary-family);
+	--font-size: var(--font-secondary-size);
+	--font-weight: var(--font-secondary-weight);
+	--color: var(--font-secondary-color);
 
-	z-index: var(--z-index-info-panel);
+	margin: 0;
+	font-family: var(--font-family);
+	font-size: var(--font-size);
+	font-weight: var(--font-weight);
+	color: var(--color);
+`;
+
+export const Description = styled(Text)`
+	text-transform: lowercase;
+`;
+
+export const Title = styled(Text)`
+	--font-family: var(--font-accent-family);
+	--font-size: var(--font-accent-size);
+	--font-weight: var(--font-accent-weight);
+	--color: var(--font-primary-color);
+
+	margin-bottom: 3px;
+`;
+
+export const Wrapper = styled.div`
+	--z-index: var(--z-index-info-panel);
+	--padding: var(--padding-main);
+	--background-color: var(--button-color);
+	--animation: var(--time-long) var(--bezier-hit);
+
+	z-index: var(--z-index);
 	display: flex;
 	flex-flow: column;
 	align-items: center;
 	justify-content: center;
-	padding: var(--padding-main);
-	min-width: 160px;
+	padding: var(--padding);
+	min-height: 80px;
 	text-align: center;
 	line-height: 1;
-	background-color: var(--color-button-main);
+	background-color: var(--background-color);
+	box-sizing: border-box;
 	user-select: none;
 
 	&:nth-child(odd) {
@@ -40,20 +70,4 @@ export const Wrapper = styled.div`
 	&:nth-child(even) {
 		animation: ${moveLeft} var(--animation);
 	}
-`;
-
-export const Title = styled.h2`
-	margin: 0;
-	font-family: var(--font-accent-family);
-	font-size: var(--font-accent-size);
-	font-weight: var(--font-accent-weight);
-	margin-bottom: 3px;
-`;
-
-export const Description = styled.p`
-	margin: 0;
-	font-family: var(--font-secondary-family);
-	font-size: var(--font-secondary-size);
-	font-weight: var(--font-secondary-weight);
-	text-transform: lowercase;
 `;

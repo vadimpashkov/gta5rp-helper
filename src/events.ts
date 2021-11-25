@@ -1,4 +1,4 @@
-import { BrowserWindow, ipcMain } from 'electron';
+import { BrowserWindow, ipcMain, screen } from 'electron';
 import { start, stop } from './state/fishing';
 import { getTotalFish, setSettings, getSessionFish } from './store';
 
@@ -32,4 +32,15 @@ export const subscribe = (window: BrowserWindow) => {
 			window.setBounds(size);
 		}
 	});
+
+	ipcMain.on('windowMoving', (_, mouseCoordinates: { x: number; y: number }) => {
+		const { x: mouseX, y: mouseY } = mouseCoordinates;
+		const { x, y } = screen.getCursorScreenPoint();
+
+		// console.log({ mouseX, mouseY }, { x, y }, { x: x - mouseX, y: y - mouseY });
+
+		window.setBounds({ x: x - mouseX, y: y - mouseY });
+	});
+
+	ipcMain.on('windowMoved', (_, args) => {});
 };

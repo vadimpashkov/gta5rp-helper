@@ -11,7 +11,7 @@ type InfoPanelProps = {
 export const InfoPanel: FC<InfoPanelProps> = ({ className, title, description }: InfoPanelProps) => {
 	return (
 		<Wrapper className={className}>
-			<Title>{title}</Title>
+			<Title as="h2">{title}</Title>
 			<Description>{description}</Description>
 		</Wrapper>
 	);

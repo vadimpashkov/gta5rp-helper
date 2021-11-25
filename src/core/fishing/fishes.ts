@@ -6,6 +6,7 @@ export const NotFoundFish: Fish = {
 	minPrice: 0,
 	maxPrice: 0,
 	weight: 0.5,
+	color: 'transparent',
 };
 
 export const Sterlyad: Fish = {
@@ -14,6 +15,7 @@ export const Sterlyad: Fish = {
 	minPrice: 36,
 	maxPrice: 47,
 	weight: 0.3,
+	color: '#46bfff',
 };
 
 export const Losos: Fish = {
@@ -22,6 +24,7 @@ export const Losos: Fish = {
 	minPrice: 49,
 	maxPrice: 63,
 	weight: 0.3,
+	color: '#ff7784',
 };
 
 export const Osetr: Fish = {
@@ -30,6 +33,7 @@ export const Osetr: Fish = {
 	minPrice: 88,
 	maxPrice: 116,
 	weight: 0.3,
+	color: '#50d0bc',
 };
 
 export const BlackAmour: Fish = {
@@ -38,6 +42,7 @@ export const BlackAmour: Fish = {
 	minPrice: 176,
 	maxPrice: 231,
 	weight: 0.4,
+	color: '#ff46cb',
 };
 
 export const Skat: Fish = {
@@ -46,6 +51,7 @@ export const Skat: Fish = {
 	minPrice: 200,
 	maxPrice: 263,
 	weight: 0.4,
+	color: '#ffbb54',
 };
 
 export const Tunets: Fish = {
@@ -54,6 +60,7 @@ export const Tunets: Fish = {
 	minPrice: 560,
 	maxPrice: 735,
 	weight: 0.4,
+	color: '#c4ff46',
 };
 
 export const Malma: Fish = {
@@ -62,6 +69,7 @@ export const Malma: Fish = {
 	minPrice: 840,
 	maxPrice: 1103,
 	weight: 0.4,
+	color: '#717eee',
 };
 
 export const Fugu: Fish = {
@@ -70,6 +78,7 @@ export const Fugu: Fish = {
 	minPrice: 2045,
 	maxPrice: 2625,
 	weight: 0.5,
+	color: '#da46ff',
 };
 
 export const AvailableFish = [Sterlyad, Losos, Osetr, BlackAmour, Skat, Tunets, Malma, Fugu];

@@ -14,9 +14,9 @@ type ButtonProps = {
 export const Button: FC<ButtonProps> = ({ className, srcIcon, isSelect, onClick, to }: ButtonProps) => {
 	return (
 		<Wrapper
+			className={className}
 			as={to !== undefined ? Link : Wrapper}
 			to={to}
-			className={className}
 			isSelect={isSelect}
 			onClick={onClick}
 		>

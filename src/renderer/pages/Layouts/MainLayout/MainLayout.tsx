@@ -8,11 +8,11 @@ type MainLayoutProps = {
 };
 
 export const MainLayout: FC<MainLayoutProps> = ({ children }: MainLayoutProps) => {
-	history.pushState(null, '', location.href);
+	// history.pushState(null, '', location.href);
 
-	window.onpopstate = (event) => {
-		history.go(1);
-	};
+	// window.onpopstate = (event) => {
+	// 	history.go(1);
+	// };
 
 	return (
 		<Wrapper>

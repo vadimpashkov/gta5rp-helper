@@ -5,11 +5,20 @@ import { Wrapper, Svg, Remains, Progress, Meaning } from './RingDiagram.elements
 type RingDiagramProps = {
 	className?: string;
 	size: number;
+	color: string;
 	percent: number;
 };
 
-export const RingDiagram: FC<RingDiagramProps> = ({ className, size, percent }: RingDiagramProps) => {
+export const RingDiagram: FC<RingDiagramProps> = ({ className, size, percent, color }: RingDiagramProps) => {
 	const [currentPercent, setCurrentPercent] = useState(percent);
+
+	const circleCenterXY = size / 2;
+	const circleStrokeWidth = size / 11.5;
+	const circleRadius = circleCenterXY - circleStrokeWidth / 2;
+
+	const circumferenceLength = 2 * Math.PI * circleRadius;
+	const circleOffset =
+		percent >= 1 ? circumferenceLength - (percent / 100) * circumferenceLength : circumferenceLength;
 
 	useEffect(() => {
 		let timer: NodeJS.Timer | null = null;
@@ -58,17 +67,11 @@ export const RingDiagram: FC<RingDiagramProps> = ({ className, size, percent }: 
 		};
 	}, [percent]);
 
-	const circleCenterXY = size / 2;
-	const circleStrokeWidth = size / 11.5;
-	const circleRadius = circleCenterXY - circleStrokeWidth / 2;
-
-	const circumferenceLength = 2 * Math.PI * circleRadius;
-	const circleOffset = circumferenceLength - (percent / 100) * circumferenceLength;
-
 	return (
 		<Wrapper
 			className={className}
 			size={size}
+			color={color}
 			circumferenceLength={circumferenceLength}
 			circleOffset={circleOffset}
 		>

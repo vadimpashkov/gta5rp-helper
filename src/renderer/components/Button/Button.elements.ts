@@ -5,12 +5,10 @@ type ButtonProps = {
 };
 
 export const Svg = styled.svg`
-	--size-icon: calc(var(--size-button) / 2.8);
-
 	display: block;
 	place-self: center;
-	width: var(--size-icon);
-	height: var(--size-icon);
+	width: var(--svg-size);
+	height: var(--svg-size);
 	object-fit: cover;
 	object-position: center;
 	fill: currentColor;
@@ -20,33 +18,26 @@ export const Svg = styled.svg`
 `;
 
 export const Wrapper = styled.button<ButtonProps>`
-	--offset: var(--height-drag-panel);
-	--size-button: var(--size-button-main);
-	--background-color: var(--color-button-main);
-	--background-color-select: var(--color-button-main-select);
-	--color: var(--color-button-main-hover);
-	--color-select: var(--color-button-main);
-	--transition: var(--transition-duration-standard) var(--transition-bezier-rubber);
+	--size: var(--button-size);
+	--color: var(--button-color);
+	--color-select: var(--button-color-select);
+
+	--svg-size: var(--icon-size);
+	--svg-color: var(--icon-color);
+	--svg-color-select: var(--icon-color-select);
+
+	--transition: var(--time-standard) var(--bezier-rubber);
 
 	position: relative;
 	display: grid;
 	padding: 0;
-	width: var(--size-button);
-	height: var(--size-button);
+	width: var(--size);
+	height: var(--size);
 	border: none;
-	background-color: ${({ isSelect }) => (isSelect ? 'var(--background-color-select)' : 'var(--background-color)')};
-	color: ${({ isSelect }) => (isSelect ? 'var(--color-select)' : 'var(--color)')};
+	background-color: ${({ isSelect }) => (isSelect ? 'var(--color-select)' : 'var(--color)')};
+	color: ${({ isSelect }) => (isSelect ? 'var(--svg-color-select)' : 'var(--svg-color)')};
 	cursor: pointer;
 	transition: background-color var(--transition), color var(--transition);
-
-	&:first-child {
-		grid-template-rows: var(--offset) 1fr;
-		height: calc(var(--size-button) + var(--offset));
-	}
-
-	&:first-child ${Svg} {
-		grid-row-start: 2;
-	}
 
 	& use {
 		transition: opacity var(--transition);

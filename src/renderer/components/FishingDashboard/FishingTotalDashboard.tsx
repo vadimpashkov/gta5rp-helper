@@ -2,7 +2,8 @@ import { FC } from 'react';
 
 import { Wrapper, Panels } from './FishingDashboard.elements';
 
-import { BeforeTheFishPriceUpdate, FishingTotalStatistics } from '..';
+import { BeforeTheFishPriceUpdate } from '../BeforeTheFishPriceUpdate';
+import { FishingTotalStatistics } from '../FishingStatistics';
 
 type FishingTotalDashboardProps = {
 	className?: string;

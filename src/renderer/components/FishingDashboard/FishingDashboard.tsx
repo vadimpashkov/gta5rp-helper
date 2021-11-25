@@ -4,7 +4,9 @@ import { Wrapper, Panels } from './FishingDashboard.elements';
 
 import { useStatus } from '../../stores';
 
-import { InfoPanel, BeforeTheFishPriceUpdate, FishingStatistics } from '..';
+import { InfoPanel } from '../InfoPanel';
+import { BeforeTheFishPriceUpdate } from '../BeforeTheFishPriceUpdate';
+import { FishingStatistics } from '../FishingStatistics';
 
 type FishingDashboardProps = {
 	className?: string;

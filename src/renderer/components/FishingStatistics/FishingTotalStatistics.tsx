@@ -1,11 +1,13 @@
 import { FC } from 'react';
 
-import { Wrapper, FishCountPanel } from './FishingStatistics.elements';
+import { Wrapper } from './FishingStatistics.elements';
 
 import { AvailableFish } from '../../../core';
 import { useTotalFish } from '../../stores';
 
-import { FishingCard, InfoPanel } from '..';
+import { Card } from '../Card';
+import { FishingCard } from '../FishingCard';
+import { FishTotalQuantityDiagram } from '../FishQuantityDiagram';
 
 type FishingTotalStatisticsProps = {
 	className?: string;
@@ -24,13 +26,15 @@ export const FishingTotalStatistics: FC<FishingTotalStatisticsProps> = ({ classN
 		const count = (fish as { [key: string]: number })[key];
 		const percent = totalFishCount > 0 ? (count / totalFishCount) * 100 : 0;
 
-		return <FishingCard key={key} percent={percent} name={foundFish.name} count={count} />;
+		return <FishingCard key={key} percent={percent} name={foundFish.name} count={count} color={foundFish.color} />;
 	});
 
 	return (
 		<Wrapper className={className}>
-			<FishCountPanel as={InfoPanel} title={totalFishCount.toString()} description="рыб поймано" />
 			{cards}
+			<Card className={className} title="Всего" description={`${totalFishCount} шт.`}>
+				<FishTotalQuantityDiagram size={46} fish={fish} fishCount={totalFishCount} />
+			</Card>
 		</Wrapper>
 	);
 };

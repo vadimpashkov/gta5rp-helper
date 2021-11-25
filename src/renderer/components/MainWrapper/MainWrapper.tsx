@@ -1,8 +1,10 @@
 import { FC, useEffect, useRef, useState } from 'react';
 
-import { MainWrapperContainer, DragPanel } from './MainWrapper.elements';
+import { MainWrapperContainer } from './MainWrapper.elements';
 
 import { sendEvent } from '../../utils';
+
+import { DragPanel } from '../DragPanel';
 
 type MainWrapperProps = {
 	children: React.ReactNode;
