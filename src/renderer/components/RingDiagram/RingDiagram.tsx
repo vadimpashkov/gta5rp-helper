@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 
-import { Wrapper, Svg, Remains, Progress, Meaning } from './RingDiagram.elements';
+import { Wrapper, Remains, Progress, Text } from './RingDiagram.elements';
 
 type RingDiagramProps = {
 	className?: string;
@@ -70,16 +70,22 @@ export const RingDiagram: FC<RingDiagramProps> = ({ className, size, percent, co
 	return (
 		<Wrapper
 			className={className}
-			size={size}
-			color={color}
+			width={size}
+			height={size}
 			circumferenceLength={circumferenceLength}
 			circleOffset={circleOffset}
 		>
-			<Svg>
-				<Remains cx={circleCenterXY} cy={circleCenterXY} strokeWidth={circleStrokeWidth} r={circleRadius} />
-				<Progress cx={circleCenterXY} cy={circleCenterXY} strokeWidth={circleStrokeWidth} r={circleRadius} />
-			</Svg>
-			<Meaning>{Number(currentPercent.toFixed(1))}%</Meaning>
+			<Remains cx={circleCenterXY} cy={circleCenterXY} strokeWidth={circleStrokeWidth} r={circleRadius} />
+			<Progress
+				cx={circleCenterXY}
+				cy={circleCenterXY}
+				strokeWidth={circleStrokeWidth}
+				r={circleRadius}
+				stroke={color}
+			/>
+			<Text x="50%" y="50%">
+				{Number(currentPercent.toFixed(1))}%
+			</Text>
 		</Wrapper>
 	);
 };

@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 type RingDiagramProps = {
-	size: number;
 	circumferenceLength: number;
 	circleOffset: number;
 };
 
-export const Meaning = styled.p`
-	margin: 0;
+export const Text = styled.text`
+	fill: currentColor;
+	text-anchor: middle;
+	transform: translateY(calc(var(--font-size) / 2.5));
 `;
 
 const Circle = styled.circle`
@@ -21,38 +22,23 @@ export const Remains = styled(Circle)`
 	stroke: var(--color-remains);
 `;
 
-export const Progress = styled(Circle)`
-	stroke: var(--color-progress);
-`;
+export const Progress = styled(Circle)``;
 
-export const Svg = styled.svg`
-	position: absolute;
-	width: 100%;
-	height: 100%;
-`;
-
-export const Wrapper = styled.div<RingDiagramProps>`
-	--size: ${({ size }) => `${size}px`};
+export const Wrapper = styled.svg<RingDiagramProps>`
 	--font-family: var(--font-secondary-family);
 	--font-size: var(--font-secondary-size);
 	--font-weight: var(--font-secondary-weight);
 	--color: var(--font-primary-color);
 
 	--color-remains: var(--color);
-	--color-progress: ${({ color }) => color};
 
 	--transition: var(--time-very-long) var(--bezier-rubber);
 
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: var(--size);
-	height: var(--size);
 	font-family: var(--font-family);
 	font-size: var(--font-size);
 	font-weight: var(--font-weight);
 	color: var(--color);
+	line-height: 1;
 
 	${Remains} {
 		stroke-dasharray: ${({ circumferenceLength }) => `${circumferenceLength} ${circumferenceLength}`};
