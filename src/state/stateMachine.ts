@@ -17,15 +17,20 @@ export class Machine<T extends DefaultConfig> {
 		try {
 			if (!this.isWorking) return;
 			const nextState = await this.currentState.switcher.launch(this.config);
-			if (!this.isWorking) return;
 
-			if (this.config.softStop === true && nextState.stopOnSoftExit === true) throw Error('SoftExit');
+			if (this.config.softStop === true && nextState.stopOnSoftExit === true) {
+				throw Error('SoftExit');
+			}
+			
+			if (!this.isWorking) return;
 
 			this.currentState = nextState;
 			this.config.emiter('newState', { name: nextState.name, description: nextState.description });
 
 			this.switchState();
 		} catch {
+			this.isWorking = false;
+
 			this.config.emiter('newState', { name: 'Выключен', description: '' });
 		}
 	};
