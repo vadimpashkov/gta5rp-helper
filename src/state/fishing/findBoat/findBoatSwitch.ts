@@ -1,4 +1,4 @@
-import { keyboard, OptionalSearchParameters, Region } from '@nut-tree/nut-js';
+import { Key, keyboard, OptionalSearchParameters, Region } from '@nut-tree/nut-js';
 
 import { createCancelable } from '../../../utils/rejectablePromiseCreator';
 import { extractTextFromRegion } from '../../../utils/extractTextFromRegion';
@@ -37,7 +37,7 @@ export const findBoatSwitch: FishingSwitch = createCancelable<FishingConfig, Fis
 
 		console.log(config.boat);
 
-		await keyboard.type(config.openTrunkKey);
+		await keyboard.type(Key.Escape);
 	} catch {}
 
 	return placeState;

@@ -1,6 +1,5 @@
 import FFI from 'ffi-napi';
 import StructType from 'ref-struct-napi';
-import { getProcess } from '../store';
 
 // @ts-ignore
 import UnionType from 'ref-union-napi';
@@ -86,10 +85,6 @@ function MAKELPARAM(x: any, y: any) {
 export const findWindow = (ss: string) => user32.FindWindowA(null, ss);
 
 export const mouseClick = (x: number, y: number) => {
-	console.log(getProcess());
-
-	user32.SendMessageA(getProcess(), 0x0201, 1, MAKELPARAM(x, y));
-	user32.SendMessageA(getProcess(), 0x0202, 0, MAKELPARAM(x, y));
 	// const inputDown = MOUSEINPUT({
 	// 	dx: x,
 	// 	dy: y,

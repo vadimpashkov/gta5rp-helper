@@ -4,6 +4,7 @@ import { waitForImage } from '../../../utils/waitForImage';
 import { extractTextFromRegion } from '../../../utils/extractTextFromRegion';
 import { extractNumbersFromWeight } from '../../../utils/extractNumberFromWeight';
 import { getRandomIntInclusive } from '../../../utils/getRandomIntInclusive';
+import { gtaProcess } from '../../../store';
 
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
 import { findBackpackState } from '.';
@@ -34,8 +35,9 @@ export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig,
 
 			await keyboard.type(config.openInventoryKey);
 
-			await mouse.move(left(randomX));
-			await mouse.move(up(randomY));
+			var currentMouse = await mouse.getPosition();
+
+			await gtaProcess.mouse.moveCurveToAsync(currentMouse.x + randomX, currentMouse.y + randomY, 2);
 
 			await keyboard.type(config.openInventoryKey);
 

@@ -5,7 +5,7 @@ import { extractTextFromRegion } from '../../../utils/extractTextFromRegion';
 import { extractNumbersFromWeight } from '../../../utils/extractNumberFromWeight';
 import { getRandomIntInclusive } from '../../../utils/getRandomIntInclusive';
 
-import { clearSessionFish } from '../../../store';
+import { clearSessionFish, gtaProcess } from '../../../store';
 
 import { findBackpackState } from '../findBackpack';
 import { startState } from './startState';
@@ -47,8 +47,9 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 		const randomX = getRandomIntInclusive(-100, 100);
 		const randomY = getRandomIntInclusive(-100, 100);
 
-		await mouse.move(left(randomX));
-		await mouse.move(up(randomY));
+		var currentMouse = await mouse.getPosition();
+
+		await gtaProcess.mouse.moveCurveToAsync(currentMouse.x + randomX, currentMouse.y + randomY, 2);
 
 		return startState;
 	};
