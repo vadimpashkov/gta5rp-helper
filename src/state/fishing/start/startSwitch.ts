@@ -1,5 +1,5 @@
 import { OptionalSearchParameters, Region, keyboard, Key, mouse, Point, left, up } from '@nut-tree/nut-js';
-import { createDeferredCanceled } from '../../../utils/rejectablePromiseCreator';
+import { createCancelable } from '../../../utils/rejectablePromiseCreator';
 import { waitForImage } from '../../../utils/waitForImage';
 import { extractTextFromRegion } from '../../../utils/extractTextFromRegion';
 import { extractNumbersFromWeight } from '../../../utils/extractNumberFromWeight';
@@ -11,7 +11,7 @@ import { findBackpackState } from '../findBackpack';
 import { startState } from './startState';
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
 
-export const startSwitch: FishingSwitch = createDeferredCanceled<FishingConfig, FishingState>(async (config) => {
+export const startSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
 	clearSessionFish();
 	config.emiter('setSessionFish', []);
 

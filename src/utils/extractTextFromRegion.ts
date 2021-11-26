@@ -5,12 +5,11 @@ import { recognize } from 'tesseract.js';
 import { readFile } from 'fs';
 // @ts-ignore
 import replaceColor from 'replace-color';
-import { cancelable } from './rejectablePromiseCreator';
 
 const filePath = path.join(process.cwd(), 'temp.png');
 
-export const extractTextFromRegion = cancelable(async (region: Region, lang: string): Promise<string> =>
-	new Promise<string>(cancelable(async (resolve: (data: string) => void, reject: () => void) => {
+export const extractTextFromRegion = async (region: Region, lang: string = 'rus'): Promise<string> =>
+	new Promise<string>(async (resolve, reject) => {
 		await screen.captureRegion('temp.png', region);
 
 		const jimp = await read(filePath);
@@ -29,20 +28,14 @@ export const extractTextFromRegion = cancelable(async (region: Region, lang: str
 				rc.write(filePath, async (err: Error) => {
 					if (err) return console.log(err);
 
-					readFile(filePath, cancelable(async (err: any, data: Buffer) => {
+					readFile(filePath, async (err, data) => {
 						if (err) {
 							reject();
 						}
-						try {
-							const result = await recognize(data, lang|| 'rus');
+						const result = await recognize(data, lang);
 
-							resolve(result.data.text);
-						}
-						catch {
-							resolve('');
-						}
-					}));
+						resolve(result.data.text);
+					});
 				});
 			});
-	}))
-);
+	});

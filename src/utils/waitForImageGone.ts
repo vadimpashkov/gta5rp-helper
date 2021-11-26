@@ -1,9 +1,8 @@
 import { OptionalSearchParameters, screen } from '@nut-tree/nut-js';
-import { cancelable } from './rejectablePromiseCreator';
 import { timeout } from './timeout';
 
 // Ждем  когда картинка пропадет
-export const waitForImageGone = cancelable((image: string, timeToOut: number, param: OptionalSearchParameters) =>
+export const waitForImageGone = (image: string, timeToOut: number, param: OptionalSearchParameters) =>
 	timeout(
 		8,
 		timeToOut,
@@ -18,4 +17,4 @@ export const waitForImageGone = cancelable((image: string, timeToOut: number, pa
 			}
 		},
 		{ signal: param.abort },
-	));
+	);

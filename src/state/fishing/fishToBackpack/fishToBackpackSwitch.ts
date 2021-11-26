@@ -1,12 +1,12 @@
 import { keyboard, Key, Region, OptionalSearchParameters, screen, mouse, Point, Button } from '@nut-tree/nut-js';
 
-import { createDeferredCanceled } from '../../../utils/rejectablePromiseCreator';
+import { createCancelable } from '../../../utils/rejectablePromiseCreator';
 import { waitForImage } from '../../../utils/waitForImage';
 
 import { waitLmdState } from '../waitLmd';
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
 
-export const fishToBackpackSwitch: FishingSwitch = createDeferredCanceled<FishingConfig, FishingState>(async (config) => {
+export const fishToBackpackSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
 	const { backpackRegion, yourItemsRegion, lastFish, openInventoryKey } = config;
 
 	await keyboard.type(openInventoryKey);

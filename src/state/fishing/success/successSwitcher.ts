@@ -1,12 +1,12 @@
 import { createParam } from '../../../utils/parameterFactory';
 import { waitForImage } from '../../../utils/waitForImage';
-import { createDeferredCanceled } from '../../../utils/rejectablePromiseCreator';
+import { createCancelable } from '../../../utils/rejectablePromiseCreator';
 
 import { findFishState } from '../findFish';
 import { errorState } from '../error';
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
 
-export const successSwitcher: FishingSwitch = createDeferredCanceled<FishingConfig, FishingState>(async (config) => {
+export const successSwitcher: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
 	const { successRegion } = config;
 	const successParam = createParam(successRegion, 0.8);
 
