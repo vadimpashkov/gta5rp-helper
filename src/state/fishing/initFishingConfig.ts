@@ -41,6 +41,6 @@ export const initFishingConfig = (screenWidth: number, screenHeight: number, emi
 		current: 0,
 		total: 0,
 	},
-	openInventoryKey: Key.I,
-	openBoatKey: Key.H,
+	openInventoryKey: Key.C,
+	openTrunkKey: Key.H,
 });
