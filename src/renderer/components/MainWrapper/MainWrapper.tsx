@@ -1,4 +1,5 @@
 import { FC, useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { MainWrapperContainer } from './MainWrapper.elements';
 
@@ -20,9 +21,12 @@ function updateSize(ref: React.RefObject<HTMLDivElement>) {
 
 export const MainWrapper: FC<MainWrapperProps> = ({ children, className, opacity }: MainWrapperProps) => {
 	const [forceRerender, setForceRerender] = useState(false);
+	const location = useLocation(); 
 	const targetRef = useRef<HTMLDivElement>(null);
 
-	useEffect(() => updateSize(targetRef), [children, forceRerender]);
+	useEffect(() => setForceRerender((old) => !old), [location.pathname]);
+
+	useEffect(() => updateSize(targetRef), [JSON.stringify(children), forceRerender]);
 
 	return (
 		<MainWrapperContainer
