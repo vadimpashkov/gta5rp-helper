@@ -49,36 +49,38 @@ export const fishToBackpackSwitch: FishingSwitch = createCancelable<FishingConfi
 		);
 	}
 
-	const foundFishParam = new OptionalSearchParameters(config.yourInventoryRegion, 0.7);
-
-	const foundFishRegion = await waitForImage(`${lastFish!.storedName}.png`, 1500, foundFishParam);
-
-	let regionToPlace: Region;
-	const foundBackpackFishParam = new OptionalSearchParameters(config.backpackInventoryRegion, 0.7);
-
 	try {
-		regionToPlace = await waitForImage(`${lastFish!.storedName}.png`, 1500, foundBackpackFishParam);
-	} catch {
-		regionToPlace = await waitForImage(`EmptyCell.png`, 1500, foundBackpackFishParam);
-	}
+		const foundFishParam = new OptionalSearchParameters(config.yourInventoryRegion, 0.7);
 
-	await mouse.move([
-		new Point(foundFishRegion.left + foundFishRegion.width / 2, foundFishRegion.top + foundFishRegion.height / 2),
-	]);
-
-	await mouse.pressButton(Button.LEFT);
-
-	await mouse.move([
-		new Point(regionToPlace.left + regionToPlace.width / 2, regionToPlace.top + regionToPlace.height / 2),
-	]);
-
-	await mouse.releaseButton(Button.LEFT);
-
-	await keyboard.type(openInventoryKey);
-
-	config.backpack.size.current += config.lastFish!.weight;
-
-	config.lastFish = null;
+		const foundFishRegion = await waitForImage(`${lastFish!.storedName}.png`, 1500, foundFishParam);
+	
+		let regionToPlace: Region;
+		const foundBackpackFishParam = new OptionalSearchParameters(config.backpackInventoryRegion, 0.7);
+	
+		try {
+			regionToPlace = await waitForImage(`${lastFish!.storedName}.png`, 1500, foundBackpackFishParam);
+		} catch {
+			regionToPlace = await waitForImage(`EmptyCell.png`, 1500, foundBackpackFishParam);
+		}
+	
+		await mouse.move([
+			new Point(foundFishRegion.left + foundFishRegion.width / 2, foundFishRegion.top + foundFishRegion.height / 2),
+		]);
+	
+		await mouse.pressButton(Button.LEFT);
+	
+		await mouse.move([
+			new Point(regionToPlace.left + regionToPlace.width / 2, regionToPlace.top + regionToPlace.height / 2),
+		]);
+	
+		await mouse.releaseButton(Button.LEFT);
+	
+		await keyboard.type(openInventoryKey);
+	
+		config.backpack.size.current += config.lastFish!.weight;
+	
+		config.lastFish = null;
+	} catch (e) {console.log(e)}
 
 	return waitLmdState;
 });
