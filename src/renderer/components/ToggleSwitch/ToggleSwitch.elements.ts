@@ -6,6 +6,7 @@ export const Slider = styled.span`
 	display: flex;
 	width: var(--width);
 	height: var(--height);
+	border-radius: var(--border-radius);
 	background-color: var(--color-disabled);
 	transition: background-color var(--transition);
 
@@ -34,10 +35,12 @@ export const Checkbox = styled.input`
 `;
 
 export const Wrapper = styled.label`
-	--width: 30px;
+	--width: 32px;
 	--height: calc(var(--width) / 2);
 
 	--padding: calc(var(--height) / 8);
+
+	--border-radius: var(--border-radius-main);
 
 	--color-enabled: var(--button-color-select);
 	--color-disabled: var(--button-color-hover);
