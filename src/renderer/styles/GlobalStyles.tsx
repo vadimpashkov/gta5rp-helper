@@ -20,10 +20,6 @@ export const GlobalStyles = createGlobalStyle`
 		--padding-main: 16px;
 		--padding-secondary: var(--gap-main);
 
-		/* Border radius */
-
-		--border-radius-main: 14px;
-
 		/* Gap */
 
 		--gap-main: 10px;

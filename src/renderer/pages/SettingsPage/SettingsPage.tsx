@@ -1,8 +1,6 @@
 import { MainLayout } from '../Layouts';
 
-import { Button, ComebackButton, FishingSettings } from '../../components';
-
-import FishSvg from '../../assets/svg/fish.svg';
+import { ComebackButton } from '../../components';
 
 // import { useSettings } from '../../stores';
 
@@ -17,13 +15,9 @@ export const SettingsPage = () => {
 	// };
 
 	return (
-		<>
-			<MainLayout>
-				{/* <input checked={settings.data.doubleClick} onChange={handleChange} type="checkbox" /> */}
-				<Button srcIcon={FishSvg} />
-				<ComebackButton to="/" />
-			</MainLayout>
-			<FishingSettings />
-		</>
+		<MainLayout>
+			{/* <input checked={settings.data.doubleClick} onChange={handleChange} type="checkbox" /> */}
+			<ComebackButton to="/" />
+		</MainLayout>
 	);
 };

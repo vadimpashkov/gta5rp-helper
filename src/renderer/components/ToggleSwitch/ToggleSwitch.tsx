@@ -4,14 +4,12 @@ import { Wrapper, Checkbox, Slider } from './ToggleSwitch.elements';
 
 type ToggleSwitchProps = {
 	className?: string;
-	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-	checked: boolean;
 };
 
-export const ToggleSwitch: FC<ToggleSwitchProps> = ({ className, onChange, checked }: ToggleSwitchProps) => {
+export const ToggleSwitch: FC<ToggleSwitchProps> = ({ className }: ToggleSwitchProps) => {
 	return (
 		<Wrapper className={className}>
-			<Checkbox type="checkbox" onChange={onChange} checked={checked} />
+			<Checkbox type="checkbox" />
 			<Slider />
 		</Wrapper>
 	);
