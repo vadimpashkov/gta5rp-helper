@@ -47,6 +47,7 @@ export class Machine<T extends DefaultConfig> {
 	start = () => {
 		this.isWorking = true;
 		this.createTimeout();
+		this.config.emiter('newState', { name: this.currentState.name, description: this.currentState.description });
 		this.switchState();
 	};
 
