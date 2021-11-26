@@ -17,6 +17,7 @@ type FishingBotEnabledProps = {
 
 export const FishingBotEnabled: FC<FishingBotEnabledProps> = ({ className }: FishingBotEnabledProps) => {
 	const [infoOpen, setInfoOpen] = useState(false);
+	const [softClose, setSoftClose] = useState(false);
 	const { status } = useStatus();
 	const redirect = useNavigate();
 
@@ -30,18 +31,26 @@ export const FishingBotEnabled: FC<FishingBotEnabledProps> = ({ className }: Fis
 		setInfoOpen((old) => !old);
 	};
 
+	const handleBackClick = () => {
+		setSoftClose((old) => {
+			if (old) sendEvent('botFishingStopped');
+			else sendEvent('botFishingSoftStopped');
+			return !old;
+		})
+	}
+
 	return (
 		<>
 			<MainLayout className={className}>
 				<Button
 					srcIcon={SvgPower}
-					to="/fishing"
+					to={softClose ? "/fishing" : undefined}
 					isSelect={true}
-					onClick={() => sendEvent('botFishingStopped')}
+					onClick={handleBackClick}
 				/>
 				<Button srcIcon={SvgInfo} isSelect={infoOpen} onClick={handleClick} />
 			</MainLayout>
-			{infoOpen && <FishingDashboard />}
+			{infoOpen && <FishingDashboard softClose={softClose} />}
 		</>
 	);
 };

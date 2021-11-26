@@ -10,16 +10,17 @@ import { FishingStatistics } from '../FishingStatistics';
 
 type FishingDashboardProps = {
 	className?: string;
+	softClose: boolean;
 };
 
-export const FishingDashboard: FC<FishingDashboardProps> = ({ className }: FishingDashboardProps) => {
+export const FishingDashboard: FC<FishingDashboardProps> = ({ className, softClose }: FishingDashboardProps) => {
 	const { status } = useStatus();
 
 	return (
 		<Wrapper className={className}>
 			<Panels>
 				<BeforeTheFishPriceUpdate />
-				<InfoPanel title={status.name} description={status.description} />
+				<InfoPanel title={`${status.name}${softClose ? ' (Завершение)' : ''}`} description={status.description} />
 			</Panels>
 			<FishingStatistics />
 		</Wrapper>

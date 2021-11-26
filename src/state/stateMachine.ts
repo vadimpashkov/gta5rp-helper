@@ -19,6 +19,8 @@ export class Machine<T extends DefaultConfig> {
 			const nextState = await this.currentState.switcher.launch(this.config);
 			if (!this.isWorking) return;
 
+			if (this.config.softStop === true && nextState.stopOnSoftExit === true) throw Error('SoftExit');
+
 			this.currentState = nextState;
 			this.config.emiter('newState', { name: nextState.name, description: nextState.description });
 
@@ -47,6 +49,10 @@ export class Machine<T extends DefaultConfig> {
 		this.createTimeout();
 		this.switchState();
 	};
+
+	softStop = () => {
+		this.config.softStop = true;
+	}
 
 	private createTimeout = () => {
 		this.iteration();

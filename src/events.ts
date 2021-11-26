@@ -1,5 +1,5 @@
 import { BrowserWindow, ipcMain, screen } from 'electron';
-import { start, stop } from './state/fishing';
+import { start, stop, softStop } from './state/fishing';
 import { getTotalFish, setSettings, getSessionFish } from './store';
 
 export const subscribe = (window: BrowserWindow) => {
@@ -13,6 +13,10 @@ export const subscribe = (window: BrowserWindow) => {
 
 	ipcMain.on('botFishingStopped', () => {
 		stop();
+	});
+
+	ipcMain.on('botFishingSoftStopped', () => {
+		softStop();
 	});
 
 	ipcMain.on('newSettings', (_, args) => {

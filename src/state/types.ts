@@ -6,12 +6,14 @@ export type State<T extends DefaultConfig> = {
 	description: string;
 	iteration?: StateIteration<T>;
 	switcher: StateSwitch<T>;
+	stopOnSoftExit?: boolean;
 };
 
 export type Emiter = <T>(event: string, data: T) => void;
 
 export type DefaultConfig = {
 	emiter: Emiter;
+	softStop: boolean;
 	screenWidth: number;
 	screenHeight: number;
 };

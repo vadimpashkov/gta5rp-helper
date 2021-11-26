@@ -4,7 +4,6 @@ import { startState } from './start';
 import { initFishingConfig as initConfig } from './initFishingConfig';
 import { Machine } from '../stateMachine';
 import { FishingConfig } from './types';
-import { State } from '../types';
 
 export * from '../stateMachine';
 export const startFishingState = startState;
@@ -34,3 +33,7 @@ export const start = async (emit: (msg: string, data: any) => void) => {
 export const stop = () => {
 	machine?.stop();
 };
+
+export const softStop = () => {
+	machine?.softStop();
+}

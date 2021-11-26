@@ -6,4 +6,5 @@ export const placeState: FishingState = {
 	name: 'Идентификация "крючка"',
 	description: 'Поиск места для рыбалки',
 	switcher: placeSwitch,
+	stopOnSoftExit: true,
 };
