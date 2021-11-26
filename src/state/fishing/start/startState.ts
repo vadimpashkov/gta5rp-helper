@@ -6,4 +6,5 @@ export const startState: FishingState = {
 	name: 'Конфигурация',
 	description: 'Проходит конфигурация бота',
 	switcher: startSwitch,
+	stopOnSoftExit: true,
 };

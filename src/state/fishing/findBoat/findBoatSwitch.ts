@@ -1,6 +1,6 @@
 import { Key, keyboard, OptionalSearchParameters, Region } from '@nut-tree/nut-js';
 
-import { createCancelable } from '../../../utils/rejectablePromiseCreator';
+import { createDeferredCanceled } from '../../../utils/rejectablePromiseCreator';
 import { extractTextFromRegion } from '../../../utils/extractTextFromRegion';
 import { extractNumbersFromWeight } from '../../../utils/extractNumberFromWeight';
 import { waitForImage } from '../../../utils/waitForImage';
@@ -9,7 +9,7 @@ import { placeState } from '../place';
 
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
 
-export const findBoatSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
+export const findBoatSwitch: FishingSwitch = createDeferredCanceled<FishingConfig, FishingState>(async (config) => {
 	const param = new OptionalSearchParameters(config.trunkRegion, 0.7);
 
 	await keyboard.type(config.openTrunkKey);

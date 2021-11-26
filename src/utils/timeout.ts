@@ -1,16 +1,16 @@
 import { AbortSignal } from 'node-abort-controller';
+import { cancelable } from './rejectablePromiseCreator';
 
 export interface TimoutConfig {
 	signal?: AbortSignal;
 }
 
-export function timeout<R>(
+export const timeout = <R>(
 	updateIntervalMs: number,
 	maxDurationMs: number,
 	action: (...params: any) => Promise<R>,
 	config?: TimoutConfig,
-): Promise<R> {
-	return new Promise<R>((resolve, reject) => {
+): Promise<R> => new Promise<R>(cancelable(async (resolve: (data: R) => void, reject: (ee: string) => void) => {
 		let interval: NodeJS.Timeout;
 		let timerCleaned = false;
 
@@ -56,5 +56,4 @@ export function timeout<R>(
 		}, maxDurationMs);
 
 		executeInterval();
-	});
-}
+	}));

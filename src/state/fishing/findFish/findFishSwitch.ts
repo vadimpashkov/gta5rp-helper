@@ -1,6 +1,6 @@
 import { Region } from '@nut-tree/nut-js';
 
-import { createCancelable } from '../../../utils/rejectablePromiseCreator';
+import { createDeferredCanceled } from '../../../utils/rejectablePromiseCreator';
 import { extractTextFromRegion } from '../../../utils/extractTextFromRegion';
 
 import { findFish } from '../../../core';
@@ -10,7 +10,7 @@ import { placeState } from '../place';
 
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
 
-export const findFishSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
+export const findFishSwitch: FishingSwitch = createDeferredCanceled<FishingConfig, FishingState>(async (config) => {
 	const { successRegion, screenWidth, emiter } = config;
 
 	try {

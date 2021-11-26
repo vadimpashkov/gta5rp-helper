@@ -1,5 +1,5 @@
 import { OptionalSearchParameters, Region, keyboard, mouse, left, up } from '@nut-tree/nut-js';
-import { createCancelable } from '../../../utils/rejectablePromiseCreator';
+import { createDeferredCanceled } from '../../../utils/rejectablePromiseCreator';
 import { waitForImage } from '../../../utils/waitForImage';
 import { extractTextFromRegion } from '../../../utils/extractTextFromRegion';
 import { extractNumbersFromWeight } from '../../../utils/extractNumberFromWeight';
@@ -10,7 +10,7 @@ import { FishingConfig, FishingState, FishingSwitch } from '../types';
 import { findBackpackState } from '.';
 import { findBoatState } from '../findBoat';
 
-export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
+export const findBackpackSwitch: FishingSwitch = createDeferredCanceled<FishingConfig, FishingState>(async (config) => {
 	const param = new OptionalSearchParameters(config.backpackRegion, 0.8);
 
 	try {
