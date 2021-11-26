@@ -6,8 +6,8 @@ import { extractNumbersFromWeight } from '../../../utils/extractNumberFromWeight
 import { getRandomIntInclusive } from '../../../utils/getRandomIntInclusive';
 
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
-import { placeState } from '../place';
 import { findBackpackState } from '.';
+import { findBoatState } from '../findBoat';
 
 export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
 	const param = new OptionalSearchParameters(config.backpackRegion, 0.8);
@@ -29,13 +29,14 @@ export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig,
 		const backpackWeight = extractNumbersFromWeight(backpackSize);
 
 		const retry = async () => {
-			await keyboard.type(config.openInventoryKey);
-
 			const randomX = getRandomIntInclusive(-100, 100);
 			const randomY = getRandomIntInclusive(-100, 100);
 
+			await keyboard.type(config.openInventoryKey);
+
 			await mouse.move(left(randomX));
 			await mouse.move(up(randomY));
+
 			await keyboard.type(config.openInventoryKey);
 
 			return findBackpackState;
@@ -58,5 +59,5 @@ export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig,
 	// Закрываем инвентарь
 	await keyboard.type(config.openInventoryKey);
 
-	return placeState;
+	return findBoatState;
 });

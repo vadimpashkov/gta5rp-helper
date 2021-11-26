@@ -1,7 +1,10 @@
 export const extractNumbersFromWeight = (weight: string) => {
 	const preparedText = weight.replaceAll(' ', '').replaceAll(':', '.');
 
-	const match = preparedText.match(/(\d.\d+)\/(\d+(.\d+)?)/);
+	console.log(preparedText);
+
+	// const match = preparedText.match(/(\d.\d+)\/(\d+(.\d+)?)/);
+	const match = preparedText.match(/(\d+\.?\d+?)(\/|\s?u3\s?)(\d+\.?\d?\d?)/);
 
 	if (match == null) throw Error('Weight not found');
 
@@ -20,7 +23,7 @@ export const extractNumbersFromWeight = (weight: string) => {
 	}
 
 	const current = Number(currentString);
-	const total = Number(match[2]);
+	const total = Number(match[3]);
 
 	console.log({
 		current,

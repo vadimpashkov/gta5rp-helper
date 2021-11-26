@@ -45,7 +45,7 @@ type Size = {
 
 type Keys = {
 	openInventoryKey: Key;
-	openBoatKey: Key;
+	openTrunkKey: Key;
 };
 
 export type FishingIteration = StateIteration<FishingConfig>;
