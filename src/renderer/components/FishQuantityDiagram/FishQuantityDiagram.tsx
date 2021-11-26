@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Wrapper, Circle, Svg } from './FishQuantityDiagram.elements';
+import { Wrapper, Circle } from './FishQuantityDiagram.elements';
 
 import { GroupedFish } from '../../../core/fishing/types';
 
@@ -51,10 +51,8 @@ export const FishQuantityDiagram: FC<FishQuantityDiagramProps> = ({
 	});
 
 	return (
-		<Wrapper className={className}>
-			<Svg width={size} height={size}>
-				{fishCount === 0 ? <use href={IconNotData + '#fishNotData'} /> : circles}
-			</Svg>
+		<Wrapper width={size} height={size}>
+			{fishCount === 0 ? <use href={IconNotData + '#fishNotData'} /> : circles}
 		</Wrapper>
 	);
 };

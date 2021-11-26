@@ -18,9 +18,7 @@ export const Circle = styled.circle<CircleProps>`
 	transition: stroke-dashoffset var(--transition);
 `;
 
-export const Svg = styled.svg``;
-
-export const Wrapper = styled.div`
+export const Wrapper = styled.svg`
 	--color: var(--button-color-hover);
 	--transition: var(--time-very-long) var(--bezier-rubber);
 
