@@ -3,7 +3,7 @@ import { createCancelable } from '../../../utils/rejectablePromiseCreator';
 import { waitForImage } from '../../../utils/waitForImage';
 import { extractTextFromRegion } from '../../../utils/extractTextFromRegion';
 import { extractNumbersFromWeight } from '../../../utils/extractNumberFromWeight';
-import { getRandomIntInclusive } from '../../../utils/getRandomIntInclusive';
+import { getRandomNumberInclusive } from '../../../utils/getRandomIntInclusive';
 
 import { clearSessionFish, gtaProcess } from '../../../store';
 
@@ -45,12 +45,12 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 	const retry = async () => {
 		await keyboard.type(config.openInventoryKey);
 
-		const randomX = getRandomIntInclusive(-100, 100);
-		const randomY = getRandomIntInclusive(-100, 100);
+		const randomX = getRandomNumberInclusive(-10, 10);
+		const randomY = getRandomNumberInclusive(-4, 4);
 
 		var currentMouse = await mouse.getPosition();
 
-		await gtaProcess.mouse.moveCurveToAsync(currentMouse.x + randomX, currentMouse.y + randomY, 2);
+		await gtaProcess.mouse.moveCurveToAsync(currentMouse.x + randomX, currentMouse.y + randomY, 0.2, 10);
 
 		return startState;
 	};

@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "run-p dev:*",
 		"dev:electron": "wait-on ./build/index.html & cross-env NODE_ENV=\"development\" electron .",
-		"dev:tsc": "tsc -w -p tsconfig.main.json",
+		"dev:tsc": "tsc -p tsconfig.main.json",
 		"dev:webpack": "webpack --watch --progress",
 		"predev": "rimraf build & copyfiles -u 1 ./src/**/*.png ./build",
 		"clean": "rimraf build prod",

@@ -3,7 +3,7 @@ import { createCancelable } from '../../../utils/rejectablePromiseCreator';
 import { waitForImage } from '../../../utils/waitForImage';
 import { extractTextFromRegion } from '../../../utils/extractTextFromRegion';
 import { extractNumbersFromWeight } from '../../../utils/extractNumberFromWeight';
-import { getRandomIntInclusive } from '../../../utils/getRandomIntInclusive';
+import { getRandomNumberInclusive } from '../../../utils/getRandomIntInclusive';
 import { gtaProcess } from '../../../store';
 
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
@@ -30,8 +30,8 @@ export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig,
 		const backpackWeight = extractNumbersFromWeight(backpackSize);
 
 		const retry = async () => {
-			const randomX = getRandomIntInclusive(-100, 100);
-			const randomY = getRandomIntInclusive(-100, 100);
+			const randomX = getRandomNumberInclusive(-100, 100);
+			const randomY = getRandomNumberInclusive(-100, 100);
 
 			await keyboard.type(config.openInventoryKey);
 
