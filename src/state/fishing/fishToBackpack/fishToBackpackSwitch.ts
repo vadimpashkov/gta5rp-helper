@@ -52,13 +52,13 @@ export const fishToBackpackSwitch: FishingSwitch = createCancelable<FishingConfi
 	try {
 		const foundFishParam = new OptionalSearchParameters(config.yourInventoryRegion, 0.7);
 
-		const foundFishRegion = await waitForImage(`${lastFish!.storedName}.png`, 1500, foundFishParam);
+		const foundFishRegion = await waitForImage(`${lastFish!.storedName}2.png`, 1500, foundFishParam);
 	
 		let regionToPlace: Region;
 		const foundBackpackFishParam = new OptionalSearchParameters(config.backpackInventoryRegion, 0.7);
 	
 		try {
-			regionToPlace = await waitForImage(`${lastFish!.storedName}.png`, 1500, foundBackpackFishParam);
+			regionToPlace = await waitForImage(`${lastFish!.storedName}2.png`, 1500, foundBackpackFishParam);
 		} catch {
 			regionToPlace = await waitForImage(`EmptyCell.png`, 1500, foundBackpackFishParam);
 		}

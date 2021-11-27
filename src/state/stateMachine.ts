@@ -18,9 +18,9 @@ export class Machine<T extends DefaultConfig> {
 			if (!this.isWorking) return;
 			const nextState = await this.currentState.switcher.launch(this.config);
 
-			if (this.config.softStop === true && nextState.stopOnSoftExit === true) {
-				throw Error('SoftExit');
-			}
+			if (nextState === null) throw Error('Null State');
+
+			if (this.config.softStop === true && nextState.stopOnSoftExit === true) throw Error('SoftExit');
 			
 			if (!this.isWorking) return;
 

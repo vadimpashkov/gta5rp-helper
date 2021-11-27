@@ -1,5 +1,5 @@
 export type StateIteration<TConfig extends DefaultConfig> = RejectablePromise<TConfig, void>;
-export type StateSwitch<TConfig extends DefaultConfig> = RejectablePromise<TConfig, State<TConfig>>;
+export type StateSwitch<TConfig extends DefaultConfig> = RejectablePromise<TConfig, State<TConfig> | null>;
 
 export type State<T extends DefaultConfig> = {
 	name: string;

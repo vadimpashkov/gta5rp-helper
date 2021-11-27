@@ -3,7 +3,8 @@ import { createParam } from '../../../utils/parameterFactory';
 import { createCancelable } from '../../../utils/rejectablePromiseCreator';
 
 import { clickingState } from '../clicking';
-import { startState } from '../start';
+import { placeState } from '../place';
+
 import { FishingConfig, FishingState } from '../types';
 
 export const waitLmdSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
@@ -16,6 +17,6 @@ export const waitLmdSwitch = createCancelable<FishingConfig, FishingState>(async
 
 		return clickingState;
 	} catch {
-		return startState;
+		return placeState;
 	}
 });

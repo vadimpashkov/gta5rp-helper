@@ -11,7 +11,7 @@ import { findBackpackState } from '../findBackpack';
 import { startState } from './startState';
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
 
-export const startSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
+export const startSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState | null>(async (config) => {
 	clearSessionFish();
 	config.emiter('setSessionFish', []);
 
@@ -22,7 +22,8 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 		config.yourItemsRegion = await waitForImage('yourItems.png', 2000, param);
 	} catch {
 		// Открытие инвентаря
-		await keyboard.type(config.openInventoryKey);
+		if (!config.softStop) await keyboard.type(config.openInventoryKey);
+		else return null;
 		config.yourItemsRegion = await waitForImage('yourItems.png', 5000, param);
 	}
 
@@ -57,11 +58,12 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 	try {
 		mainWeight = extractNumbersFromWeight(yourItemsSize);
 	} catch {
-		return await retry();
+		if (!config.softStop) return await retry();
+		else return null;
 	}
 
 	if (Number.isNaN(mainWeight.current) || Number.isNaN(mainWeight.total) || mainWeight.total < mainWeight.current) {
-		return await retry();
+		if (!config.softStop) return await retry();
 	}
 
 	config.mainInventory = mainWeight;

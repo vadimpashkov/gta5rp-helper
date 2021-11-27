@@ -6,4 +6,5 @@ export const throwState: FishingState = {
 	name: 'Закидываем удочку',
 	description: 'Нашимаем кнопку, для закидывания удочки',
 	switcher: throwSwitch,
+	stopOnSoftExit: true,
 };
