@@ -34,13 +34,24 @@ export const extractTextFromRegion = async (
 					rc.write(filePath, async (err: Error) => {
 						if (err) return console.log(err);
 
-						readFile(filePath, async (err, data) => {
-							if (err) {
-								reject();
-							}
-							const result = await recognize(data, lang);
+						const rc = await replaceColor({
+							image: filePath,
+							colors: {
+								type: 'hex',
+								targetColor: '#dfdfdf',
+								replaceColor: '#373737',
+							},
+						});
 
-							resolve(result.data.text);
+						rc.write(filePath, async (err: Error) => {
+							readFile(filePath, async (err, data) => {
+								if (err) {
+									reject();
+								}
+								const result = await recognize(data, lang);
+
+								resolve(result.data.text);
+							});
 						});
 					});
 				} else {

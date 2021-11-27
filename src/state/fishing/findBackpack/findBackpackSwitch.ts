@@ -24,7 +24,7 @@ export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig,
 				config.backpackRegion.width + config.screenWidth * 0.15,
 				config.backpackRegion.height + 20,
 			),
-			'number-v1',
+			'monserrat-medium-18-v1',
 		);
 
 		const backpackWeight = extractNumbersFromWeight(backpackSize);
