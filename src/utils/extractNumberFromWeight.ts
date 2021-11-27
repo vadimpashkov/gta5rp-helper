@@ -1,6 +1,8 @@
 export const extractNumbersFromWeight = (weight: string) => {
-	const preparedText = weight.replace(/[^0-9.\/\s]/g, '').trim();
-	const match = preparedText.match(/(\d+.?\d?\d?)(\/|\s\d+\s)(\d+)/);
+	const preparedText = weight.replace(/[^0-9.\/\s]/g, '');
+	const match = preparedText.match(/(\d+.?\d?\d?)(\/|\s\d?\d?\s)(\d+)/);
+
+	// console.log(weight, preparedText);
 
 	if (match === null) throw Error('Weight not found');
 
