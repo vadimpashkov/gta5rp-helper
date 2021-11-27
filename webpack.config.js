@@ -1,10 +1,9 @@
-import path from 'path';
-import { Configuration } from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 
-const base: Configuration = {
+const base = {
 	mode: isDev ? 'development' : 'production',
 	node: {
 		__dirname: false,
@@ -36,23 +35,7 @@ const base: Configuration = {
 	devtool: isDev ? 'inline-source-map' : undefined,
 };
 
-const main: Configuration = {
-	...base,
-	target: 'electron-main',
-	entry: {
-		main: './src/main.ts',
-	},
-};
-
-const preload: Configuration = {
-	...base,
-	target: 'electron-preload',
-	entry: {
-		preload: './src/preload.ts',
-	},
-};
-
-const renderer: Configuration = {
+const renderer = {
 	...base,
 	target: 'web',
 	entry: {
@@ -67,4 +50,4 @@ const renderer: Configuration = {
 	],
 };
 
-export default [main, preload, renderer];
+module.exports = [renderer];

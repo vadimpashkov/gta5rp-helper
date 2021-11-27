@@ -4,12 +4,11 @@
 	"description": "Helper for GTA 5 RP",
 	"main": "build/main.js",
 	"scripts": {
-		"dev": "run-p dev:*",
-		"dev:electron": "wait-on ./build/index.html & cross-env NODE_ENV=\"development\" electron .",
+		"dev": "run-s dev:*",
 		"dev:tsc": "tsc -p tsconfig.main.json",
-		"dev:webpack": "webpack --watch --progress",
+		"dev:webpack": "webpack",
+		"dev:electron": "cross-env NODE_ENV=\"development\" electron .",
 		"predev": "rimraf build & copyfiles -u 1 ./src/**/*.png ./build",
-		"clean": "rimraf build prod",
 		"build:pack": "ts-node ./scripts/build.ts"
 	},
 	"author": {
@@ -40,7 +39,7 @@
 		"@nut-tree/nut-js": "^1.7.0",
 		"electron-store": "^8.0.1",
 		"ffi-napi": "^4.0.3",
-		"jimp": "^0.16.1",
+		"image-js": "^0.33.1",
 		"keycode": "^2.2.0",
 		"keysender": "^1.6.5",
 		"nanostores": "^0.5.6",
@@ -51,7 +50,6 @@
 		"ref-struct-di": "^1.1.1",
 		"ref-struct-napi": "^1.1.1",
 		"ref-union-napi": "^1.0.2",
-		"replace-color": "^2.3.0",
 		"styled-components": "^5.3.3",
 		"tesseract.js": "^2.1.5"
 	},
@@ -79,7 +77,6 @@
 		"webpack-cli": "^4.9.1"
 	},
 	"optionalDependencies": {
-		"electron-reload": "^1.5.0",
-		"wait-on": "^6.0.0"
+		"electron-reload": "^1.5.0"
 	}
 }
