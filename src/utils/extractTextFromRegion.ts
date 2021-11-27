@@ -12,21 +12,22 @@ export const extractTextFromRegion = async (
 	region: Region,
 	lang: string = 'eng',
 	isReplaceColor = false,
+	contrast = 0.1,
 ): Promise<string> =>
 	new Promise<string>(async (resolve, reject) => {
 		await screen.captureRegion('temp.png', region);
 
 		const jimp = await read(filePath);
 		jimp.greyscale()
-			.contrast(0.3)
+			.contrast(contrast)
 			.write(filePath, async () => {
 				if (isReplaceColor) {
 					const rc = await replaceColor({
 						image: filePath,
 						colors: {
 							type: 'hex',
-							targetColor: '#b9b9b9',
-							replaceColor: '#393939',
+							targetColor: '#dfdfdf',
+							replaceColor: '#373737',
 						},
 					});
 

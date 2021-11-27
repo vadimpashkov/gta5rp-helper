@@ -34,7 +34,7 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 			config.yourItemsRegion.width - 10,
 			config.yourItemsRegion.height + 30,
 		),
-		'eng',
+		'number-v1',
 	);
 
 	let mainWeight: {

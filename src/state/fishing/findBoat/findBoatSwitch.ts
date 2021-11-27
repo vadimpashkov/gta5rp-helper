@@ -25,8 +25,9 @@ export const findBoatSwitch: FishingSwitch = createCancelable<FishingConfig, Fis
 				config.trunkRegion.width + 100,
 				config.trunkRegion.height + 20,
 			),
-			'eng',
+			'pol',
 			true,
+			0.25,
 		);
 
 		const boatWeight = extractNumbersFromWeight(trunkSize);

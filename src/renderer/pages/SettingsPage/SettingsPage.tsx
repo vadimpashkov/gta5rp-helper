@@ -1,29 +1,39 @@
+import { FC, useState } from 'react';
+
 import { MainLayout } from '../Layouts';
 
-import { Button, ComebackButton, FishingSettings } from '../../components';
+import { Button, ComebackButton, MainSettings, FishingSettings } from '../../components';
 
 import FishSvg from '../../assets/svg/fish.svg';
+import SettingsSvg from '../../assets/svg/settings.svg';
 
-// import { useSettings } from '../../stores';
+type SettingsPageProps = {
+	className?: string;
+};
 
-export const SettingsPage = () => {
-	// const settings = useSettings();
+export const SettingsPage: FC<SettingsPageProps> = ({ className }: SettingsPageProps) => {
+	const [mainSettings, setMainSettings] = useState(true);
+	const [fishingSettings, setFishingSettings] = useState(false);
 
-	// const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-	// 	settings.setSettings({
-	// 		...settings.data,
-	// 		doubleClick: event.target.checked,
-	// 	});
-	// };
+	const mainSettingsClick = () => {
+		setMainSettings(true);
+		setFishingSettings(false);
+	};
+
+	const fishingSettingsClick = () => {
+		setFishingSettings(true);
+		setMainSettings(false);
+	};
 
 	return (
 		<>
-			<MainLayout>
-				{/* <input checked={settings.data.doubleClick} onChange={handleChange} type="checkbox" /> */}
-				<Button srcIcon={FishSvg} />
+			<MainLayout className={className}>
+				<Button srcIcon={SettingsSvg} isSelect={mainSettings} onClick={mainSettingsClick} />
+				<Button srcIcon={FishSvg} isSelect={fishingSettings} onClick={fishingSettingsClick} />
 				<ComebackButton to="/" />
 			</MainLayout>
-			<FishingSettings />
+			{mainSettings && <MainSettings />}
+			{fishingSettings && <FishingSettings />}
 		</>
 	);
 };
