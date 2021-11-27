@@ -12,7 +12,7 @@ import { FishingConfig, FishingState, FishingSwitch } from '../types';
 export const findBoatSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
 	const param = new OptionalSearchParameters(config.trunkRegion, 0.7);
 
-	await keyboard.type(config.openTrunkKey);
+	keyboard.type(config.openTrunkKey);
 
 	try {
 		// Поиск если инвентарь уже открыт
@@ -26,6 +26,7 @@ export const findBoatSwitch: FishingSwitch = createCancelable<FishingConfig, Fis
 				config.trunkRegion.height + 20,
 			),
 			'eng',
+			true,
 		);
 
 		const boatWeight = extractNumbersFromWeight(trunkSize);
@@ -35,10 +36,9 @@ export const findBoatSwitch: FishingSwitch = createCancelable<FishingConfig, Fis
 			size: boatWeight,
 		};
 
-		console.log(config.boat);
-
+		// console.log(config.boat);
 	} catch {}
-	
+
 	await keyboard.type(Key.Escape);
 
 	return placeState;

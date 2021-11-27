@@ -21,7 +21,7 @@ export const findFishSwitch: FishingSwitch = createCancelable<FishingConfig, Fis
 			successRegion.height,
 		);
 
-		const message = await extractTextFromRegion(regionToFind, 'fish-v8');
+		const message = await extractTextFromRegion(regionToFind, 'fish-v9');
 
 		const foundFish = findFish(message);
 

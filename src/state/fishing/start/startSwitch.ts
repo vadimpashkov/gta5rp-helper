@@ -29,10 +29,10 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 
 	const yourItemsSize = await extractTextFromRegion(
 		new Region(
-			config.yourItemsRegion.left - 160,
-			config.yourItemsRegion.top - 10,
-			config.yourItemsRegion.width + 160,
-			config.yourItemsRegion.height + 20,
+			config.yourItemsRegion.left - 163,
+			config.yourItemsRegion.top - 20,
+			config.yourItemsRegion.width - 10,
+			config.yourItemsRegion.height + 30,
 		),
 		'eng',
 	);

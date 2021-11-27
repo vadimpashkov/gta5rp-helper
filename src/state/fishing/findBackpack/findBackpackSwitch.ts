@@ -35,7 +35,7 @@ export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig,
 
 			await keyboard.type(config.openInventoryKey);
 
-			var currentMouse = await mouse.getPosition();
+			let currentMouse = await mouse.getPosition();
 
 			await gtaProcess.mouse.moveCurveToAsync(currentMouse.x + randomX, currentMouse.y + randomY, 2);
 
