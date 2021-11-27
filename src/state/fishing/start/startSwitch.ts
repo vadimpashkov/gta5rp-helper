@@ -35,6 +35,8 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 			config.yourItemsRegion.height + 30,
 		),
 		'monserrat-medium-18-v1',
+		'inventory',
+		160,
 	);
 
 	let mainWeight: {

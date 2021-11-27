@@ -1,68 +1,34 @@
 import { Region, screen } from '@nut-tree/nut-js';
-import { read } from 'jimp';
+import { FileType } from '@nut-tree/nut-js/dist/lib/file-type.enum';
 import path from 'path';
 import { recognize } from 'tesseract.js';
 import { readFile } from 'fs';
-// @ts-ignore
-import replaceColor from 'replace-color';
-
-const filePath = path.join(process.cwd(), 'temp.png');
+import { Image } from 'image-js';
 
 export const extractTextFromRegion = async (
 	region: Region,
-	lang: string = 'eng',
-	isReplaceColor = false,
-	contrast = 0.1,
+	lang: string,
+	captureName: string = 'temp',
+	thresholdValue: number,
 ): Promise<string> =>
 	new Promise<string>(async (resolve, reject) => {
-		await screen.captureRegion('temp.png', region);
+		const fileName = `${captureName}-${Date.now()}.png`;
+		const filePath = path.join(process.cwd(), 'captures/');
+		const file = path.join(filePath, fileName);
 
-		const jimp = await read(filePath);
-		jimp.greyscale()
-			.contrast(contrast)
-			.write(filePath, async () => {
-				if (isReplaceColor) {
-					const rc = await replaceColor({
-						image: filePath,
-						colors: {
-							type: 'hex',
-							targetColor: '#dfdfdf',
-							replaceColor: '#373737',
-						},
-					});
+		await screen.captureRegion(fileName, region, FileType.PNG, filePath);
 
-					rc.write(filePath, async (err: Error) => {
-						if (err) return console.log(err);
+		let image = await Image.load(file);
+		let threshold = image.grey().mask({ threshold: thresholdValue });
 
-						const rc = await replaceColor({
-							image: filePath,
-							colors: {
-								type: 'hex',
-								targetColor: '#dfdfdf',
-								replaceColor: '#373737',
-							},
-						});
+		await threshold.save(file);
 
-						rc.write(filePath, async (err: Error) => {
-							readFile(filePath, async (err, data) => {
-								if (err) {
-									reject();
-								}
-								const result = await recognize(data, lang);
+		readFile(file, async (err, data) => {
+			if (err) {
+				reject();
+			}
+			const result = await recognize(data, lang);
 
-								resolve(result.data.text);
-							});
-						});
-					});
-				} else {
-					readFile(filePath, async (err, data) => {
-						if (err) {
-							reject();
-						}
-						const result = await recognize(data, lang);
-
-						resolve(result.data.text);
-					});
-				}
-			});
+			resolve(result.data.text);
+		});
 	});

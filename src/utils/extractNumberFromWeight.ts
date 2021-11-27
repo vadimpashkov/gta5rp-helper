@@ -1,6 +1,9 @@
 export const extractNumbersFromWeight = (weight: string) => {
-	const preparedText = weight.replace(/[^0-9.\/\s]/g, '');
-	const match = preparedText.match(/(\d+.?\d?\d?)(\/|\s\d?\d?\s)(\d+)/);
+	const preparedText = weight
+		.replace(/[^0-9.\/\s]/g, ' ')
+		.replace(/ +/g, ' ')
+		.trim();
+	const match = preparedText.match(/(\d+.?\d?\d?)(\/|\s)(\d+)/);
 
 	console.log(weight, preparedText);
 
@@ -11,7 +14,7 @@ export const extractNumbersFromWeight = (weight: string) => {
 	let currentString = match[1];
 	let currentStringLength = currentString.length;
 
-	if (!currentString.includes('.') && currentStringLength >= 3 && Number(currentString) > total) {
+	if (!currentString.includes('.') && currentStringLength >= 2 && Number(currentString) > total) {
 		// 185 из 205 это может быть как 1.85 так и 185 (если багажник)
 		let resultString = '';
 

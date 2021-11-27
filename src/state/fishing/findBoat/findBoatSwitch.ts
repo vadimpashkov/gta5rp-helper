@@ -26,7 +26,8 @@ export const findBoatSwitch: FishingSwitch = createCancelable<FishingConfig, Fis
 				config.trunkRegion.height + 20,
 			),
 			'monserrat-bold-18-v1',
-			true,
+			'boat',
+			212,
 		);
 
 		const boatWeight = extractNumbersFromWeight(trunkSize);
