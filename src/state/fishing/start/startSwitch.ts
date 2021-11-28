@@ -15,7 +15,7 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 	clearSessionFish();
 	config.emiter('setSessionFish', []);
 
-	const param = new OptionalSearchParameters(config.yourItemsRegion, 0.9);
+	const param = new OptionalSearchParameters(config.yourItemsRegion, 0.8);
 
 	try {
 		// Поиск если инвентарь уже открыт
