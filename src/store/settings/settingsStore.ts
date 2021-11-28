@@ -1,5 +1,5 @@
 import { store } from '../innerStore';
-import { Settings } from './types';
+import { Settings } from '../../core';
 
 export const getSettings = (): Settings =>
 	(store.get('settings') as Settings) || {

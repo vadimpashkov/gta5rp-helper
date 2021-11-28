@@ -2,10 +2,7 @@ import { atom } from 'nanostores';
 import { useStore } from '@nanostores/react';
 
 import { receiveEvent, sendEvent, getInitialSettings } from '../utils';
-
-export type Settings = {
-	doubleClick: boolean;
-};
+import { Settings } from '../../core';
 
 const store = atom<Settings>(getInitialSettings());
 
