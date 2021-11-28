@@ -8,7 +8,7 @@ import { FishingConfig, FishingState, FishingSwitch } from '../types';
 
 export const successSwitcher: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
 	const { successRegion } = config;
-	const successParam = createParam(successRegion, 0.8);
+	const successParam = createParam(successRegion, 0.7);
 
 	try {
 		const success = await waitForImage('successful.png', 2000, successParam);
@@ -16,7 +16,9 @@ export const successSwitcher: FishingSwitch = createCancelable<FishingConfig, Fi
 		config.successRegion = success;
 
 		return findFishState;
-	} catch {}
+	} catch (error) {
+		console.error(error);
+	}
 
 	return errorState;
 });
