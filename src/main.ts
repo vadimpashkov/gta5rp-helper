@@ -40,7 +40,10 @@ export function createMainWindow() {
 	winMain.setIcon(path.join(__dirname, '../assets/favicon512.png'));
 	winMain.loadFile(path.join(__dirname, './index.html'));
 
-	if (isDev) winMain.webContents.openDevTools({ mode: 'detach' });
+	if (isDev) {
+		winMain.webContents.openDevTools({ mode: 'undocked' });
+		winMain.webContents.closeDevTools();
+	}
 }
 
 app.whenReady().then(async () => {
