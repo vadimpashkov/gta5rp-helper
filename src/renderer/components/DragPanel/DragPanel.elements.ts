@@ -16,5 +16,9 @@ export const Wrapper = styled.div`
 	top: 0;
 	left: var(--left);
 	transform: translateX(-50%);
-	cursor: pointer;
+	cursor: grab;
+
+	&:active {
+		cursor: grabbing;
+	}
 `;

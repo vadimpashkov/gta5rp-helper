@@ -1,6 +1,7 @@
 import path from 'path';
-import { BrowserWindow, app } from 'electron';
+import { BrowserWindow, app, screen } from 'electron';
 
+import { getApp } from './store';
 import { subscribe } from './events';
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -8,11 +9,18 @@ const isDev = process.env.NODE_ENV === 'development';
 let winMain: BrowserWindow;
 
 export function createMainWindow() {
+	const {
+		positionAtClosing: { x: appPosX, y: appPosY },
+	} = getApp();
+	const { width: screenWidth, height: screenHeight } = screen.getPrimaryDisplay().workAreaSize;
+
 	winMain = new BrowserWindow({
-		title: 'GTA 5 Helper',
+		title: 'GTA V RP - Helper',
 		transparent: true,
 		// transparent: false,
 		// backgroundColor: '#ff0000',
+		x: appPosX || screenWidth / 2,
+		y: appPosY || screenHeight / 2,
 		frame: false,
 		minimizable: false,
 		resizable: false,

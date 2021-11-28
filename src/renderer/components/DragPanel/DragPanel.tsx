@@ -9,9 +9,6 @@ type DragPanelProps = {
 };
 
 export const DragPanel: FC<DragPanelProps> = ({ className }: DragPanelProps) => {
-	const screenWidth = window.screen.width;
-	const screenHeight = window.screen.height;
-
 	let animationId: number;
 	let mouseX: number;
 	let mouseY: number;
@@ -20,14 +17,12 @@ export const DragPanel: FC<DragPanelProps> = ({ className }: DragPanelProps) => 
 		mouseX = event.clientX;
 		mouseY = event.clientY;
 
-		console.log(screenWidth, screenHeight);
-
 		document.addEventListener('mouseup', onMouseUp);
 		requestAnimationFrame(moveWindow);
 	};
 
 	const onMouseUp = () => {
-		sendEvent('windowMoved');
+		sendEvent('windowMoved', { x: mouseX, y: mouseY });
 
 		document.removeEventListener('mouseup', onMouseUp);
 		cancelAnimationFrame(animationId);
