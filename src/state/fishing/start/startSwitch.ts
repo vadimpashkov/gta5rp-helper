@@ -64,7 +64,12 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 		else return null;
 	}
 
-	if (Number.isNaN(mainWeight.current) || Number.isNaN(mainWeight.total) || mainWeight.total < mainWeight.current) {
+	if (
+		Number.isNaN(mainWeight.current) ||
+		Number.isNaN(mainWeight.total) ||
+		mainWeight.total < mainWeight.current ||
+		mainWeight.total !== 10
+	) {
 		if (!config.softStop) return await retry();
 	}
 
