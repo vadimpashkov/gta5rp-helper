@@ -13,14 +13,18 @@ export function createMainWindow() {
 		positionAtClosing: { x: appPosX, y: appPosY },
 	} = getApp();
 	const { width: screenWidth, height: screenHeight } = screen.getPrimaryDisplay().workAreaSize;
+	const screenWidthCenter = screenWidth / 2;
+	const screenHeightCenter = screenHeight / 2;
+	const winPosX = appPosX === null || appPosX > screenWidth || appPosX < 0 ? screenWidthCenter : appPosX;
+	const winPosY = appPosY === null || appPosY > screenHeight || appPosY < 0 ? screenHeightCenter : appPosY;
 
 	winMain = new BrowserWindow({
 		title: 'GTA V RP - Helper',
 		transparent: true,
 		// transparent: false,
 		// backgroundColor: '#ff0000',
-		x: appPosX || screenWidth / 2,
-		y: appPosY || screenHeight / 2,
+		x: winPosX,
+		y: winPosY,
 		frame: false,
 		minimizable: false,
 		resizable: false,
