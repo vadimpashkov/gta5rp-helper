@@ -1,4 +1,4 @@
-import { Settings } from '../stores';
+import { Settings } from '../../core';
 
 export const sendEvent = (e: string, data?: any) => {
 	// @ts-ignore

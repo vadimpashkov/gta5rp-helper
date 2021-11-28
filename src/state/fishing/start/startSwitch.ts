@@ -73,6 +73,23 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 		if (!config.softStop) return await retry();
 	}
 
+	const rightUpperAngle = {
+		x: config.yourItemsRegion.left + config.yourItemsRegion.width - 1,
+		y: config.yourItemsRegion.top + config.yourItemsRegion.height + 16,
+	};
+
+	const leftDownAngle = {
+		x: rightUpperAngle.x - 446,
+		y: rightUpperAngle.y + 356,
+	};
+
+	config.yourInventoryRegion = new Region(
+		leftDownAngle.x - 10,
+		rightUpperAngle.y - 10,
+		rightUpperAngle.x - leftDownAngle.x + 20,
+		leftDownAngle.y - rightUpperAngle.y + 20,
+	);
+
 	config.mainInventory = mainWeight;
 
 	return findBackpackState;

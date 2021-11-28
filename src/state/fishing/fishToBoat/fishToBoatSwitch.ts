@@ -8,24 +8,26 @@ import { FishingConfig, FishingState, FishingSwitch } from '../types';
 
 let retryAttempts = 0;
 
-export const fishToBackpackSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
-	const { lastFish, openInventoryKey } = config;
+export const fishToBoatSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
+	const { lastFish, openTrunkKey } = config;
 
-	await keyboard.type(openInventoryKey);
+	await keyboard.type(openTrunkKey);
 
 	try {
-		const foundFishParam = new OptionalSearchParameters(config.yourInventoryRegion, 0.7);
-
 		let foundFishRegion: Region | null = null;
+		const foundFishParam = new OptionalSearchParameters(config.yourInventoryInTrunkRegion, 0.9);
 
 		do {
 			try {
-				foundFishRegion = await waitForImage(`${lastFish!.storedName}2.png`, 1500, foundFishParam);
+				foundFishRegion = await waitForImage(`${lastFish!.storedName}2.png`, 2500, foundFishParam);
 			} catch {
+				// ищем два раза
 				if (retryAttempts < 2) {
 					retryAttempts++;
 				} else {
-					await keyboard.type(openInventoryKey);
+					retryAttempts = 0;
+
+					await keyboard.type(Key.Escape);
 
 					return waitLmdState;
 				}
@@ -35,22 +37,24 @@ export const fishToBackpackSwitch: FishingSwitch = createCancelable<FishingConfi
 		retryAttempts = 0;
 
 		let regionToPlace: Region | null = null;
-		const foundBackpackFishParam = new OptionalSearchParameters(config.backpackInventoryRegion, 0.7);
+		const foundBoatFishParam = new OptionalSearchParameters(config.boatInventoryRegion, 0.9);
 
 		do {
 			try {
-				regionToPlace = await waitForImage(`${lastFish!.storedName}2.png`, 1500, foundBackpackFishParam);
+				regionToPlace = await waitForImage(`${lastFish!.storedName}2.png`, 1500, foundBoatFishParam);
 			} catch {
+				// ищем два раза
 				if (retryAttempts < 2) {
 					retryAttempts++;
 				} else {
 					retryAttempts = 0;
+
 					break;
 				}
 			}
 		} while (regionToPlace === null);
 
-		if (regionToPlace === null) regionToPlace = await waitForImage(`EmptyCell.png`, 1500, foundBackpackFishParam);
+		if (regionToPlace === null) regionToPlace = await waitForImage(`EmptyCell.png`, 1500, foundBoatFishParam);
 
 		await mouse.move([
 			new Point(
@@ -67,14 +71,14 @@ export const fishToBackpackSwitch: FishingSwitch = createCancelable<FishingConfi
 
 		await mouse.releaseButton(Button.LEFT);
 
-		await keyboard.type(openInventoryKey);
-
-		config.backpack.size.current += config.lastFish!.weight;
+		config.boat.size.current += config.lastFish!.weight;
 
 		config.lastFish = null;
 	} catch (e) {
 		console.log(e);
 	}
+
+	await keyboard.type(Key.Escape);
 
 	return waitLmdState;
 });

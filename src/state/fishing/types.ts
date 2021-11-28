@@ -22,8 +22,10 @@ type Regions = {
 	yourItemsRegion: Region;
 	backpackRegion: Region;
 	trunkRegion: Region;
-	yourInventoryRegion: Region | null;
-	backpackInventoryRegion: Region | null;
+	yourInventoryRegion: Region;
+	yourInventoryInTrunkRegion: Region;
+	backpackInventoryRegion: Region;
+	boatInventoryRegion: Region;
 };
 
 type Weight = {

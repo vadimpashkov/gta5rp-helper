@@ -58,6 +58,23 @@ export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig,
 			available: true,
 			size: backpackWeight,
 		};
+
+		const rightUpperAngle = {
+			x: config.backpackRegion.left + config.backpackRegion.width - 1,
+			y: config.backpackRegion.top + config.backpackRegion.height + 16,
+		};
+
+		const leftDownAngle = {
+			x: rightUpperAngle.x - 446,
+			y: rightUpperAngle.y + 178,
+		};
+
+		config.backpackInventoryRegion = new Region(
+			leftDownAngle.x - 10,
+			rightUpperAngle.y - 10,
+			rightUpperAngle.x - leftDownAngle.x + 20,
+			leftDownAngle.y - rightUpperAngle.y + 20,
+		);
 	} catch {}
 
 	// Закрываем инвентарь
