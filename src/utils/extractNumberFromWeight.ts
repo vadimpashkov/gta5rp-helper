@@ -9,8 +9,6 @@ function addDot(value: string, total: number, offset = 1): number {
 		result += '.';
 		result += value.substring(valueLength - offset, valueLength + 1);
 
-		// console.log(parseFloat(result));
-
 		return parseFloat(result) > total ? addDot(value, total, ++offset) : Math.ceil(parseFloat(result) * 100) / 100;
 	}
 
@@ -23,8 +21,6 @@ export const extractNumbersFromWeight = (weight: string) => {
 		.replace(/ +/g, ' ')
 		.trim();
 	const match = preparedText.match(/(\d+\.?\d?\d?)( )(\d+)/);
-
-	// console.log(weight, preparedText, match);
 
 	if (match === null) throw Error('Weight not found');
 

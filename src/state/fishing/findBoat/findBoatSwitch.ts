@@ -36,8 +36,6 @@ export const findBoatSwitch: FishingSwitch = createCancelable<FishingConfig, Fis
 			available: true,
 			size: boatWeight,
 		};
-
-		// console.log(config.boat);
 	} catch {}
 
 	await keyboard.type(Key.Escape);
