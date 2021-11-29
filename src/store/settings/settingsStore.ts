@@ -1,9 +1,15 @@
 import { store } from '../innerStore';
-import { Settings } from '../../core';
+import { Settings, Key } from '../../core';
 
-export const getSettings = (): Settings =>
-	(store.get('settings') as Settings) || {
-		doubleClick: false,
-	};
+export function getSettings(): Settings {
+	return (
+		(store.get('settings') as Settings) || {
+			doubleClick: false,
+			openInventoryKey: Key.KeyI,
+			openTrunkKey: Key.KeyH,
+			fishingRodKey: Key.Backspace,
+		}
+	);
+}
 
 export const setSettings = (newSettings: Settings) => store.set('settings', newSettings);

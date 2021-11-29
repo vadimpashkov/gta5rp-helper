@@ -4,8 +4,8 @@ import { MainLayout } from '../Layouts';
 
 import { Button, ComebackButton, MainSettings, FishingSettings } from '../../components';
 
-import FishSvg from '../../assets/svg/fish.svg';
-import SettingsSvg from '../../assets/svg/settings.svg';
+import FishSvg from '../../assets/svg/settingsFishing.svg';
+import SettingsSvg from '../../assets/svg/sliders.svg';
 
 type SettingsPageProps = {
 	className?: string;

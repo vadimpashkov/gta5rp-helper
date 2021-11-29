@@ -1,3 +1,4 @@
+export * from './fishingSettings';
 export * from './fishes';
 export * from './findFish';
 export * from './types';
