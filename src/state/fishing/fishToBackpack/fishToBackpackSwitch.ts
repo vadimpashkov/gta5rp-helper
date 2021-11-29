@@ -20,7 +20,7 @@ export const fishToBackpackSwitch: FishingSwitch = createCancelable<FishingConfi
 
 		do {
 			try {
-				foundFishRegion = await waitForImage(`${lastFish!.storedName}2.png`, 1500, foundFishParam);
+				foundFishRegion = await waitForImage(`${lastFish!.storedName}-Inventory.png`, 1500, foundFishParam);
 			} catch {
 				if (retryAttempts < 2) {
 					retryAttempts++;
@@ -39,7 +39,11 @@ export const fishToBackpackSwitch: FishingSwitch = createCancelable<FishingConfi
 
 		do {
 			try {
-				regionToPlace = await waitForImage(`${lastFish!.storedName}2.png`, 1500, foundBackpackFishParam);
+				regionToPlace = await waitForImage(
+					`${lastFish!.storedName}-Inventory.png`,
+					1500,
+					foundBackpackFishParam,
+				);
 			} catch {
 				if (retryAttempts < 2) {
 					retryAttempts++;

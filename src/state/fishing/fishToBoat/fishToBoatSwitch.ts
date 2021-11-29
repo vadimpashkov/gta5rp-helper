@@ -20,7 +20,7 @@ export const fishToBoatSwitch: FishingSwitch = createCancelable<FishingConfig, F
 
 		do {
 			try {
-				foundFishRegion = await waitForImage(`${lastFish!.storedName}2.png`, 2500, foundFishParam);
+				foundFishRegion = await waitForImage(`${lastFish!.storedName}-Boat.png`, 2500, foundFishParam);
 			} catch {
 				// ищем два раза
 				if (retryAttempts < 2) {
@@ -42,7 +42,7 @@ export const fishToBoatSwitch: FishingSwitch = createCancelable<FishingConfig, F
 
 		do {
 			try {
-				regionToPlace = await waitForImage(`${lastFish!.storedName}2.png`, 1500, foundBoatFishParam);
+				regionToPlace = await waitForImage(`${lastFish!.storedName}-Boat.png`, 1500, foundBoatFishParam);
 			} catch {
 				// ищем два раза
 				if (retryAttempts < 2) {
