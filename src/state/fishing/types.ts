@@ -1,4 +1,4 @@
-import { Key, Point, Region } from '@nut-tree/nut-js';
+import { Point, Region } from '@nut-tree/nut-js';
 import { Fish } from '../../core';
 import { State, StateIteration, StateSwitch, DefaultConfig } from '../types';
 
@@ -46,8 +46,9 @@ type Size = {
 };
 
 type Keys = {
-	openInventoryKey: Key;
-	openTrunkKey: Key;
+	openInventoryKey: number;
+	openTrunkKey: number;
+	fishingRodKey: number;
 };
 
 export type FishingIteration = StateIteration<FishingConfig>;

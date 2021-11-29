@@ -1,4 +1,4 @@
-import { keyboard, Key } from '@nut-tree/nut-js';
+import { keyboard } from '@nut-tree/nut-js';
 
 import { createCancelable } from '../../../utils/rejectablePromiseCreator';
 
@@ -9,10 +9,10 @@ import { fishToBoatState } from '../fishToBoat';
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
 
 export const storeFishSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
-	const { backpack, boat, lastFish } = config;
+	const { backpack, boat, lastFish, fishingRodKey } = config;
 	const fish = lastFish!;
 
-	await keyboard.type(Key.Backspace);
+	await keyboard.type(fishingRodKey);
 
 	if (boat.available && boat.size.current + fish.weight < boat.size.total) {
 		return fishToBoatState;

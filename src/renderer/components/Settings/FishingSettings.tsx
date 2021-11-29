@@ -28,7 +28,7 @@ export const FishingSettings: FC<FishingSettingsProps> = ({ className }: Fishing
 				onChange={doubleClickChange}
 				checked={settings.data.doubleClick}
 			/>
-			{/* <ParameterKey description="Достать удочку" key={key} onClick={() => void} /> */}
+			<ParameterKey description="Достать удочку" settingsProperty="fishingRodKey" />
 		</Wrapper>
 	);
 };

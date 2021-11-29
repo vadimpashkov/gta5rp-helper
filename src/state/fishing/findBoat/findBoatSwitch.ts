@@ -1,5 +1,6 @@
-import { Key, keyboard, OptionalSearchParameters, Region, screen } from '@nut-tree/nut-js';
+import { keyboard, OptionalSearchParameters, Region } from '@nut-tree/nut-js';
 
+import { Key } from '../../../core';
 import { createCancelable } from '../../../utils/rejectablePromiseCreator';
 import { extractTextFromRegion } from '../../../utils/extractTextFromRegion';
 import { extractNumbersFromWeight } from '../../../utils/extractNumberFromWeight';

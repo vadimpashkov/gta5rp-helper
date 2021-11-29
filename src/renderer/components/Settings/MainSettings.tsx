@@ -10,5 +10,10 @@ type MainSettingsProps = {
 };
 
 export const MainSettings: FC<MainSettingsProps> = ({ className }: MainSettingsProps) => {
-	return <Wrapper className={className}></Wrapper>;
+	return (
+		<Wrapper className={className}>
+			<ParameterKey description="Открыть инвентарь" settingsProperty="openInventoryKey" />
+			<ParameterKey description="Открыть багажник" settingsProperty="openTrunkKey" />
+		</Wrapper>
+	);
 };

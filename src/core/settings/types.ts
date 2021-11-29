@@ -1,3 +1,6 @@
+import { FishingSettings } from '../fishing';
+
 export type Settings = {
-	doubleClick: boolean;
-};
+	openInventoryKey: number;
+	openTrunkKey: number;
+} & FishingSettings;

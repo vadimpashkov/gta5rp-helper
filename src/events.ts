@@ -55,4 +55,11 @@ export const subscribe = (window: BrowserWindow) => {
 			},
 		});
 	});
+
+	// ipcMain.on('waitForKey', () => {
+	// 	window.webContents.on('before-input-event', (event, input) => {
+	// 		emit('keyPressed', input);
+	// 		window.webContents.removeAllListeners('before-input-event');
+	// 	});
+	// });
 };
