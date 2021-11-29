@@ -52,6 +52,10 @@ export const ParameterKey: FC<ParameterKeyProps> = ({
 		}
 	}, [pressedKey]);
 
+	useEffect(() => {
+		document.removeEventListener('keydown', keyPressed);
+	}, []);
+
 	return (
 		<Wrapper className={className} onClick={handleClick}>
 			<Description>{description}</Description>
