@@ -14,11 +14,11 @@ export const storeFishSwitch: FishingSwitch = createCancelable<FishingConfig, Fi
 
 	await keyboard.type(Key.Backspace);
 
-	if (boat.available && boat.size.current + fish.weight <= boat.size.total) {
+	if (boat.available && boat.size.current + fish.weight < boat.size.total) {
 		return fishToBoatState;
 	}
 
-	if (backpack.available && backpack.size.current + fish.weight <= backpack.size.total) {
+	if (backpack.available && backpack.size.current + fish.weight < backpack.size.total) {
 		return fishToBackpackState;
 	}
 
