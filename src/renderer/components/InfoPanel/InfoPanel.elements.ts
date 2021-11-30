@@ -1,45 +1,24 @@
-import styled, { keyframes } from 'styled-components';
-
-const moveLeft = keyframes`
-	from {
-		transform: translateX(160%);
-	}
-	to {
-		transform: translateX(0);
-	}
-`;
-
-const moveRight = keyframes`
-	from {
-		transform: translateX(-160%);
-	}
-	to {
-		transform: translateX(0);
-	}
-`;
+import styled from 'styled-components';
 
 const Text = styled.p`
-	--font-family: var(--font-secondary-family);
-	--font-size: var(--font-secondary-size);
-	--font-weight: var(--font-secondary-weight);
-	--color: var(--font-secondary-color);
-
+	box-sizing: border-box;
 	margin: 0;
-	font-family: var(--font-family);
 	font-size: var(--font-size);
 	font-weight: var(--font-weight);
 	color: var(--color);
 `;
 
 export const Description = styled(Text)`
+	font-size: var(--font-size-secondary);
+	font-weight: var(--font-weight-primary);
+	color: hsl(var(--color-text-secondary));
 	text-transform: lowercase;
 `;
 
 export const Title = styled(Text)`
-	--font-family: var(--font-accent-family);
-	--font-size: var(--font-accent-size);
-	--font-weight: var(--font-accent-weight);
-	--color: var(--font-primary-color);
+	--font-size: var(--font-size-primary);
+	--font-weight: var(--font-weight-secondary);
+	--color: hsl(var(--color-text-primary));
 
 	margin-bottom: 3px;
 `;
@@ -47,9 +26,12 @@ export const Title = styled(Text)`
 export const Wrapper = styled.div`
 	--z-index: var(--z-index-info-panel);
 	--padding: var(--padding-main);
-	--background-color: var(--button-color);
+	--font-family: var(--font-family-primary);
+	--background-color: hsl(var(--color-canvas));
+	--color: hsl(var(--color-text-primary));
 	--animation: var(--time-long) var(--bezier-hit);
 
+	box-sizing: border-box;
 	z-index: var(--z-index);
 	display: flex;
 	flex-flow: column;
@@ -57,17 +39,9 @@ export const Wrapper = styled.div`
 	justify-content: center;
 	padding: var(--padding);
 	min-height: 80px;
+	font-family: var(--font-family);
 	text-align: center;
 	line-height: 1;
 	background-color: var(--background-color);
-	box-sizing: border-box;
 	user-select: none;
-
-	&:nth-child(odd) {
-		animation: ${moveRight} var(--animation);
-	}
-
-	&:nth-child(even) {
-		animation: ${moveLeft} var(--animation);
-	}
 `;

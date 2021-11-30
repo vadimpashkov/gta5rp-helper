@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Key = styled.p`
+	box-sizing: border-box;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -8,8 +9,6 @@ export const Key = styled.p`
 	padding: 0 var(--padding);
 	min-width: 92px;
 	height: 100%;
-	font-family: var(--key-font-family);
-	font-size: var(--key-font-size);
 	font-weight: var(--key-font-weight);
 	background-color: var(--key-background-color);
 	color: var(--key-color);
@@ -19,10 +18,9 @@ export const Key = styled.p`
 `;
 
 export const Description = styled.p`
+	box-sizing: border-box;
 	margin: 0;
 	padding: var(--padding);
-	font-family: var(--font-family);
-	font-size: var(--font-size);
 	font-weight: var(--font-weight);
 	user-select: none;
 `;
@@ -31,20 +29,18 @@ export const Wrapper = styled.button`
 	--padding: var(--padding-main);
 	--gap: var(--gap-main);
 
-	--background-color: var(--button-color);
-	--color: var(--font-primary-color);
+	--background-color: hsl(var(--color-canvas));
+	--color: hsl(var(--color-text-primary));
 
-	--font-family: var(--font-primary-family);
-	--font-size: var(--font-primary-size);
-	--font-weight: var(--font-primary-weight);
+	--font-family: var(--font-family-primary);
 
-	--key-background-color: var(--button-color-hover);
-	--key-background-color-hover: var(--color-primary);
-	--key-color: var(--button-color);
+	--font-size: var(--font-size-primary);
+	--font-weight: var(--font-weight-primary);
 
-	--key-font-family: var(--font-accent-family);
-	--key-font-size: var(--font-accent-size);
-	--key-font-weight: var(--font-accent-weight);
+	--key-background-color: hsl(var(--color-canvas-inverted));
+	--key-background-color-hover: hsl(var(--color-brand-primary));
+	--key-color: hsl(var(--color-text-primary-inverted));
+	--key-font-weight: var(--font-weight-secondary);
 
 	--transition: var(--time-standard) var(--bezier-rubber);
 
@@ -54,6 +50,8 @@ export const Wrapper = styled.button`
 	gap: var(--gap);
 	align-items: center;
 	justify-content: space-between;
+	font-family: var(--font-family);
+	font-size: var(--font-size);
 	background-color: var(--background-color);
 	color: var(--color);
 	outline: none;

@@ -19,7 +19,7 @@ export const Circle = styled.circle<CircleProps>`
 `;
 
 export const Wrapper = styled.svg`
-	--color: var(--button-color-hover);
+	--color: hsl(var(--color-text-primary));
 	--transition: var(--time-very-long) var(--bezier-rubber);
 
 	& use {

@@ -1,7 +1,7 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { MainWrapperContainer } from './MainWrapper.elements';
+import { Container } from './MainWrapper.elements';
 
 import { sendEvent } from '../../utils';
 
@@ -29,7 +29,7 @@ export const MainWrapper: FC<MainWrapperProps> = ({ children, className, opacity
 	useEffect(() => updateSize(targetRef), [JSON.stringify(children), forceRerender]);
 
 	return (
-		<MainWrapperContainer
+		<Container
 			ref={targetRef}
 			className={className}
 			opacity={opacity}
@@ -37,6 +37,6 @@ export const MainWrapper: FC<MainWrapperProps> = ({ children, className, opacity
 		>
 			<DragPanel />
 			{children}
-		</MainWrapperContainer>
+		</Container>
 	);
 };

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Description = styled.p`
+	box-sizing: border-box;
 	margin: 0;
 	user-select: none;
 `;
@@ -8,11 +9,11 @@ export const Description = styled.p`
 export const Wrapper = styled.div`
 	--padding: var(--padding-main);
 	--gap: var(--gap-main);
-	--background-color: var(--button-color);
-	--color: var(--font-primary-color);
-	--font-family: var(--font-primary-family);
-	--font-size: var(--font-primary-size);
-	--font-weight: var(--font-primary-weight);
+	--background-color: hsl(var(--color-canvas));
+	--color: hsl(var(--color-text-primary));
+	--font-family: var(--font-family-primary);
+	--font-size: var(--font-size-primary);
+	--font-weight: var(--font-weight-primary);
 
 	box-sizing: border-box;
 	display: flex;

@@ -8,7 +8,7 @@ type RingDiagramProps = {
 export const Text = styled.text`
 	fill: currentColor;
 	text-anchor: middle;
-	transform: translateY(calc(var(--font-size) / 2.5));
+	transform: translateY(9%);
 `;
 
 const Circle = styled.circle`
@@ -25,12 +25,12 @@ export const Remains = styled(Circle)`
 export const Progress = styled(Circle)``;
 
 export const Wrapper = styled.svg<RingDiagramProps>`
-	--font-family: var(--font-secondary-family);
-	--font-size: var(--font-secondary-size);
-	--font-weight: var(--font-secondary-weight);
-	--color: var(--font-primary-color);
+	--font-family: var(--font-family-primary);
+	--font-size: 70%;
+	--font-weight: var(--font-weight-primary);
+	--color: hsl(var(--color-text-primary));
 
-	--color-remains: var(--color);
+	--color-remains: hsl(var(--color-canvas-inverted));
 
 	--transition: var(--time-very-long) var(--bezier-rubber);
 

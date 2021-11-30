@@ -2,17 +2,23 @@ import styled from 'styled-components';
 
 import svgFilter from '../../assets/svg/gooeyEffect.svg';
 
-type MainWrapperProps = {
+type ContainerProps = {
 	opacity?: number;
 };
 
-export const MainWrapperContainer = styled.div<MainWrapperProps>`
+export const Container = styled.div<ContainerProps>`
+	--gap: var(--gap-main);
+	--transition: var(--time-standard) var(--bezier-rubber);
+	--offset: var(--height-drag-panel);
+
+	box-sizing: border-box;
 	position: absolute;
 	display: flex;
-	column-gap: var(--gap-main);
+	padding-top: var(--offset);
+	gap: var(--gap);
 	opacity: ${({ opacity }) => opacity};
-	transition: opacity var(--time-standard) var(--bezier-rubber);
-	filter: url(${svgFilter + '#gooey-rect'});
+	transition: opacity var(--transition);
+	filter: url(${svgFilter + '#rect'});
 
 	&:hover {
 		opacity: 1;

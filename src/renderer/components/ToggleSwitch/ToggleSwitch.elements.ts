@@ -42,13 +42,13 @@ export const Wrapper = styled.label`
 
 	--border-radius: var(--border-radius-main);
 
-	--color-enabled: var(--button-color-select);
-	--color-disabled: var(--button-color-hover);
+	--color-enabled: hsl(var(--color-brand-primary));
+	--color-disabled: hsl(var(--color-canvas-inverted));
 
 	--transition: var(--time-standard) var(--bezier-rubber);
 
 	--toggle-size: calc(var(--height) - var(--padding) * 2);
-	--toggle-color: var(--button-color);
+	--toggle-color: hsl(var(--color-canvas));
 
 	cursor: pointer;
 `;

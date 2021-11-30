@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-	--z-index: var(--drag-panel-z-index);
-	--left: calc(var(--button-size) / 2);
-	--height: var(--drag-panel-height);
+	--z-index: var(--z-index-drag-panel);
+	--left: 50%;
+	--height: var(--height-drag-panel);
 	--width: calc(var(--height) * 2);
-	--background-color: var(--button-color);
+	--background-color: hsl(var(--color-canvas));
 
 	z-index: var(--z-index);
 	position: absolute;
