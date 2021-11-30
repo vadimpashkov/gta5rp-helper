@@ -4,12 +4,13 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 import { MainWrapper } from './components';
 import { GlobalStyles } from './styles/GlobalStyles';
 
-import { HomePage, FishingPage, FishingBotEnabled, SettingsPage } from './pages';
+import { LoginPage, HomePage, FishingPage, FishingBotEnabled, SettingsPage } from './pages';
 
 export const App: FC = () => (
 	<HashRouter>
 		<MainWrapper opacity={1.0}>
 			<Routes>
+				<Route path="/login" element={<LoginPage />} />
 				<Route path="/" element={<HomePage />} />
 				<Route path="/fishing" element={<FishingPage />} />
 				<Route path="/settings" element={<SettingsPage />} />
