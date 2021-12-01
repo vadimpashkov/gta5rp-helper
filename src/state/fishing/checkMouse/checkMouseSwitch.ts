@@ -1,6 +1,4 @@
-import { waitForImage } from '../../../utils/waitForImage';
-import { createParam } from '../../../utils/parameterFactory';
-import { createCancelable } from '../../../utils/rejectablePromiseCreator';
+import { waitForImage, createParam, createCancelable } from '../../../utils';
 
 import { waitLmdState } from '../waitLmd';
 import { successState } from '../success';

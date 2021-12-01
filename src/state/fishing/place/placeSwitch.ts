@@ -1,6 +1,4 @@
-import { waitForImage } from '../../../utils/waitForImage';
-import { createParam } from '../../../utils/parameterFactory';
-import { createCancelable } from '../../../utils/rejectablePromiseCreator';
+import { waitForImage, createCancelable, createParam } from '../../../utils';
 
 import { throwState } from '../trow';
 import { FishingConfig, FishingState, FishingSwitch } from '../types';

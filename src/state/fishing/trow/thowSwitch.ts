@@ -1,6 +1,6 @@
 import { keyboard } from '@nut-tree/nut-js';
 
-import { createCancelable } from '../../../utils/rejectablePromiseCreator';
+import { createCancelable } from '../../../utils';
 
 import { waitLmdState } from '../waitLmd';
 import { storeFishState } from '../storeFish';

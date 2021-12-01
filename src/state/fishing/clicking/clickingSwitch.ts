@@ -1,6 +1,4 @@
-import { waitForImageGone } from '../../../utils/waitForImageGone';
-import { createParam } from '../../../utils/parameterFactory';
-import { createCancelable } from '../../../utils/rejectablePromiseCreator';
+import { waitForImageGone, createParam, createCancelable } from '../../../utils';
 
 import { checkMouseState } from '../checkMouse';
 

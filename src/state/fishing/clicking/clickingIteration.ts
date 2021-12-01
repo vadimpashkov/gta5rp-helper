@@ -1,7 +1,7 @@
 import { mouse, right, left, Point } from '@nut-tree/nut-js';
 
 import { FishingConfig, FishingIteration } from '../types';
-import { createCancelable } from '../../../utils/rejectablePromiseCreator';
+import { createCancelable } from '../../../utils';
 
 export const clickingIteration: FishingIteration = createCancelable<FishingConfig, void>(async (config) => {
 	const { mouseDirection, doubleClick } = config;

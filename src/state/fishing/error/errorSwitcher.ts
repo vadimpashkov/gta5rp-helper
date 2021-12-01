@@ -1,7 +1,6 @@
 import { screen } from '@nut-tree/nut-js';
 
-import { createParam } from '../../../utils/parameterFactory';
-import { createCancelable } from '../../../utils/rejectablePromiseCreator';
+import { createParam, createCancelable } from '../../../utils';
 
 import { placeState } from '../place';
 import { FishingConfig, FishingState, FishingSwitch } from '../types';

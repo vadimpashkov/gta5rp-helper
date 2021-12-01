@@ -1,6 +1,4 @@
-import { createParam } from '../../../utils/parameterFactory';
-import { waitForImage } from '../../../utils/waitForImage';
-import { createCancelable } from '../../../utils/rejectablePromiseCreator';
+import { createParam, waitForImage, createCancelable } from '../../../utils';
 
 import { findFishState } from '../findFish';
 import { errorState } from '../error';

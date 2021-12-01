@@ -1,10 +1,7 @@
 import { keyboard, OptionalSearchParameters, Region } from '@nut-tree/nut-js';
 
 import { Key } from '../../../core';
-import { createCancelable } from '../../../utils/rejectablePromiseCreator';
-import { extractTextFromRegion } from '../../../utils/extractTextFromRegion';
-import { extractNumbersFromWeight } from '../../../utils/extractNumberFromWeight';
-import { waitForImage } from '../../../utils/waitForImage';
+import { createCancelable, extractTextFromRegion, extractNumbersFromWeight, waitForImage } from '../../../utils';
 
 import { placeState } from '../place';
 

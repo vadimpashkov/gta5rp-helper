@@ -1,7 +1,6 @@
 import { Region } from '@nut-tree/nut-js';
 
-import { createCancelable } from '../../../utils/rejectablePromiseCreator';
-import { extractTextFromRegion } from '../../../utils/extractTextFromRegion';
+import { createCancelable, extractTextFromRegion } from '../../../utils';
 
 import { findFish } from '../../../core';
 import { addFish, addSessionFish } from '../../../store';

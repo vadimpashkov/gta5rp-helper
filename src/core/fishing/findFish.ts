@@ -1,7 +1,7 @@
 import { AvailableFish, NotFoundFish } from './fishes';
 import { Fish } from './types';
 
-import { inaccurateStringComparison } from '../../utils/inaccurateStringComparison';
+import { inaccurateStringComparison } from '../../utils';
 
 export const findFish = (text: string) => {
 	const result = AvailableFish.reduce(

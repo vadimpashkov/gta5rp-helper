@@ -1,7 +1,6 @@
 import { keyboard, Key, Region, OptionalSearchParameters, screen, mouse, Point, Button } from '@nut-tree/nut-js';
 
-import { createCancelable } from '../../../utils/rejectablePromiseCreator';
-import { waitForImage } from '../../../utils/waitForImage';
+import { createCancelable, waitForImage } from '../../../utils';
 
 import { waitLmdState } from '../waitLmd';
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
