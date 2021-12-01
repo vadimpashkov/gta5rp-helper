@@ -21,5 +21,5 @@ export const useTotalFish = () => {
 		.sort(([, a], [, b]) => b - a)
 		.reduce((acum, [key, value]) => ({ ...acum, [key]: value }), {});
 
-	return sorted;
+	return sorted as TotalFish;
 };
