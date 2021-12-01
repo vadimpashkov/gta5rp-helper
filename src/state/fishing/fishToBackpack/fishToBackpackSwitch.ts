@@ -24,7 +24,7 @@ export const fishToBackpackSwitch: FishingSwitch = createCancelable<FishingConfi
 		let regionToPlace = config.fishInInventory.backpack[lastFish!.storedName];
 
 		if (regionToPlace === null) {
-			const foundBackpackFishParam = new OptionalSearchParameters(config.backpackInventoryRegion, 0.7);
+			const foundBackpackFishParam = new OptionalSearchParameters(config.backpackInventoryRegion, 0.9);
 			let fishRegion = await findRegion(`${lastFish!.storedName}-Inventory.png`, foundBackpackFishParam, 2, 1500);
 
 			if (fishRegion === null) {

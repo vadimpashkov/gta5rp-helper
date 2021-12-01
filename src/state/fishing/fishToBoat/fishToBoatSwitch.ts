@@ -25,7 +25,7 @@ export const fishToBoatSwitch: FishingSwitch = createCancelable<FishingConfig, F
 		let regionToPlace = config.fishInInventory.boat[lastFish!.storedName];
 
 		if (regionToPlace === null) {
-			const foundBoatFishParam = new OptionalSearchParameters(config.boatInventoryRegion, 0.7);
+			const foundBoatFishParam = new OptionalSearchParameters(config.boatInventoryRegion, 0.9);
 			const fishRegion = await findRegion(`${lastFish!.storedName}-Boat.png`, foundBoatFishParam, 2, 1500);
 
 			if (fishRegion === null) {
