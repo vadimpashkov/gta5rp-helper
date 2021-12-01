@@ -24,7 +24,7 @@ export const Content = styled.div`
 	box-sizing: border-box;
 	display: flex;
 	flex-flow: column;
-	gap: 3px;
+	gap: 2px;
 `;
 
 export const Wrapper = styled.div`

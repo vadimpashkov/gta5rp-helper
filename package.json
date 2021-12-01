@@ -1,5 +1,5 @@
 {
-	"name": "gta5-helper",
+	"name": "gta5rp-helper",
 	"version": "1.0.0",
 	"description": "Helper for GTA 5 RP",
 	"main": "build/main.js",
