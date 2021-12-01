@@ -27,7 +27,7 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 	} catch {
 		// Открытие инвентаря
 		if (!config.softStop) {
-			await keyboard.type(config.openInventoryKey);
+			keyboard.type(config.openInventoryKey);
 		} else {
 			return null;
 		}
@@ -35,12 +35,7 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 	}
 
 	const yourItemsSize = await extractTextFromRegion(
-		new Region(
-			config.yourItemsRegion.left - 163,
-			config.yourItemsRegion.top - 20,
-			config.yourItemsRegion.width - 10,
-			config.yourItemsRegion.height + 30,
-		),
+		new Region(config.yourItemsRegion.left - 120, config.yourItemsRegion.top - 4, 92, 28),
 		'monserrat-medium-18-v1',
 		'inventory',
 		160,
