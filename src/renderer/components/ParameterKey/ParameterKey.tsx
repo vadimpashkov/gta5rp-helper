@@ -21,6 +21,7 @@ export const ParameterKey: FC<ParameterKeyProps> = ({
 }: ParameterKeyProps) => {
 	const settings = useSettings();
 	const [pressedKey, setPressedKey] = useState<{ key: string; code: number }>();
+	const [askedKey, setAskedKey] = useState(false);
 
 	const currentKeyCode = (settings.data as { [parameter: string]: boolean | number })[settingsProperty];
 	const currentKey = replaceKeyAliases(
@@ -28,6 +29,7 @@ export const ParameterKey: FC<ParameterKeyProps> = ({
 	);
 
 	const handleClick = () => {
+		setAskedKey(true);
 		document.addEventListener('keydown', keyPressed);
 	};
 
@@ -41,6 +43,7 @@ export const ParameterKey: FC<ParameterKeyProps> = ({
 		});
 
 		document.removeEventListener('keydown', keyPressed);
+		setAskedKey(false);
 	}
 
 	useEffect(() => {
@@ -58,7 +61,7 @@ export const ParameterKey: FC<ParameterKeyProps> = ({
 
 	return (
 		<Wrapper className={className} onClick={handleClick}>
-			<Description>{description}</Description>
+			<Description>{askedKey ? 'Нажмите клавишу' : description}</Description>
 			<KeyElement>{pressedKey?.key || currentKey}</KeyElement>
 		</Wrapper>
 	);
