@@ -38,9 +38,9 @@ export const FishQuantityDiagram: FC<FishQuantityDiagramProps> = ({
 				cy={circleCenterXY}
 				strokeWidth={circleStrokeWidth}
 				r={circleRadius}
-				circumferenceLength={circumferenceLength}
-				percentageOfDistrict={percentageOfDistrict}
-				circleOffset={circleOffset}
+				circumferenceLength={Math.round(circumferenceLength)}
+				percentageOfDistrict={Math.round(percentageOfDistrict)}
+				circleOffset={Math.round(circleOffset)}
 				color={localFish.color}
 			/>
 		);
