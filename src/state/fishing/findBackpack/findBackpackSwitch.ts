@@ -10,8 +10,9 @@ import {
 import { gtaProcess } from '../../../store';
 
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
-import { findBackpackState } from '.';
+import { findBackpackState } from './findBackpackState';
 import { findBoatState } from '../findBoat';
+import { placeState } from '../place';
 
 export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
 	const param = new OptionalSearchParameters(config.backpackRegion, 0.8);
@@ -83,5 +84,9 @@ export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig,
 	// Закрываем инвентарь
 	await keyboard.type(config.openInventoryKey);
 
-	return findBoatState;
+	if (config.lookingForBoat) {
+		return findBoatState;
+	}
+
+	return placeState;
 });

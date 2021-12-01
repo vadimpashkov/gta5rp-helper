@@ -21,12 +21,36 @@ export const FishingSettings: FC<FishingSettingsProps> = ({ className }: Fishing
 		});
 	};
 
+	const lookingForBackpackChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		settings.setSettings({
+			...settings.data,
+			lookingForBackpack: event.target.checked,
+		});
+	};
+
+	const lookingForBoatChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		settings.setSettings({
+			...settings.data,
+			lookingForBoat: event.target.checked,
+		});
+	};
+
 	return (
 		<Wrapper className={className}>
 			<ParameterCheckbox
 				description="Быстрая ловля (для мощных ПК)"
 				onChange={doubleClickChange}
 				checked={settings.data.doubleClick}
+			/>
+			<ParameterCheckbox
+				description="Имеется ли рюкзак"
+				onChange={lookingForBackpackChange}
+				checked={settings.data.lookingForBackpack}
+			/>
+			<ParameterCheckbox
+				description="Имеется ли лодка"
+				onChange={lookingForBoatChange}
+				checked={settings.data.lookingForBoat}
 			/>
 			<ParameterKey description="Достать удочку" settingsProperty="fishingRodKey" />
 		</Wrapper>
