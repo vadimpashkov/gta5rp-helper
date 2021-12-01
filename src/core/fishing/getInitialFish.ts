@@ -1,6 +1,6 @@
 import { TotalFish } from '.';
 
-export const initTotalFish = (): TotalFish => ({
+export const initTotalFish = (): TotalFish<number> => ({
 	Sterlyad: 0,
 	Skat: 0,
 	Osetr: 0,

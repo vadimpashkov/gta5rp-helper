@@ -1,21 +1,21 @@
 export type Fish = {
 	name: string;
-	storedName: string;
+	storedName: keyof TotalFish<any>;
 	minPrice: number;
 	maxPrice: number;
 	weight: number;
 	color: string;
 };
 
-export type TotalFish = {
-	Sterlyad: number;
-	Losos: number;
-	Osetr: number;
-	BlackAmour: number;
-	Skat: number;
-	Tunets: number;
-	Malma: number;
-	Fugu: number;
+export type TotalFish<T> = {
+	Sterlyad: T;
+	Losos: T;
+	Osetr: T;
+	BlackAmour: T;
+	Skat: T;
+	Tunets: T;
+	Malma: T;
+	Fugu: T;
 };
 
 export type GroupedFish = {

@@ -7,11 +7,11 @@ type Coordinate = {
 };
 
 export const drag = async (from: Coordinate, to: Coordinate, spped?: number) => {
-	await gtaProcess.mouse.moveCurveToAsync(from.x, from.y, spped || 2, 10);
+	await gtaProcess.mouse.moveCurveToAsync(from.x, from.y, spped || 4, 30);
 
 	await mouse.pressButton(Button.LEFT);
 
-	await gtaProcess.mouse.moveCurveToAsync(to.x, to.y, spped || 2, 10);
+	await gtaProcess.mouse.moveCurveToAsync(to.x, to.y, spped || 4, 30);
 
 	await mouse.releaseButton(Button.LEFT);
 };

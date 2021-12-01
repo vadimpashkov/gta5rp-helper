@@ -10,4 +10,5 @@ export * from './rejectablePromiseCreator';
 export * from './timeout';
 export * from './waitForImage';
 export * from './waitForImageGone';
+export * from './findRegion';
 export * from './typeKeyWithDelay';

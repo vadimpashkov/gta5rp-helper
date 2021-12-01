@@ -1,11 +1,9 @@
-import { keyboard, Region, OptionalSearchParameters, screen, mouse, Point, Button } from '@nut-tree/nut-js';
+import { keyboard, OptionalSearchParameters } from '@nut-tree/nut-js';
 
-import { createCancelable, waitForImage, drag, typeKeyWithDelay } from '../../../utils';
+import { createCancelable, waitForImage, drag, typeKeyWithDelay, findRegion } from '../../../utils';
 
 import { waitLmdState } from '../waitLmd';
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
-
-let retryAttempts = 0;
 
 export const fishToBackpackSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
 	const { lastFish, openInventoryKey } = config;
@@ -15,45 +13,27 @@ export const fishToBackpackSwitch: FishingSwitch = createCancelable<FishingConfi
 	try {
 		const foundFishParam = new OptionalSearchParameters(config.yourInventoryRegion, 0.7);
 
-		let foundFishRegion: Region | null = null;
+		const foundFishRegion = await findRegion(`${lastFish!.storedName}-Inventory.png`, foundFishParam, 2, 1500);
 
-		do {
-			try {
-				foundFishRegion = await waitForImage(`${lastFish!.storedName}-Inventory.png`, 1500, foundFishParam);
-			} catch {
-				if (retryAttempts < 2) {
-					retryAttempts++;
-				} else {
-					await keyboard.type(openInventoryKey);
+		if (foundFishRegion === null) {
+			await keyboard.type(openInventoryKey);
 
-					return waitLmdState;
-				}
-			}
-		} while (foundFishRegion === null);
+			return waitLmdState;
+		}
 
-		retryAttempts = 0;
+		let regionToPlace = config.fishInInventory.backpack[lastFish!.storedName];
 
-		let regionToPlace: Region | null = null;
-		const foundBackpackFishParam = new OptionalSearchParameters(config.backpackInventoryRegion, 0.7);
+		if (regionToPlace === null) {
+			const foundBackpackFishParam = new OptionalSearchParameters(config.backpackInventoryRegion, 0.7);
+			const emptyCellRegion = await waitForImage(`EmptyCell.png`, 1500, foundBackpackFishParam);
 
-		do {
-			try {
-				regionToPlace = await waitForImage(
-					`${lastFish!.storedName}-Inventory.png`,
-					1500,
-					foundBackpackFishParam,
-				);
-			} catch {
-				if (retryAttempts < 2) {
-					retryAttempts++;
-				} else {
-					retryAttempts = 0;
-					break;
-				}
-			}
-		} while (regionToPlace === null);
+			config.fishInInventory.backpack[lastFish!.storedName] = {
+				x: emptyCellRegion.left + emptyCellRegion.width / 2,
+				y: emptyCellRegion.top + emptyCellRegion.height / 2,
+			};
 
-		if (regionToPlace === null) regionToPlace = await waitForImage(`EmptyCell.png`, 1500, foundBackpackFishParam);
+			regionToPlace = config.fishInInventory.backpack[lastFish!.storedName];
+		}
 
 		await drag(
 			{
@@ -61,8 +41,8 @@ export const fishToBackpackSwitch: FishingSwitch = createCancelable<FishingConfi
 				y: foundFishRegion.top + foundFishRegion.height / 2,
 			},
 			{
-				x: regionToPlace.left + regionToPlace.width / 2,
-				y: regionToPlace.top + regionToPlace.height / 2,
+				x: regionToPlace!.x,
+				y: regionToPlace!.y,
 			},
 		);
 

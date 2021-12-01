@@ -7,3 +7,4 @@ export * from './groupFish';
 export * from './addDefaultFish';
 export * from './groupFish';
 export * from './sortFish';
+export * from './fillTotalFish';

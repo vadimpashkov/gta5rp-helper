@@ -1,4 +1,5 @@
 import { Point, Region } from '@nut-tree/nut-js';
+import { fillTotalFish } from '../../core';
 import { getSettings } from '../../store';
 
 import { Emiter } from '../types';
@@ -50,5 +51,9 @@ export const initFishingConfig = (screenWidth: number, screenHeight: number, emi
 		openTrunkKey: settings.openTrunkKey,
 		fishingRodKey: settings.fishingRodKey,
 		softStop: false,
+		fishInInventory: {
+			boat: fillTotalFish(null),
+			backpack: fillTotalFish(null),
+		},
 	};
 };

@@ -1,5 +1,4 @@
-import { AvailableFish, NotFoundFish } from './fishes';
-import { Fish } from './types';
+import { AvailableFish, Osetr } from './fishes';
 
 import { inaccurateStringComparison } from '../../utils/inaccurateStringComparison';
 
@@ -17,7 +16,7 @@ export const findFish = (text: string) => {
 
 			return acum;
 		},
-		{ fish: NotFoundFish, mostAccurateDistance: Number.MAX_VALUE },
+		{ fish: Osetr, mostAccurateDistance: Number.MAX_VALUE },
 	);
 
 	if (result.mostAccurateDistance >= 10) throw Error('Ошибка распозновании рыбы');
