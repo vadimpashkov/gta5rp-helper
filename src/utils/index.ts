@@ -1,5 +1,5 @@
 export * from './abort';
-export * from './dragFishToStore';
+export * from './drag';
 export * from './extractNumberFromWeight';
 export * from './extractTextFromRegion';
 export * from './getRandomIntInclusive';
@@ -10,3 +10,4 @@ export * from './rejectablePromiseCreator';
 export * from './timeout';
 export * from './waitForImage';
 export * from './waitForImageGone';
+export * from './typeKeyWithDelay';

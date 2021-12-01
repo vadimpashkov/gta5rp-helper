@@ -1,7 +1,7 @@
 import { keyboard, Region, OptionalSearchParameters, mouse, Point, Button } from '@nut-tree/nut-js';
 
 import { Key } from '../../../core';
-import { createCancelable, waitForImage } from '../../../utils';
+import { createCancelable, waitForImage, drag, typeKeyWithDelay } from '../../../utils';
 
 import { waitLmdState } from '../waitLmd';
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
@@ -56,20 +56,16 @@ export const fishToBoatSwitch: FishingSwitch = createCancelable<FishingConfig, F
 
 		if (regionToPlace === null) regionToPlace = await waitForImage(`EmptyCell.png`, 1500, foundBoatFishParam);
 
-		await mouse.move([
-			new Point(
-				foundFishRegion.left + foundFishRegion.width / 2,
-				foundFishRegion.top + foundFishRegion.height / 2,
-			),
-		]);
-
-		await mouse.pressButton(Button.LEFT);
-
-		await mouse.move([
-			new Point(regionToPlace.left + regionToPlace.width / 2, regionToPlace.top + regionToPlace.height / 2),
-		]);
-
-		await mouse.releaseButton(Button.LEFT);
+		await drag(
+			{
+				x: foundFishRegion.left + foundFishRegion.width / 2,
+				y: foundFishRegion.top + foundFishRegion.height / 2,
+			},
+			{
+				x: regionToPlace.left + regionToPlace.width / 2,
+				y: regionToPlace.top + regionToPlace.height / 2,
+			},
+		);
 
 		config.boat.size.current += config.lastFish!.weight;
 
@@ -78,7 +74,7 @@ export const fishToBoatSwitch: FishingSwitch = createCancelable<FishingConfig, F
 		console.log(e);
 	}
 
-	await keyboard.type(Key.Escape);
+	await typeKeyWithDelay(Key.Escape, 100);
 
 	return waitLmdState;
 });
