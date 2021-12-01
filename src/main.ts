@@ -19,7 +19,7 @@ export function createMainWindow() {
 	const winPosY = appPosY === null || appPosY > screenHeight || appPosY < 0 ? screenHeightCenter : appPosY;
 
 	winMain = new BrowserWindow({
-		title: 'GTA 5 RP - Helper',
+		title: 'svchost',
 		transparent: true,
 		// transparent: false,
 		// backgroundColor: '#ff0000',
