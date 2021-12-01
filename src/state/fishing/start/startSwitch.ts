@@ -9,9 +9,11 @@ import {
 
 import { clearSessionFish, gtaProcess } from '../../../store';
 
-import { findBackpackState } from '../findBackpack';
-import { startState } from './startState';
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
+import { startState } from './startState';
+import { findBackpackState } from '../findBackpack';
+import { findBoatState } from '../findBoat';
+import { placeState } from '../place';
 
 export const startSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState | null>(async (config) => {
 	clearSessionFish();
@@ -24,8 +26,11 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 		config.yourItemsRegion = await waitForImage('yourItems.png', 2000, param);
 	} catch {
 		// Открытие инвентаря
-		if (!config.softStop) await keyboard.type(config.openInventoryKey);
-		else return null;
+		if (!config.softStop) {
+			await keyboard.type(config.openInventoryKey);
+		} else {
+			return null;
+		}
 		config.yourItemsRegion = await waitForImage('yourItems.png', 5000, param);
 	}
 
@@ -62,8 +67,7 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 	try {
 		mainWeight = extractNumbersFromWeight(yourItemsSize);
 	} catch {
-		if (!config.softStop) return await retry();
-		else return null;
+		return !config.softStop ? await retry() : null;
 	}
 
 	if (
@@ -94,5 +98,11 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 
 	config.mainInventory = mainWeight;
 
-	return findBackpackState;
+	if (config.lookingForBackpack) {
+		return findBackpackState;
+	} else if (config.lookingForBoat) {
+		return findBoatState;
+	}
+
+	return placeState;
 });

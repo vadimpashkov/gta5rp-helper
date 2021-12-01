@@ -5,6 +5,8 @@ export function getSettings(): Settings {
 	return (
 		(store.get('settings') as Settings) || {
 			doubleClick: false,
+			lookingForBackpack: false,
+			lookingForBoat: false,
 			openInventoryKey: Key.KeyI,
 			openTrunkKey: Key.KeyH,
 			fishingRodKey: Key.Backspace,
