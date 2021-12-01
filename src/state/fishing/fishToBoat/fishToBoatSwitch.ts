@@ -26,12 +26,21 @@ export const fishToBoatSwitch: FishingSwitch = createCancelable<FishingConfig, F
 
 		if (regionToPlace === null) {
 			const foundBoatFishParam = new OptionalSearchParameters(config.boatInventoryRegion, 0.7);
-			const emptyCellRegion = await waitForImage(`EmptyCell.png`, 1500, foundBoatFishParam);
+			const fishRegion = await findRegion(`${lastFish!.storedName}-Boat.png`, foundBoatFishParam, 2, 1500);
 
-			config.fishInInventory.boat[lastFish!.storedName] = {
-				x: emptyCellRegion.left + emptyCellRegion.width / 2,
-				y: emptyCellRegion.top + emptyCellRegion.height / 2,
-			};
+			if (fishRegion === null) {
+				const emptyCellRegion = await waitForImage(`EmptyCell.png`, 1500, foundBoatFishParam);
+
+				config.fishInInventory.boat[lastFish!.storedName] = {
+					x: emptyCellRegion.left + emptyCellRegion.width / 2,
+					y: emptyCellRegion.top + emptyCellRegion.height / 2,
+				};
+			} else {
+				config.fishInInventory.boat[lastFish!.storedName] = {
+					x: fishRegion.left + fishRegion.width / 2,
+					y: fishRegion.top + fishRegion.height / 2,
+				};
+			}
 
 			regionToPlace = config.fishInInventory.boat[lastFish!.storedName];
 		}
@@ -54,7 +63,7 @@ export const fishToBoatSwitch: FishingSwitch = createCancelable<FishingConfig, F
 		console.log(e);
 	}
 
-	await typeKeyWithDelay(Key.Escape, 100);
+	await typeKeyWithDelay(Key.Escape, 300);
 
 	return waitLmdState;
 });

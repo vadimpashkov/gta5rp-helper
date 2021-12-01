@@ -1,4 +1,4 @@
-import { keyboard, OptionalSearchParameters } from '@nut-tree/nut-js';
+import { keyboard, OptionalSearchParameters, Region } from '@nut-tree/nut-js';
 
 import { createCancelable, waitForImage, drag, typeKeyWithDelay, findRegion } from '../../../utils';
 
@@ -25,12 +25,21 @@ export const fishToBackpackSwitch: FishingSwitch = createCancelable<FishingConfi
 
 		if (regionToPlace === null) {
 			const foundBackpackFishParam = new OptionalSearchParameters(config.backpackInventoryRegion, 0.7);
-			const emptyCellRegion = await waitForImage(`EmptyCell.png`, 1500, foundBackpackFishParam);
+			let fishRegion = await findRegion(`${lastFish!.storedName}-Inventory.png`, foundBackpackFishParam, 2, 1500);
 
-			config.fishInInventory.backpack[lastFish!.storedName] = {
-				x: emptyCellRegion.left + emptyCellRegion.width / 2,
-				y: emptyCellRegion.top + emptyCellRegion.height / 2,
-			};
+			if (fishRegion === null) {
+				const emptyCellRegion = await waitForImage(`EmptyCell.png`, 1500, foundBackpackFishParam);
+
+				config.fishInInventory.backpack[lastFish!.storedName] = {
+					x: emptyCellRegion.left + emptyCellRegion.width / 2,
+					y: emptyCellRegion.top + emptyCellRegion.height / 2,
+				};
+			} else {
+				config.fishInInventory.backpack[lastFish!.storedName] = {
+					x: fishRegion.left + fishRegion.width / 2,
+					y: fishRegion.top + fishRegion.height / 2,
+				};
+			}
 
 			regionToPlace = config.fishInInventory.backpack[lastFish!.storedName];
 		}
@@ -46,7 +55,7 @@ export const fishToBackpackSwitch: FishingSwitch = createCancelable<FishingConfi
 			},
 		);
 
-		await typeKeyWithDelay(openInventoryKey, 100);
+		await typeKeyWithDelay(openInventoryKey, 300);
 
 		config.backpack.size.current += config.lastFish!.weight;
 
