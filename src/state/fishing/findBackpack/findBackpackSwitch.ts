@@ -23,10 +23,10 @@ export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig,
 
 		const backpackSize = await extractTextFromRegion(
 			new Region(
-				config.backpackRegion.left - config.screenWidth * 0.15,
-				config.backpackRegion.top - 10,
-				config.backpackRegion.width + config.screenWidth * 0.15,
-				config.backpackRegion.height + 20,
+				config.backpackRegion.left - 250,
+				config.backpackRegion.top - 6,
+				250,
+				config.backpackRegion.height + 6,
 			),
 			'monserrat-medium-18-v1',
 			'backpack',

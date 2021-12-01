@@ -13,15 +13,14 @@ export const findBoatSwitch: FishingSwitch = createCancelable<FishingConfig, Fis
 	keyboard.type(config.openTrunkKey);
 
 	try {
-		// Поиск если инвентарь уже открыт
 		config.trunkRegion = await waitForImage('Trunk.png', 2000, param);
 
 		const trunkSize = await extractTextFromRegion(
 			new Region(
-				config.trunkRegion.left + 150,
-				config.trunkRegion.top + 390,
-				config.trunkRegion.width + 100,
-				config.trunkRegion.height + 20,
+				config.trunkRegion.left + 115,
+				config.trunkRegion.top + config.trunkRegion.height + 390,
+				300,
+				25,
 			),
 			'monserrat-bold-18-v1',
 			'boat',
