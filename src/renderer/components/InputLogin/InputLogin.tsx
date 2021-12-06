@@ -6,15 +6,16 @@ import SvgLogin from '../../assets/svg/Login.svg';
 
 type InputLoginProps = {
 	className?: string;
+	inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
 };
 
-export const InputLogin: FC<InputLoginProps> = ({ className }: InputLoginProps) => {
+export const InputLogin: FC<InputLoginProps> = ({ className, inputProps }: InputLoginProps) => {
 	return (
 		<Wrapper className={className}>
 			<Svg>
 				<use href={`${SvgLogin}#outline`} />
 			</Svg>
-			<Input type="text" placeholder="Логин" />
+			<Input {...inputProps} type="text" placeholder="Логин" />
 		</Wrapper>
 	);
 };

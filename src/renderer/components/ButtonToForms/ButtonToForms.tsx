@@ -5,12 +5,11 @@ import { Wrapper } from './ButtonToForms.elements';
 type ButtonToFormsProps = {
 	className?: string;
 	description: string;
-	onClick?: () => void;
-};
+} & React.InputHTMLAttributes<HTMLButtonElement>;
 
-export const ButtonToForms: FC<ButtonToFormsProps> = ({ className, description, onClick }: ButtonToFormsProps) => {
+export const ButtonToForms: FC<ButtonToFormsProps> = ({ className, description, ...rest }: ButtonToFormsProps) => {
 	return (
-		<Wrapper className={className} onClick={onClick}>
+		<Wrapper className={className} {...(rest as any)}>
 			{description}
 		</Wrapper>
 	);

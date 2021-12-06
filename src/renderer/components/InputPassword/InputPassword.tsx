@@ -7,9 +7,10 @@ import SvgEye from '../../assets/svg/eye.svg';
 
 type InputPasswordProps = {
 	className?: string;
+	inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
 };
 
-export const InputPassword: FC<InputPasswordProps> = ({ className }: InputPasswordProps) => {
+export const InputPassword: FC<InputPasswordProps> = ({ className, inputProps }: InputPasswordProps) => {
 	const [showPassword, setShowPassword] = useState(false);
 
 	const handleClick = () => {
@@ -21,7 +22,7 @@ export const InputPassword: FC<InputPasswordProps> = ({ className }: InputPasswo
 			<Svg>
 				<use href={`${SvgLock}#outline`} />
 			</Svg>
-			<Input type={showPassword ? 'text' : 'password'} placeholder="Пароль" />
+			<Input {...inputProps} type={showPassword ? 'text' : 'password'} placeholder="Пароль" />
 			<Button onClick={handleClick}>
 				<Svg>
 					<use href={`${SvgEye}#closed`} />

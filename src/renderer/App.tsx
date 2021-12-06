@@ -5,18 +5,29 @@ import { MainWrapper } from './components';
 import { GlobalStyles } from './styles/GlobalStyles';
 
 import { LoginPage, HomePage, FishingPage, FishingBotEnabled, SettingsPage } from './pages';
+import { useAuth } from './stores';
 
-export const App: FC = () => (
-	<HashRouter>
-		<MainWrapper opacity={1.0}>
-			<Routes>
-				<Route path="/login" element={<LoginPage />} />
-				<Route path="/" element={<HomePage />} />
-				<Route path="/fishing" element={<FishingPage />} />
-				<Route path="/settings" element={<SettingsPage />} />
-				<Route path="/fishingBotEnabled" element={<FishingBotEnabled />} />
-			</Routes>
-		</MainWrapper>
-		<GlobalStyles />
-	</HashRouter>
-);
+export const App: FC = () => {
+	const { auth } = useAuth();
+	return (
+		<HashRouter>
+			<MainWrapper opacity={1.0}>
+				<Routes>
+					{auth ? (
+						<>
+							<Route path="/" element={<HomePage />} />
+							<Route path="/fishing" element={<FishingPage />} />
+							<Route path="/settings" element={<SettingsPage />} />
+							<Route path="/fishingBotEnabled" element={<FishingBotEnabled />} />
+						</>
+					) : (
+						<>
+							<Route path="/" element={<LoginPage />} />
+						</>
+					)}
+				</Routes>
+			</MainWrapper>
+			<GlobalStyles />
+		</HashRouter>
+	);
+};

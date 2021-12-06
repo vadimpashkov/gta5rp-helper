@@ -2,7 +2,7 @@ import path from 'path';
 import { BrowserWindow, app, screen } from 'electron';
 
 import { getApp } from './store';
-import { subscribe } from './events';
+import { registerEvents } from './registerEvents';
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -21,8 +21,6 @@ export function createMainWindow() {
 	winMain = new BrowserWindow({
 		title: 'svchost',
 		transparent: true,
-		// transparent: false,
-		// backgroundColor: '#ff0000',
 		x: winPosX,
 		y: winPosY,
 		frame: false,
@@ -42,12 +40,11 @@ export function createMainWindow() {
 
 	if (isDev) {
 		winMain.webContents.openDevTools({ mode: 'undocked' });
-		winMain.webContents.closeDevTools();
 	}
 }
 
 app.whenReady().then(async () => {
 	createMainWindow();
 
-	subscribe(winMain);
+	registerEvents(winMain);
 });

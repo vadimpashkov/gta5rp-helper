@@ -12,3 +12,4 @@ export * from './waitForImage';
 export * from './waitForImageGone';
 export * from './findRegion';
 export * from './typeKeyWithDelay';
+export * from './axiosInstance';
