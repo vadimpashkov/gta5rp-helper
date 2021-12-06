@@ -1,11 +1,17 @@
 import { Fish, TotalFish } from '../../core';
-import { getTotalFish, getSessionFish } from '../../store';
+import { getSessionFish } from '../../store';
+import { createAxios } from '../../utils';
 import { IpcEvent } from '../types';
 
-export const giveMeTotalFishEvent: IpcEvent<void, TotalFish<number>> = {
+export const giveMeTotalFishEvent: IpcEvent<void, { name: string; count: number }[]> = {
 	name: 'giveMeTotalFish',
-	handle: (_, emit) => {
-		emit('setTotalFish', getTotalFish());
+	handle: async (_, emit) => {
+		const axios = createAxios();
+
+		const response = await axios.get<{ name: string; count: number }[]>('fish');
+		console.log(response.data);
+
+		emit('setTotalFish', response.data);
 	},
 };
 

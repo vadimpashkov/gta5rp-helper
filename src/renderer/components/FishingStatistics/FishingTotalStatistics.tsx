@@ -16,17 +16,22 @@ type FishingTotalStatisticsProps = {
 export const FishingTotalStatistics: FC<FishingTotalStatisticsProps> = ({ className }: FishingTotalStatisticsProps) => {
 	const fish = useTotalFish();
 
-	const totalFishCount = Object.keys(fish).reduce(
-		(acc, item) => (acc += (fish as { [key: string]: number })[item]),
-		0,
-	);
+	const totalFishCount = fish.reduce((acc, item) => (acc += item.count), 0);
 
-	const cards = Object.keys(fish).map((key) => {
-		const foundFish = AvailableFish.filter((localFish) => localFish.storedName === key)[0];
-		const count = (fish as { [key: string]: number })[key];
+	const cards = fish.map((localFish) => {
+		const foundFish = AvailableFish.filter((localFish) => localFish.name === localFish.name)[0];
+		const count = localFish.count;
 		const percent = totalFishCount > 0 ? (count / totalFishCount) * 100 : 0;
 
-		return <FishingCard key={key} percent={percent} name={foundFish.name} count={count} color={foundFish.color} />;
+		return (
+			<FishingCard
+				key={localFish.name}
+				percent={percent}
+				name={foundFish.name}
+				count={count}
+				color={foundFish.color}
+			/>
+		);
 	});
 
 	return (

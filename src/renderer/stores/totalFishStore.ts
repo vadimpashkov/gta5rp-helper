@@ -3,11 +3,10 @@ import { atom } from 'nanostores';
 import { useStore } from '@nanostores/react';
 
 import { receiveEvent, sendEvent } from '../utils';
-import { TotalFish, initTotalFish, sortFish, groupFish } from '../../core';
 
-const store = atom<TotalFish<number>>(initTotalFish());
+const store = atom<{ name: string; count: number }[]>([]);
 
-receiveEvent<TotalFish<number>>('setTotalFish', (data) => {
+receiveEvent<{ name: string; count: number }[]>('setTotalFish', (data) => {
 	store.set(data);
 });
 
@@ -18,8 +17,11 @@ export const useTotalFish = () => {
 
 	const fish = useStore(store);
 	const sorted = Object.entries(fish)
-		.sort(([, a], [, b]) => b - a)
-		.reduce((acum, [key, value]) => ({ ...acum, [key]: value }), {});
+		.sort(([, a], [, b]) => b.count - a.count)
+		.reduce((acum, value) => {
+			acum.push(value);
+			return acum;
+		}, [] as any);
 
-	return sorted as TotalFish<number>;
+	return sorted as { name: string; count: number }[];
 };

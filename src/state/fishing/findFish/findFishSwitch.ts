@@ -3,7 +3,7 @@ import { Region } from '@nut-tree/nut-js';
 import { createCancelable, extractTextFromRegion } from '../../../utils';
 
 import { findFish } from '../../../core';
-import { addFish, addSessionFish } from '../../../store';
+import { addSessionFish, addFish } from '../../../store';
 
 import { placeState } from '../place';
 
@@ -25,7 +25,7 @@ export const findFishSwitch: FishingSwitch = createCancelable<FishingConfig, Fis
 		const foundFish = findFish(message);
 
 		addSessionFish(foundFish);
-		addFish(foundFish);
+		await addFish(foundFish.name);
 		emiter('newSessionFish', foundFish);
 
 		config.lastFish = foundFish;

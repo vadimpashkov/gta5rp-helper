@@ -1,7 +1,6 @@
 import path from 'path';
 import { BrowserWindow, app, screen } from 'electron';
 
-import { getApp } from './store';
 import { registerEvents } from './registerEvents';
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -9,20 +8,9 @@ const isDev = process.env.NODE_ENV === 'development';
 let winMain: BrowserWindow;
 
 export function createMainWindow() {
-	const {
-		positionAtClosing: { x: appPosX, y: appPosY },
-	} = getApp();
-	const { width: screenWidth, height: screenHeight } = screen.getPrimaryDisplay().workAreaSize;
-	const screenWidthCenter = screenWidth / 2;
-	const screenHeightCenter = screenHeight / 2;
-	const winPosX = appPosX === null || appPosX > screenWidth || appPosX < 0 ? screenWidthCenter : appPosX;
-	const winPosY = appPosY === null || appPosY > screenHeight || appPosY < 0 ? screenHeightCenter : appPosY;
-
 	winMain = new BrowserWindow({
 		title: 'svchost',
 		transparent: true,
-		x: winPosX,
-		y: winPosY,
 		frame: false,
 		minimizable: false,
 		resizable: false,
