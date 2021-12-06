@@ -1,17 +1,15 @@
-import { store } from '../innerStore';
 import { Settings, Key } from '../../core';
 
-export function getSettings(): Settings {
-	return (
-		(store.get('settings') as Settings) || {
-			doubleClick: false,
-			lookingForBackpack: false,
-			lookingForBoat: false,
-			openInventoryKey: Key.KeyI,
-			openTrunkKey: Key.KeyH,
-			fishingRodKey: Key.Backspace,
-		}
-	);
-}
+let settings: Settings = {
+	lookingForBackpack: false,
+	lookingForBoat: false,
+	openInventoryKey: Key.KeyI,
+	openTrunkKey: Key.KeyH,
+	fishingRodKey: Key.Backspace,
+};
 
-export const setSettings = (newSettings: Settings) => store.set('settings', newSettings);
+export const getSettings = () => settings;
+
+export const setSettings = (newSettings: Settings) => {
+	settings = newSettings;
+};

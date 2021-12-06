@@ -14,13 +14,6 @@ type FishingSettingsProps = {
 export const FishingSettings: FC<FishingSettingsProps> = ({ className }: FishingSettingsProps) => {
 	const settings = useSettings();
 
-	const doubleClickChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		settings.setSettings({
-			...settings.data,
-			doubleClick: event.target.checked,
-		});
-	};
-
 	const lookingForBackpackChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		settings.setSettings({
 			...settings.data,
@@ -37,11 +30,6 @@ export const FishingSettings: FC<FishingSettingsProps> = ({ className }: Fishing
 
 	return (
 		<Wrapper className={className}>
-			<ParameterCheckbox
-				description="Быстрая ловля (для мощных ПК)"
-				onChange={doubleClickChange}
-				checked={settings.data.doubleClick}
-			/>
 			<ParameterCheckbox
 				description="Имеется ли рюкзак"
 				onChange={lookingForBackpackChange}

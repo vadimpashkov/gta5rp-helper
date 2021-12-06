@@ -46,7 +46,6 @@ export const initFishingConfig = (screenWidth: number, screenHeight: number, emi
 			current: 0,
 			total: 10,
 		},
-		doubleClick: settings.doubleClick,
 		lookingForBackpack: settings.lookingForBackpack,
 		lookingForBoat: settings.lookingForBoat,
 		openInventoryKey: settings.openInventoryKey,

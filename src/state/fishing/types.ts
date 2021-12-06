@@ -6,7 +6,6 @@ export type FishingConfig = {
 	startMousePosition: Point;
 	mouseDirection: boolean;
 	numberOfFish: number;
-	doubleClick: boolean;
 	lookingForBackpack: boolean;
 	lookingForBoat: boolean;
 	lastFish: Fish | null;
