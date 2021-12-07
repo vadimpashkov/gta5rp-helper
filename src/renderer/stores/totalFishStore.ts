@@ -16,8 +16,8 @@ export const useTotalFish = () => {
 	}, []);
 
 	const fish = useStore(store);
-	const sorted = Object.entries(fish)
-		.sort(([, a], [, b]) => b.count - a.count)
+	const sorted = fish
+		.sort((a, b) => b.count - a.count)
 		.reduce((acum, value) => {
 			acum.push(value);
 			return acum;

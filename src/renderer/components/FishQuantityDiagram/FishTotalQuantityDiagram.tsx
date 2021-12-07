@@ -10,7 +10,7 @@ type FishTotalQuantityDiagramProps = {
 	className?: string;
 	size: number;
 	fishCount: number;
-	fish: {};
+	fish: { name: string; count: number }[];
 };
 
 export const FishTotalQuantityDiagram: FC<FishTotalQuantityDiagramProps> = ({
@@ -25,15 +25,15 @@ export const FishTotalQuantityDiagram: FC<FishTotalQuantityDiagramProps> = ({
 	const circumferenceLength = 2 * Math.PI * circleRadius;
 	let circleOffset = 0;
 
-	const circles = Object.keys(fish).map((key) => {
-		const foundFish = AvailableFish.filter((localFish) => localFish.storedName === key)[0];
-		const count = (fish as { [key: string]: number })[key];
+	const circles = fish.map((localFish) => {
+		const foundFish = AvailableFish.filter((filterFish) => filterFish.name === localFish.name)[0];
+		const count = localFish.count;
 		const percent = fishCount > 0 ? (count / fishCount) * 100 : 0;
 		const percentageOfDistrict = circumferenceLength * (percent / 100);
 
 		const circle = (
 			<Circle
-				key={key}
+				key={localFish.count + 'circle'}
 				cx={circleCenterXY}
 				cy={circleCenterXY}
 				strokeWidth={circleStrokeWidth}

@@ -19,7 +19,8 @@ export const FishingTotalStatistics: FC<FishingTotalStatisticsProps> = ({ classN
 	const totalFishCount = fish.reduce((acc, item) => (acc += item.count), 0);
 
 	const cards = fish.map((localFish) => {
-		const foundFish = AvailableFish.filter((localFish) => localFish.name === localFish.name)[0];
+		const foundFish = AvailableFish.filter((filterFish) => filterFish.name === localFish.name)[0];
+
 		const count = localFish.count;
 		const percent = totalFishCount > 0 ? (count / totalFishCount) * 100 : 0;
 

@@ -9,7 +9,6 @@ export const giveMeTotalFishEvent: IpcEvent<void, { name: string; count: number 
 		const axios = createAxios();
 
 		const response = await axios.get<{ name: string; count: number }[]>('fish');
-		console.log(response.data);
 
 		emit('setTotalFish', response.data);
 	},
