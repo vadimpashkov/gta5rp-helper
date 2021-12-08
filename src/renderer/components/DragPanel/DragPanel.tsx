@@ -4,6 +4,10 @@ import { Wrapper } from './DragPanel.elements';
 
 import { sendEvent } from '../../utils';
 
+import { NavigationPanel } from '../NavigationPanel';
+import { AdditionalOptions } from '../AdditionalOptions';
+import { TrafficLight } from '../TrafficLight';
+
 type DragPanelProps = {
 	className?: string;
 };
@@ -33,5 +37,11 @@ export const DragPanel: FC<DragPanelProps> = ({ className }: DragPanelProps) => 
 		animationId = requestAnimationFrame(moveWindow);
 	}
 
-	return <Wrapper className={className} onMouseDown={handleMouseDown} />;
+	return (
+		<Wrapper className={className} onMouseDown={handleMouseDown}>
+			<NavigationPanel />
+			<AdditionalOptions />
+			<TrafficLight />
+		</Wrapper>
+	);
 };
