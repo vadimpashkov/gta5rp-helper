@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 import { fontFace } from './mixins';
 
@@ -12,90 +12,87 @@ export const GlobalStyles = createGlobalStyle`
 	${fontFace({ src: MontserratExtraBold, family: 'Montserrat', weight: 800 })}
 
 	:root {
-		/* z-Index */
-
-		--z-index-drag-panel: 100;
-		--z-index-layout: 99;
-		--z-index-info-panel: 98;
-
 		/* Padding */
 
-		--padding-main: 16px;
-		--padding-secondary: 10px;
+		--padding-main: 20px;
 
 		/* Gap */
 
-		--gap-main: 10px;
+		--gap-primary: 10px;
+		--gap-secondary: 6px;
+		--gap-traffic-light: 8px;
 
 		/* Size */
 
 		--size-button: 80px;
 
-		/* Height */
-		--height-drag-panel: 10px;
-
 		/* Border radius */
 
-		--border-radius-main: 14px;
+		--border-radius-app: 12px;
+		--border-radius-main: 10px;
 
-		/* Color */
+		/* Color name */
 
-		--color-capril: 200 85% 60%;								// #42b6f0
-		--color-red-salsa: 0 85% 60%;								// #F04242
-		--color-sea-green-crayola: 160 85% 60%;						// #42f0b6
-		--color-frostbite: 325 85% 60%;								// #f042a7
-		--color-mandarin: 20 85% 60%;								// #f07c42
-		--color-green-lizard: 80 85% 60%;							// #b6f041
-		--color-purple: 265 85% 60%;								// #8b42f0
-		--color-blue-ryb: 235 85% 60%;								// #4251f0
-		--color-cultured: 0 0% 95%;									// #f2f2f2
-		--color-light-gray: 0 0% 80%;								// #cccccc
-		--color-rish-black: 0 0% 5%;								// #0d0d0d
-		--color-jet: 0 0% 20%;										// #333333
-		/* --color-purple-navy: 200 25% 40%;						// #4d6e80 */
-		/* --color-magnolia: 200 100% 98%;							// #f5fcff */
+		--color-orange-red-crayola: 3 93% 66%;						// #f96057
+		--color-maize-crayola: 45 92% 65%;							// #f8ce52
+		--color-mantis: 123 54% 59%;								// #5fcF65
+		--color-cultured: 0 0% 96%;									// #f5f5f5
+		--color-white: 0 0% 100%;									// #ffffff
+		--color-charleston-green: 200 4% 14%;						// #232526
+		--color-black: 0 0% 0%;										// #000000
+		--color-sonic-silver: 0 0% 47%;								// #797979
+
+		/* Traffic light color */
+
+		--color-traffic-light-close: hsl(var(--color-orange-red-crayola));
+		--color-traffic-light-minimize: hsl(var(--color-maize-crayola));
+		--color-traffic-light-maximize: hsl(var(--color-mantis));
 
 		/* Brand color */
 
-		--color-brand-primary: var(--color-capril);
-		--color-brand-secondary: var(--color-red-salsa);
+		/* --color-brand-primary: var(--color-capril); */
+		/* --color-brand-secondary: var(--color-red-salsa); */
+		--color-brand-item: var(--color-sonic-silver);
 
 		/* Themes color */
 
 		@media (prefers-color-scheme: light) {
-			--color-canvas: var(--color-cultured);
-			--color-canvas-inverted: var(--color-rish-black);
+			--color-canvas-primary: var(--color-cultured);
+			--color-canvas-primary-inverted: var(--color-charleston-green);
+			--color-canvas-secondary: var(--color-white);
 
-			--color-text-primary: var(--color-rish-black);
-			--color-text-primary-inverted: var(--color-cultured);
-			--color-text-secondary: var(--color-jet);
-			--color-text-secondary-inverted: var(--color-light-gray);
+			--color-text-primary: var(--color-cultured);
+			--color-text-primary-inverted: var(--color-charleston-green);
+			/* --color-text-secondary: var(--color-jet); */
+			/* --color-text-secondary-inverted: var(--color-light-gray); */
 		}
 
 		@media (prefers-color-scheme: dark) {
-			--color-canvas: var(--color-rish-black);
-			--color-canvas-inverted: var(--color-cultured);
+			--color-canvas-primary: var(--color-charleston-green);
+			--color-canvas-primary-inverted: var(--color-cultured);
+			--color-canvas-secondary: var(--color-black);
 
-			--color-text-primary: var(--color-cultured);
-			--color-text-primary-inverted: var(--color-rish-black);
-			--color-text-secondary: var(--color-light-gray);
-			--color-text-secondary-inverted: var(--color-jet);
+			--color-text-primary: var(--color-charleston-green);
+			--color-text-primary-inverted: var(--color-cultured);
+			/* --color-text-secondary: var(--color-jet); */
+			/* --color-text-secondary-inverted: var(--color-light-gray); */
 		}
 
-		/* Color descriptive */
-		--color-light: var(--color-cultured);
-		--color-dark: var(--color-rish-black);
+		/* Background color */
 
-		/* Color fish */
+		--color-background-one: hsl(var(--color-canvas-primary) / 0.8);
+		--color-background-two: hsl(var(--color-canvas-primary) / 0.5);
+		/* --color-background-three: hsl(var(--color-canvas-primary) / 0.8); */
+		--color-background-four: hsl(var(--color-canvas-primary-inverted) / 0.05);
+		--color-background-five: hsl(var(--color-canvas-primary-inverted) / 0.1);
 
-		--color-sterlet: hsl(var(--color-sea-green-crayola));
-		--color-salmon: hsl(var(--color-red-salsa));
-		--color-sturgeon: hsl(var(--color-capril));
-		--color-black-cupid: hsl(var(--color-blue-ryb));
-		--color-ramp: hsl(var(--color-mandarin));
-		--color-tuna: hsl(var(--color-purple));
-		--color-malma: hsl(var(--color-frostbite));
-		--color-puffer-fish: hsl(var(--color-green-lizard));
+		/* Filter */
+
+		--filter-blur-primary: blur(81.55px);
+
+		/* Box shadow */
+
+		--shadow-inset-primary: inset 0px 1px 3px hsl(var(--color-canvas-secondary) / 0.5);
 
 		/* Font family */
 
@@ -121,7 +118,12 @@ export const GlobalStyles = createGlobalStyle`
 		/* Bezier */
 
 		--bezier-rubber: cubic-bezier(1, 0.17, 0.16, 0.83);
-		--bezier-hit: cubic-bezier(0.54, -0.31, 0.51, 0.93);
+	}
+
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
 	}
 
 	html {
@@ -132,8 +134,29 @@ export const GlobalStyles = createGlobalStyle`
 	}
 
 	body {
-		margin: 0;
 		background-color: transparent;
 		overflow: hidden;
 	}
+`;
+
+export const Svg = styled.svg`
+	--size: 24px;
+
+	display: block;
+	width: var(--size);
+	height: var(--size);
+	object-fit: cover;
+	object-position: center;
+	fill: var(--fill, currentColor);
+	pointer-events: none;
+`;
+
+export const ContainerFlexCenter = styled.div`
+	--gap: var(--gap-secondary);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--gap);
+	min-width: 54px;
 `;
