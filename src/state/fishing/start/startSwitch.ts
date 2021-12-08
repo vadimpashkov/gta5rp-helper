@@ -27,7 +27,7 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 	} catch {
 		// Открытие инвентаря
 		if (!config.softStop) {
-			keyboard.type(config.openInventoryKey);
+			await keyboard.type(config.openInventoryKey);
 		} else {
 			return null;
 		}

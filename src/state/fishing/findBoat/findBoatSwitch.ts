@@ -10,7 +10,7 @@ import { FishingConfig, FishingState, FishingSwitch } from '../types';
 export const findBoatSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
 	const param = new OptionalSearchParameters(config.trunkRegion, 0.7);
 
-	keyboard.type(config.openTrunkKey);
+	await keyboard.type(config.openTrunkKey);
 
 	try {
 		config.trunkRegion = await waitForImage('Trunk.png', 2000, param);
