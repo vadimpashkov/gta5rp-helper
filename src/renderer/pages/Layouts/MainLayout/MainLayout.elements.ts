@@ -5,8 +5,4 @@ export const Navigation = styled.nav`
 	flex-flow: column;
 `;
 
-export const Wrapper = styled.div`
-	--z-index: var(--z-index-layout);
-
-	z-index: var(--z-index);
-`;
+export const Wrapper = styled.div``;

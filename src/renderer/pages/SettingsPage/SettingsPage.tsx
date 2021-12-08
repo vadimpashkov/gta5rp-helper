@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 
 import { MainLayout } from '../Layouts';
 
-import { Button, ComebackButton, MainSettings, FishingSettings } from '../../components';
+import { Button, MainSettings, FishingSettings } from '../../components';
 
 import FishSvg from '../../assets/svg/settingsFishing.svg';
 import SettingsSvg from '../../assets/svg/sliders.svg';
@@ -30,7 +30,6 @@ export const SettingsPage: FC<SettingsPageProps> = ({ className }: SettingsPageP
 			<MainLayout className={className}>
 				<Button srcIcon={SettingsSvg} isSelect={mainSettings} onClick={mainSettingsClick} />
 				<Button srcIcon={FishSvg} isSelect={fishingSettings} onClick={fishingSettingsClick} />
-				<ComebackButton to="/" />
 			</MainLayout>
 			{mainSettings && <MainSettings />}
 			{fishingSettings && <FishingSettings />}

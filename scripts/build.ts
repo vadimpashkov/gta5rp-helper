@@ -3,7 +3,7 @@ import { build } from 'electron-builder';
 build({
 	config: {
 		productName: 'GTA 5 Helper',
-		copyright: '© 2021 vadimpashkov and other contributors.',
+		copyright: '© 2021 vadimpashkov, Yaniddze and other contributors.',
 		files: ['build/**/*'],
 		directories: {
 			output: 'prod',

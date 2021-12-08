@@ -5,7 +5,7 @@ import { useStatus } from '../../stores';
 
 import { MainLayout } from '../Layouts';
 
-import { Button, ComebackButton, FishingTotalDashboard } from '../../components';
+import { Button, FishingTotalDashboard } from '../../components';
 
 import SvgPower from '../../assets/svg/power.svg';
 import SvgInfo from '../../assets/svg/info.svg';
@@ -32,7 +32,6 @@ export const FishingPage: FC<FishingPageProps> = ({ className }: FishingPageProp
 			<MainLayout className={className}>
 				<Button srcIcon={SvgPower} to="/fishingBotEnabled" onClick={handleStartClick} />
 				<Button srcIcon={SvgInfo} isSelect={infoOpen} onClick={handleClick} />
-				<ComebackButton to="/" />
 			</MainLayout>
 			{infoOpen && <FishingTotalDashboard />}
 		</>

@@ -1,19 +1,13 @@
 import styled from 'styled-components';
 
+import { Svg } from '../../styles';
+
 type ButtonProps = {
 	isSelect?: boolean;
 };
 
-export const Svg = styled.svg`
-	box-sizing: border-box;
-	display: block;
+export const Icon = styled(Svg)`
 	place-self: center;
-	width: var(--size-icon);
-	height: var(--size-icon);
-	object-fit: cover;
-	object-position: center;
-	fill: currentColor;
-	pointer-events: none;
 	transition: opacity var(--transition);
 `;
 
@@ -29,10 +23,8 @@ export const Wrapper = styled.button<ButtonProps>`
 
 	--transition: var(--time-standard) var(--bezier-rubber);
 
-	box-sizing: border-box;
 	position: relative;
 	display: grid;
-	padding: 0;
 	width: var(--size);
 	height: var(--size);
 	border: none;

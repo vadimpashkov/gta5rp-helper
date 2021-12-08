@@ -4,8 +4,6 @@ import { MainLayout } from '../Layouts';
 
 import { Button } from '../../components';
 
-import { CloseButton } from '../../components';
-
 import SvgFish from '../../assets/svg/fish.svg';
 import SvgSettings from '../../assets/svg/settings.svg';
 
@@ -18,7 +16,6 @@ export const HomePage: FC<HomePageProps> = ({ className }: HomePageProps) => {
 		<MainLayout className={className}>
 			<Button srcIcon={SvgFish} to="/fishing" />
 			<Button srcIcon={SvgSettings} to="/settings" />
-			<CloseButton />
 		</MainLayout>
 	);
 };

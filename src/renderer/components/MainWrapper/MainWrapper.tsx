@@ -1,7 +1,7 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { Container } from './MainWrapper.elements';
+import { Container, Content } from './MainWrapper.elements';
 
 import { sendEvent } from '../../utils';
 
@@ -36,7 +36,7 @@ export const MainWrapper: FC<MainWrapperProps> = ({ children, className, opacity
 			onClick={() => setForceRerender((old) => !old)}
 		>
 			<DragPanel />
-			{children}
+			<Content>{children}</Content>
 		</Container>
 	);
 };

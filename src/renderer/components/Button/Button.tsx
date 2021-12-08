@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Wrapper, Svg } from './Button.elements';
+import { Wrapper, Icon } from './Button.elements';
 
 type ButtonProps = {
 	className?: string;
@@ -20,10 +20,10 @@ export const Button: FC<ButtonProps> = ({ className, srcIcon, isSelect, onClick,
 			isSelect={isSelect}
 			onClick={onClick}
 		>
-			<Svg>
+			<Icon>
 				<use href={srcIcon + '#outline'} />
 				<use href={srcIcon + '#fill'} />
-			</Svg>
+			</Icon>
 		</Wrapper>
 	);
 };

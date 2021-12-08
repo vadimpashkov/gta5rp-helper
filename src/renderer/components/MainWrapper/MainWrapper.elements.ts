@@ -1,24 +1,31 @@
 import styled from 'styled-components';
 
-import svgFilter from '../../assets/svg/gooeyEffect.svg';
-
 type ContainerProps = {
 	opacity?: number;
 };
 
-export const Container = styled.div<ContainerProps>`
-	--gap: var(--gap-main);
-	--transition: var(--time-standard) var(--bezier-rubber);
-	--offset: var(--height-drag-panel);
+export const Content = styled.div`
+	--padding: 20px;
 
 	box-sizing: border-box;
+	padding: var(--padding);
+`;
+
+export const Container = styled.div<ContainerProps>`
+	--min-width: 300px;
+	--background-color: #acabf5;
+	--transition: var(--time-standard) var(--bezier-rubber);
+
+	box-sizing: border-box;
+	overflow: hidden;
 	position: absolute;
 	display: flex;
-	padding-top: var(--offset);
-	gap: var(--gap);
+	flex-flow: column;
+	min-width: var(--min-width);
+	border-radius: var(--border-radius-app);
+	background-color: var(--background-color);
 	opacity: ${({ opacity }) => opacity};
 	transition: opacity var(--transition);
-	filter: url(${svgFilter + '#rect'});
 
 	&:hover {
 		opacity: 1;
