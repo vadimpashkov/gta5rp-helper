@@ -1,6 +1,5 @@
 import { Settings } from '../../core';
 import { createAxios } from '../../utils';
-import { setSettings } from '../../store';
 import { IpcEvent } from '../types';
 
 export const newSettingsEvent: IpcEvent<Settings> = {
@@ -9,7 +8,5 @@ export const newSettingsEvent: IpcEvent<Settings> = {
 		const axios = createAxios();
 
 		await axios.post<Settings>('user/settings', newSettings);
-
-		setSettings(newSettings);
 	},
 };

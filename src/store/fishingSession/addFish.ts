@@ -1,4 +1,4 @@
-import { createAxios } from '../utils';
+import { createAxios } from '../../utils';
 
 export const addFish = async (name: string) => {
 	const axios = createAxios();

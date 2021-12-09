@@ -1,16 +1,12 @@
 import { IpcEvent } from '../types';
 import { Settings } from '../../core';
-import { createAxios } from '../../utils';
-import { setSettings } from '../../store';
+import { getSettings as getSettingsFromServer } from '../../store';
 
 export const getSettingsEvent: IpcEvent<void, Settings> = {
 	name: 'getSettings',
 	handle: async (_, emit) => {
-		const axios = createAxios();
+		const settings = await getSettingsFromServer();
 
-		const settingsResponse = await axios.get<Settings>('user/settings');
-
-		emit('setSettings', settingsResponse.data);
-		setSettings(settingsResponse.data);
+		emit('setSettings', settings);
 	},
 };

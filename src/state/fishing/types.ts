@@ -4,7 +4,6 @@ import { State, StateIteration, StateSwitch, DefaultConfig } from '../types';
 
 export type FishingConfig = {
 	startMousePosition: Point;
-	mouseDirection: boolean;
 	numberOfFish: number;
 	lookingForBackpack: boolean;
 	lookingForBoat: boolean;
@@ -13,7 +12,8 @@ export type FishingConfig = {
 } & DefaultConfig &
 	Weight &
 	Regions &
-	Keys;
+	Keys &
+	Coordinates;
 
 type Regions = {
 	lmbRegion: Region;
@@ -28,6 +28,10 @@ type Regions = {
 	yourInventoryInTrunkRegion: Region;
 	backpackInventoryRegion: Region;
 	boatInventoryRegion: Region;
+};
+
+type Coordinates = {
+	mouseCoordinate: Coordinate;
 };
 
 type Weight = {

@@ -21,9 +21,10 @@ export class Machine<T extends DefaultConfig> {
 			if (nextState === null) throw Error('Null State');
 
 			if (this.config.softStop === true && nextState.stopOnSoftExit === true) throw Error('SoftExit');
-			
+
 			if (!this.isWorking) return;
 
+			this.currentState.iteration?.cancel();
 			this.currentState = nextState;
 			this.config.emiter('newState', { name: nextState.name, description: nextState.description });
 
@@ -58,7 +59,7 @@ export class Machine<T extends DefaultConfig> {
 
 	softStop = () => {
 		this.config.softStop = true;
-	}
+	};
 
 	private createTimeout = () => {
 		this.iteration();

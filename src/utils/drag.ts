@@ -1,5 +1,5 @@
 import { mouse, Button } from '@nut-tree/nut-js';
-import { gtaProcess } from '../store';
+import { getGtaProcess } from '../store';
 
 type Coordinate = {
 	x: number;
@@ -7,6 +7,7 @@ type Coordinate = {
 };
 
 export const drag = async (from: Coordinate, to: Coordinate, spped?: number) => {
+	const gtaProcess = getGtaProcess();
 	await gtaProcess.mouse.moveCurveToAsync(from.x, from.y, spped || 7, 5);
 
 	await mouse.pressButton(Button.LEFT);

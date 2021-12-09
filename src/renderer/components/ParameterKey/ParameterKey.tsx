@@ -14,6 +14,10 @@ function replaceKeyAliases(key: string) {
 	return key.replace('Digit', '').replace('Key', '');
 }
 
+function getKeyName(value: number) {
+	return Key[value];
+}
+
 export const ParameterKey: FC<ParameterKeyProps> = ({
 	className,
 	description,
@@ -25,7 +29,7 @@ export const ParameterKey: FC<ParameterKeyProps> = ({
 
 	const currentKeyCode = (settings.data as { [parameter: string]: boolean | number })[settingsProperty];
 	const currentKey = replaceKeyAliases(
-		Object.keys(Key).filter((value) => (Key as { [key: string]: number })[value] === currentKeyCode)[0],
+		Object.keys(Key).filter((value) => (Key[value as any] as unknown as number) === currentKeyCode)[0],
 	);
 
 	const handleClick = () => {
@@ -35,7 +39,7 @@ export const ParameterKey: FC<ParameterKeyProps> = ({
 
 	function keyPressed(event: KeyboardEvent) {
 		const keyCode = event.code;
-		const keyValue = (Key as { [key: string]: number })[keyCode];
+		const keyValue = Key[keyCode as any] as unknown as number;
 
 		setPressedKey({
 			key: replaceKeyAliases(keyCode),

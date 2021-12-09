@@ -5,8 +5,12 @@ import { getSettings } from '../../store';
 import { Emiter } from '../types';
 import { FishingConfig } from './types';
 
-export const initFishingConfig = (screenWidth: number, screenHeight: number, emiter: Emiter): FishingConfig => {
-	const settings = getSettings();
+export const initFishingConfig = async (
+	screenWidth: number,
+	screenHeight: number,
+	emiter: Emiter,
+): Promise<FishingConfig> => {
+	const settings = await getSettings();
 
 	return {
 		fishingPlaceRegion: new Region(0, 0, screenWidth, screenHeight),
@@ -22,7 +26,6 @@ export const initFishingConfig = (screenWidth: number, screenHeight: number, emi
 		boatInventoryRegion: new Region(0, 0, screenWidth, screenHeight),
 		backpackInventoryRegion: new Region(0, 0, screenWidth, screenHeight),
 		startMousePosition: new Point(screenWidth / 2, screenHeight / 2),
-		mouseDirection: false,
 		emiter,
 		numberOfFish: 0,
 		screenWidth,
@@ -55,6 +58,10 @@ export const initFishingConfig = (screenWidth: number, screenHeight: number, emi
 		fishInInventory: {
 			boat: fillTotalFish(null),
 			backpack: fillTotalFish(null),
+		},
+		mouseCoordinate: {
+			x: screenWidth / 2,
+			y: screenHeight / 2,
 		},
 	};
 };

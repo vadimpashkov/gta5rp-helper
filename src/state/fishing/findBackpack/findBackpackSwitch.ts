@@ -1,13 +1,14 @@
-import { OptionalSearchParameters, Region, keyboard, mouse, left, up } from '@nut-tree/nut-js';
+import { OptionalSearchParameters, Region, mouse } from '@nut-tree/nut-js';
 import {
 	createCancelable,
 	waitForImage,
 	extractTextFromRegion,
 	extractNumbersFromWeight,
 	getRandomNumberInclusive,
+	prepareKey,
 } from '../../../utils';
 
-import { gtaProcess } from '../../../store';
+import { getGtaProcess } from '../../../store';
 
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
 import { findBackpackState } from './findBackpackState';
@@ -16,6 +17,7 @@ import { placeState } from '../place';
 
 export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
 	const param = new OptionalSearchParameters(config.backpackRegion, 0.8);
+	const gtaProcess = getGtaProcess();
 
 	try {
 		// Поиск если инвентарь уже открыт
@@ -39,13 +41,13 @@ export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig,
 			const randomX = getRandomNumberInclusive(-100, 100);
 			const randomY = getRandomNumberInclusive(-100, 100);
 
-			await keyboard.type(config.openInventoryKey);
+			await gtaProcess.keyboard.sendKeyAsync(prepareKey(config.openInventoryKey));
 
 			let currentMouse = await mouse.getPosition();
 
 			await gtaProcess.mouse.moveCurveToAsync(currentMouse.x + randomX, currentMouse.y + randomY, 2);
 
-			await keyboard.type(config.openInventoryKey);
+			await gtaProcess.keyboard.sendKeyAsync(prepareKey(config.openInventoryKey));
 
 			return findBackpackState;
 		};
@@ -82,7 +84,7 @@ export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig,
 	} catch {}
 
 	// Закрываем инвентарь
-	await keyboard.type(config.openInventoryKey);
+	await gtaProcess.keyboard.sendKeyAsync(prepareKey(config.openInventoryKey));
 
 	if (config.lookingForBoat) {
 		return findBoatState;

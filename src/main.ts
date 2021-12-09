@@ -1,7 +1,8 @@
 import path from 'path';
-import { BrowserWindow, app, screen } from 'electron';
+import { BrowserWindow, app } from 'electron';
 
 import { registerEvents } from './registerEvents';
+import { initGtaProcess } from './store';
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -29,6 +30,7 @@ export function createMainWindow() {
 	if (isDev) {
 		winMain.webContents.openDevTools({ mode: 'undocked' });
 	}
+	initGtaProcess();
 }
 
 app.whenReady().then(async () => {

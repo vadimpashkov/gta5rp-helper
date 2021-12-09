@@ -1,16 +1,25 @@
-import { keyboard, OptionalSearchParameters, Region } from '@nut-tree/nut-js';
+import { OptionalSearchParameters, Region } from '@nut-tree/nut-js';
 
 import { Key } from '../../../core';
-import { createCancelable, extractTextFromRegion, extractNumbersFromWeight, waitForImage } from '../../../utils';
+import {
+	createCancelable,
+	extractTextFromRegion,
+	extractNumbersFromWeight,
+	waitForImage,
+	prepareKey,
+} from '../../../utils';
 
 import { placeState } from '../place';
+import { getGtaProcess } from '../../../store';
 
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
 
 export const findBoatSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
 	const param = new OptionalSearchParameters(config.trunkRegion, 0.7);
 
-	await keyboard.type(config.openTrunkKey);
+	const gtaProcess = getGtaProcess();
+
+	await gtaProcess.keyboard.sendKeyAsync(prepareKey(config.openTrunkKey));
 
 	try {
 		config.trunkRegion = await waitForImage('Trunk.png', 2000, param);
@@ -51,7 +60,7 @@ export const findBoatSwitch: FishingSwitch = createCancelable<FishingConfig, Fis
 		console.log(e);
 	}
 
-	await keyboard.type(Key.Escape);
+	await gtaProcess.keyboard.sendKeyAsync('escape');
 
 	return placeState;
 });

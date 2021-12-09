@@ -23,7 +23,7 @@ export const start = async (emit: (msg: string, data: any) => void) => {
 	const width = await screen.width();
 	const height = await screen.height();
 
-	const config = initFishingConfig(width, height, emiter);
+	const config = await initFishingConfig(width, height, emiter);
 
 	machine = new Machine<FishingConfig>(startFishingState, config);
 
@@ -36,4 +36,4 @@ export const stop = () => {
 
 export const softStop = () => {
 	machine?.softStop();
-}
+};

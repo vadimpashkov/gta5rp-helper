@@ -1,15 +1,10 @@
-import { Settings, Key } from '../../core';
+import { Settings } from '../../core';
+import { createAxios } from '../../utils';
 
-let settings: Settings = {
-	lookingForBackpack: false,
-	lookingForBoat: false,
-	openInventoryKey: Key.KeyI,
-	openTrunkKey: Key.KeyH,
-	fishingRodKey: Key.Backspace,
-};
+export const getSettings = async () => {
+	const axios = createAxios();
 
-export const getSettings = () => settings;
+	const response = await axios.get<Settings>('user/settings');
 
-export const setSettings = (newSettings: Settings) => {
-	settings = newSettings;
+	return response.data;
 };

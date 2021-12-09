@@ -1,4 +1,4 @@
-import { keyboard } from '@nut-tree/nut-js';
+import { keyboard, mouse } from '@nut-tree/nut-js';
 
 import { createCancelable } from '../../../utils';
 
@@ -21,6 +21,8 @@ export const storeFishSwitch: FishingSwitch = createCancelable<FishingConfig, Fi
 	if (backpack.available && backpack.size.current + fish.weight < backpack.size.total) {
 		return fishToBackpackState;
 	}
+
+	config.mouseCoordinate = await mouse.getPosition();
 
 	return waitLmdState;
 });

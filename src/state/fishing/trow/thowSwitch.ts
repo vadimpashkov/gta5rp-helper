@@ -1,6 +1,7 @@
-import { keyboard } from '@nut-tree/nut-js';
+import { mouse } from '@nut-tree/nut-js';
 
-import { createCancelable } from '../../../utils';
+import { createCancelable, prepareKey } from '../../../utils';
+import { getGtaProcess } from '../../../store';
 
 import { waitLmdState } from '../waitLmd';
 import { storeFishState } from '../storeFish';
@@ -10,15 +11,19 @@ import { FishingConfig, FishingState, FishingSwitch } from '../types';
 export const throwSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
 	const { mainInventory, backpack, boat, lastFish, fishingRodKey } = config;
 
+	const gtaProcess = getGtaProcess();
+
 	// console.log(mainInventory.current);
 
-	await keyboard.type(fishingRodKey);
+	await gtaProcess.keyboard.sendKeyAsync(prepareKey(fishingRodKey));
 
 	mainInventory.current -= 0.01;
 
 	if (lastFish !== null && (backpack.available || boat.available)) {
 		return storeFishState;
 	}
+
+	config.mouseCoordinate = await mouse.getPosition();
 
 	return waitLmdState;
 });
