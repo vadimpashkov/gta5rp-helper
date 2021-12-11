@@ -36,7 +36,7 @@
 	},
 	"dependencies": {
 		"@nanostores/react": "^0.1.2",
-		"@nut-tree/nut-js": "^1.7.1-next.20211210233328",
+		"@nut-tree/nut-js": "^1.7.0",
 		"axios": "^0.24.0",
 		"ffi-napi": "^4.0.3",
 		"image-js": "^0.33.1",
