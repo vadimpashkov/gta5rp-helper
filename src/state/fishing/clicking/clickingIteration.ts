@@ -4,8 +4,8 @@ import { FishingConfig, FishingIteration } from '../types';
 import { createCancelable, getRandomNumberInclusive } from '../../../utils';
 
 export const clickingIteration: FishingIteration = createCancelable<FishingConfig, void>(async (config) => {
-	const randomX = getRandomNumberInclusive(-2, 2);
-	const randomY = getRandomNumberInclusive(-2, 2);
+	const randomX = getRandomNumberInclusive(-1, 1);
+	const randomY = getRandomNumberInclusive(-1, 1);
 
 	mouse.leftClick();
 
