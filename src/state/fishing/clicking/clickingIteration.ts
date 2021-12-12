@@ -1,4 +1,4 @@
-import { mouse } from '@nut-tree/nut-js';
+import { left, mouse, up } from '@nut-tree/nut-js';
 
 import { FishingConfig, FishingIteration } from '../types';
 import { createCancelable, getRandomNumberInclusive } from '../../../utils';
@@ -9,5 +9,6 @@ export const clickingIteration: FishingIteration = createCancelable<FishingConfi
 
 	mouse.leftClick();
 
-	mouse.move([{ x: config.mouseCoordinate.x + randomX, y: config.mouseCoordinate.y + randomY }]);
+	mouse.move(left(randomX));
+	mouse.move(up(randomY));
 });

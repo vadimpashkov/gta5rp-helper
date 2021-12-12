@@ -32,7 +32,11 @@ export const fishToBoatSwitch: FishingSwitch = createCancelable<FishingConfig, F
 			const fishRegion = await findRegion(`${lastFish!.storedName}-Boat.png`, foundBoatFishParam, 2, 1500);
 
 			if (fishRegion === null) {
-				const emptyCellRegion = await waitForImage(`EmptyCell.png`, 1500, foundBoatFishParam);
+				const emptyCellRegion = await waitForImage(
+					`EmptyCell.png`,
+					1500,
+					new OptionalSearchParameters(config.boatInventoryRegion, 0.7),
+				);
 
 				config.fishInInventory.boat[lastFish!.storedName] = {
 					x: emptyCellRegion.left + emptyCellRegion.width / 2,

@@ -14,7 +14,7 @@ export const fishToBackpackSwitch: FishingSwitch = createCancelable<FishingConfi
 	await gtaProcess.keyboard.sendKeyAsync(prepareKey(openInventoryKey));
 
 	try {
-		const foundFishParam = new OptionalSearchParameters(config.yourInventoryRegion, 0.7);
+		const foundFishParam = new OptionalSearchParameters(config.yourInventoryRegion, 0.9);
 
 		const foundFishRegion = await findRegion(`${lastFish!.storedName}-Inventory.png`, foundFishParam, 2, 1500);
 
@@ -31,7 +31,11 @@ export const fishToBackpackSwitch: FishingSwitch = createCancelable<FishingConfi
 			let fishRegion = await findRegion(`${lastFish!.storedName}-Inventory.png`, foundBackpackFishParam, 2, 1500);
 
 			if (fishRegion === null) {
-				const emptyCellRegion = await waitForImage(`EmptyCell.png`, 1500, foundBackpackFishParam);
+				const emptyCellRegion = await waitForImage(
+					`EmptyCell.png`,
+					1500,
+					new OptionalSearchParameters(config.backpackInventoryRegion, 0.7),
+				);
 
 				config.fishInInventory.backpack[lastFish!.storedName] = {
 					x: emptyCellRegion.left + emptyCellRegion.width / 2,
