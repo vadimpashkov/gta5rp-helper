@@ -1,5 +1,4 @@
-import { createCancelable, prepareKey } from '../../../utils';
-import { getGtaProcess } from '../../../store';
+import { createCancelable, typeKeyWithDelay, getRandomNumberInclusive } from '../../../utils';
 
 import { waitLmdState } from '../waitLmd';
 import { storeFishState } from '../storeFish';
@@ -9,11 +8,7 @@ import { FishingConfig, FishingState, FishingSwitch } from '../types';
 export const throwSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
 	const { mainInventory, backpack, boat, lastFish, fishingRodKey } = config;
 
-	const gtaProcess = getGtaProcess();
-
-	// console.log(mainInventory.current);
-
-	await gtaProcess.keyboard.sendKeyAsync(prepareKey(fishingRodKey));
+	await typeKeyWithDelay(fishingRodKey, getRandomNumberInclusive(1000, 3500));
 
 	mainInventory.current -= 0.01;
 

@@ -1,7 +1,13 @@
 import { mouse, OptionalSearchParameters } from '@nut-tree/nut-js';
 
-import { createCancelable, waitForImage, drag, typeKeyWithDelay, findRegion, prepareKey } from '../../../utils';
-import { getGtaProcess } from '../../../store';
+import {
+	createCancelable,
+	waitForImage,
+	drag,
+	typeKeyWithDelay,
+	findRegion,
+	getRandomNumberInclusive,
+} from '../../../utils';
 
 import { waitLmdState } from '../waitLmd';
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
@@ -9,9 +15,7 @@ import { FishingConfig, FishingState, FishingSwitch } from '../types';
 export const fishToBackpackSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
 	const { lastFish, openInventoryKey } = config;
 
-	const gtaProcess = getGtaProcess();
-
-	await gtaProcess.keyboard.sendKeyAsync(prepareKey(openInventoryKey));
+	await typeKeyWithDelay(openInventoryKey, getRandomNumberInclusive(600, 1200));
 
 	try {
 		const foundFishParam = new OptionalSearchParameters(config.yourInventoryRegion, 0.9);
@@ -19,7 +23,7 @@ export const fishToBackpackSwitch: FishingSwitch = createCancelable<FishingConfi
 		const foundFishRegion = await findRegion(`${lastFish!.storedName}-Inventory.png`, foundFishParam, 2, 1500);
 
 		if (foundFishRegion === null) {
-			await gtaProcess.keyboard.sendKeyAsync(prepareKey(openInventoryKey));
+			await typeKeyWithDelay(openInventoryKey, getRandomNumberInclusive(700, 1200));
 
 			return waitLmdState;
 		}
@@ -62,7 +66,7 @@ export const fishToBackpackSwitch: FishingSwitch = createCancelable<FishingConfi
 			},
 		);
 
-		await typeKeyWithDelay(openInventoryKey, 300);
+		await typeKeyWithDelay(openInventoryKey, getRandomNumberInclusive(550, 1200));
 
 		config.backpack.size.current += config.lastFish!.weight;
 
