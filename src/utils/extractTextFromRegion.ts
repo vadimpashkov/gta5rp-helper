@@ -1,34 +1,18 @@
-import { Region, screen } from '@nut-tree/nut-js';
-import { FileType } from '@nut-tree/nut-js/dist/lib/file-type.enum';
-import path from 'path';
-import { recognize } from 'tesseract.js';
-import { readFile } from 'fs';
+import { Region } from '@nut-tree/nut-js';
+import screenshotDesktop from 'screenshot-desktop';
+import { recognize, ImageLike } from 'tesseract.js';
 import { Image } from 'image-js';
 
-export const extractTextFromRegion = async (
-	region: Region,
-	lang: string,
-	captureName: string = 'temp',
-	thresholdValue: number,
-): Promise<string> =>
+export const extractTextFromRegion = async (nutRegion: Region, lang: string, thresholdValue: number): Promise<string> =>
 	new Promise<string>(async (resolve, reject) => {
-		const fileName = `${captureName}-${Date.now()}.png`;
-		const filePath = path.join(process.cwd(), 'captures/');
-		const file = path.join(filePath, fileName);
+		const region = { x: nutRegion.left, y: nutRegion.top, width: nutRegion.width, height: nutRegion.height };
+		const screenshot = await screenshotDesktop();
+		const image = await Image.load(screenshot);
+		const threshold = image.crop(region).grey().mask({ threshold: thresholdValue });
 
-		await screen.captureRegion(fileName, region, FileType.PNG, filePath);
+		const {
+			data: { text },
+		} = await recognize(threshold.toBuffer() as unknown as ImageLike, lang);
 
-		let image = await Image.load(file);
-		let threshold = image.grey().mask({ threshold: thresholdValue });
-
-		await threshold.save(file);
-
-		readFile(file, async (err, data) => {
-			if (err) {
-				reject();
-			}
-			const result = await recognize(data, lang);
-
-			resolve(result.data.text);
-		});
+		resolve(text);
 	});

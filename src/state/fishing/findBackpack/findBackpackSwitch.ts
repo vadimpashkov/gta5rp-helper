@@ -31,7 +31,6 @@ export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig,
 				config.backpackRegion.height + 6,
 			),
 			'monserrat-medium-18-v1',
-			'backpack',
 			160,
 		);
 

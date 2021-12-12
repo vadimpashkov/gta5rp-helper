@@ -38,7 +38,6 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 	const yourItemsSize = await extractTextFromRegion(
 		new Region(config.yourItemsRegion.left - 120, config.yourItemsRegion.top - 4, 92, 28),
 		'monserrat-medium-18-v1',
-		'inventory',
 		160,
 	);
 

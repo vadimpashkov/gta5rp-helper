@@ -32,7 +32,6 @@ export const findBoatSwitch: FishingSwitch = createCancelable<FishingConfig, Fis
 				25,
 			),
 			'monserrat-bold-18-v1',
-			'boat',
 			212,
 		);
 
