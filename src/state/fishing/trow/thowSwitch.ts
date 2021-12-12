@@ -1,5 +1,3 @@
-import { mouse } from '@nut-tree/nut-js';
-
 import { createCancelable, prepareKey } from '../../../utils';
 import { getGtaProcess } from '../../../store';
 
@@ -23,7 +21,7 @@ export const throwSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 		return storeFishState;
 	}
 
-	config.mouseCoordinate = await mouse.getPosition();
+	config.currentMacros = config.macroses[Math.floor(Math.random() * config.macroses.length)];
 
 	return waitLmdState;
 });

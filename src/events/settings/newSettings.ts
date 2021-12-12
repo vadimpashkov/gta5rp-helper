@@ -7,6 +7,13 @@ export const newSettingsEvent: IpcEvent<Settings> = {
 	handle: async (newSettings) => {
 		const axios = createAxios();
 
-		await axios.post<Settings>('user/settings', newSettings);
+		const preparedSettings = {
+			...newSettings,
+			macroses: JSON.stringify(newSettings.macroses),
+		};
+
+		console.log(preparedSettings);
+
+		await axios.post('user/settings', preparedSettings);
 	},
 };

@@ -71,7 +71,5 @@ export const fishToBackpackSwitch: FishingSwitch = createCancelable<FishingConfi
 		console.log(e);
 	}
 
-	config.mouseCoordinate = await mouse.getPosition();
-
 	return waitLmdState;
 });

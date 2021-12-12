@@ -8,6 +8,8 @@ export const successSwitcher: FishingSwitch = createCancelable<FishingConfig, Fi
 	const { successRegion } = config;
 	const successParam = createParam(successRegion, 0.7);
 
+	config.mouseCoordinate = null;
+
 	try {
 		const success = await waitForImage('successful.png', 2000, successParam);
 

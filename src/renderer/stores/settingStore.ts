@@ -11,6 +11,7 @@ const store = atom<Settings>({
 	openInventoryKey: Key.KeyI,
 	openTrunkKey: Key.KeyH,
 	fishingRodKey: Key.Backspace,
+	macroses: [],
 });
 
 receiveEvent<Settings>('setSettings', (data) => {

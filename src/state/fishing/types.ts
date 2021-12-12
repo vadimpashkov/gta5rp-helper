@@ -13,7 +13,14 @@ export type FishingConfig = {
 	Weight &
 	Regions &
 	Keys &
-	Coordinates;
+	Coordinates &
+	Macros;
+
+type Macros = {
+	macroses: number[][][];
+	currentMacros: number[][];
+	macrosStep: number;
+};
 
 type Regions = {
 	lmbRegion: Region;
@@ -31,7 +38,7 @@ type Regions = {
 };
 
 type Coordinates = {
-	mouseCoordinate: Coordinate;
+	mouseCoordinate: Coordinate | null;
 };
 
 type Weight = {

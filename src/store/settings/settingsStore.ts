@@ -6,5 +6,12 @@ export const getSettings = async () => {
 
 	const response = await axios.get<Settings>('user/settings');
 
-	return response.data;
+	const settings = response.data;
+
+	const settingsWithMacros = {
+		...settings,
+		macroses: JSON.parse(settings.macroses as unknown as string),
+	};
+
+	return settingsWithMacros;
 };

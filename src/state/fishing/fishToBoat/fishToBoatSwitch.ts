@@ -72,6 +72,5 @@ export const fishToBoatSwitch: FishingSwitch = createCancelable<FishingConfig, F
 
 	await typeKeyWithDelay(Key.Escape, 300);
 
-	config.mouseCoordinate = await mouse.getPosition();
 	return waitLmdState;
 });

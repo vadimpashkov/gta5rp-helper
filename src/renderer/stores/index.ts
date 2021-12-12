@@ -4,4 +4,5 @@ export * from './sessionFishStore';
 export * from './statusStore';
 export * from './authStore';
 export * from './loginStore';
+export * from './macrosStore';
 // export * from './keyStore';

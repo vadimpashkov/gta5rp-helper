@@ -26,6 +26,9 @@ export const initFishingConfig = async (
 		boatInventoryRegion: new Region(0, 0, screenWidth, screenHeight),
 		backpackInventoryRegion: new Region(0, 0, screenWidth, screenHeight),
 		startMousePosition: new Point(screenWidth / 2, screenHeight / 2),
+		macroses: settings.macroses,
+		currentMacros: [],
+		macrosStep: 0,
 		emiter,
 		numberOfFish: 0,
 		screenWidth,
@@ -59,9 +62,6 @@ export const initFishingConfig = async (
 			boat: fillTotalFish(null),
 			backpack: fillTotalFish(null),
 		},
-		mouseCoordinate: {
-			x: screenWidth / 2,
-			y: screenHeight / 2,
-		},
+		mouseCoordinate: null,
 	};
 };

@@ -14,3 +14,4 @@ export * from './findRegion';
 export * from './typeKeyWithDelay';
 export * from './axiosInstance';
 export * from './prepareKey';
+export * from './writeMouse';

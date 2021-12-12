@@ -27,7 +27,9 @@ export const ParameterKey: FC<ParameterKeyProps> = ({
 	const [pressedKey, setPressedKey] = useState<{ key: string; code: number }>();
 	const [askedKey, setAskedKey] = useState(false);
 
-	const currentKeyCode = (settings.data as { [parameter: string]: boolean | number })[settingsProperty];
+	const currentKeyCode = (settings.data as { [parameter: string]: boolean | number | number[][][] })[
+		settingsProperty
+	];
 	const currentKey = replaceKeyAliases(
 		Object.keys(Key).filter((value) => (Key[value as any] as unknown as number) === currentKeyCode)[0],
 	);

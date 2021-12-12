@@ -7,6 +7,8 @@ export const getSettingsEvent: IpcEvent<void, Settings> = {
 	handle: async (_, emit) => {
 		const settings = await getSettingsFromServer();
 
+		console.log(settings);
+
 		emit('setSettings', settings);
 	},
 };

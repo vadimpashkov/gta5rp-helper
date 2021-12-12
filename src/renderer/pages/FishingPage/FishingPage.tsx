@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 
 import { sendEvent } from '../../utils';
-import { useStatus } from '../../stores';
+import { useStatus, useSettings } from '../../stores';
 
 import { MainLayout } from '../Layouts';
 
@@ -16,6 +16,7 @@ type FishingPageProps = {
 
 export const FishingPage: FC<FishingPageProps> = ({ className }: FishingPageProps) => {
 	const [infoOpen, setInfoOpen] = useState(false);
+	const settings = useSettings();
 	const { reset } = useStatus();
 
 	const handleClick = () => {
@@ -30,7 +31,12 @@ export const FishingPage: FC<FishingPageProps> = ({ className }: FishingPageProp
 	return (
 		<>
 			<MainLayout className={className}>
-				<Button srcIcon={SvgPower} to="/fishingBotEnabled" onClick={handleStartClick} />
+				<Button
+					disabled={settings.data.macroses.length === 0}
+					srcIcon={SvgPower}
+					to="/fishingBotEnabled"
+					onClick={handleStartClick}
+				/>
 				<Button srcIcon={SvgInfo} isSelect={infoOpen} onClick={handleClick} />
 				<ComebackButton to="/" />
 			</MainLayout>

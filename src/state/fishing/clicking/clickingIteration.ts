@@ -1,14 +1,23 @@
-import { left, mouse, up } from '@nut-tree/nut-js';
+import { left, mouse, up, right, down } from '@nut-tree/nut-js';
 
 import { FishingConfig, FishingIteration } from '../types';
-import { createCancelable, getRandomNumberInclusive } from '../../../utils';
+import { createCancelable } from '../../../utils';
 
 export const clickingIteration: FishingIteration = createCancelable<FishingConfig, void>(async (config) => {
-	const randomX = getRandomNumberInclusive(-1, 1);
-	const randomY = getRandomNumberInclusive(-1, 1);
-
+	if (config.mouseCoordinate === null) {
+		config.mouseCoordinate = await mouse.getPosition();
+	}
 	mouse.leftClick();
 
-	mouse.move(left(randomX));
-	mouse.move(up(randomY));
+	const step = config.macrosStep + 1 >= config.macroses.length ? 0 : config.macrosStep + 1;
+	const currentStep = config.currentMacros[step];
+
+	const x = currentStep[0];
+	const y = currentStep[1];
+
+	if (x > 0) mouse.move(right(x));
+	else mouse.move(left(x));
+
+	if (y > 0) mouse.move(up(x));
+	else mouse.move(down(x));
 });
