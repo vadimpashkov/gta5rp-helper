@@ -1,6 +1,5 @@
 import { OptionalSearchParameters, Region } from '@nut-tree/nut-js';
 
-import { Key } from '../../../core';
 import {
 	createCancelable,
 	extractTextFromRegion,
@@ -15,7 +14,7 @@ import { getGtaProcess } from '../../../store';
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
 
 export const findBoatSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
-	const param = new OptionalSearchParameters(config.trunkRegion, 0.7);
+	const param = new OptionalSearchParameters(config.trunkRegion, 0.85);
 
 	const gtaProcess = getGtaProcess();
 
@@ -23,6 +22,8 @@ export const findBoatSwitch: FishingSwitch = createCancelable<FishingConfig, Fis
 
 	try {
 		config.trunkRegion = await waitForImage('Trunk.png', 2000, param);
+
+		console.log(config.trunkRegion);
 
 		const trunkSize = await extractTextFromRegion(
 			new Region(
