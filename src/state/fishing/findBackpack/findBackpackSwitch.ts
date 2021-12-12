@@ -5,7 +5,7 @@ import {
 	extractTextFromRegion,
 	extractNumbersFromWeight,
 	getRandomNumberInclusive,
-	prepareKey,
+	typeKeyWithDelay,
 } from '../../../utils';
 
 import { getGtaProcess } from '../../../store';
@@ -40,13 +40,13 @@ export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig,
 			const randomX = getRandomNumberInclusive(-100, 100);
 			const randomY = getRandomNumberInclusive(-100, 100);
 
-			await gtaProcess.keyboard.sendKeyAsync(prepareKey(config.openInventoryKey));
+			await typeKeyWithDelay(config.openInventoryKey, getRandomNumberInclusive(600, 900));
 
 			let currentMouse = await mouse.getPosition();
 
 			await gtaProcess.mouse.moveCurveToAsync(currentMouse.x + randomX, currentMouse.y + randomY, 2);
 
-			await gtaProcess.keyboard.sendKeyAsync(prepareKey(config.openInventoryKey));
+			await typeKeyWithDelay(config.openInventoryKey, getRandomNumberInclusive(600, 1200));
 
 			return findBackpackState;
 		};
@@ -83,7 +83,7 @@ export const findBackpackSwitch: FishingSwitch = createCancelable<FishingConfig,
 	} catch {}
 
 	// Закрываем инвентарь
-	await gtaProcess.keyboard.sendKeyAsync(prepareKey(config.openInventoryKey));
+	await typeKeyWithDelay(config.openInventoryKey, getRandomNumberInclusive(500, 1200));
 
 	if (config.lookingForBoat) {
 		return findBoatState;

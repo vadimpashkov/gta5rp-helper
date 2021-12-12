@@ -1,26 +1,29 @@
 import { mouse, OptionalSearchParameters } from '@nut-tree/nut-js';
 
 import { Key } from '../../../core';
-import { createCancelable, waitForImage, drag, typeKeyWithDelay, findRegion, prepareKey } from '../../../utils';
+import {
+	createCancelable,
+	waitForImage,
+	drag,
+	typeKeyWithDelay,
+	findRegion,
+	getRandomNumberInclusive,
+} from '../../../utils';
 
 import { waitLmdState } from '../waitLmd';
-import { getGtaProcess } from '../../../store';
 import { FishingConfig, FishingState, FishingSwitch } from '../types';
 
 export const fishToBoatSwitch: FishingSwitch = createCancelable<FishingConfig, FishingState>(async (config) => {
 	const { lastFish, openTrunkKey } = config;
 
-	const gtaProcess = getGtaProcess();
-
-	await gtaProcess.keyboard.sendKeyAsync(prepareKey(openTrunkKey));
+	await typeKeyWithDelay(openTrunkKey, getRandomNumberInclusive(1000, 3500));
 
 	try {
 		const foundFishParam = new OptionalSearchParameters(config.yourInventoryInTrunkRegion, 0.9);
-
 		const foundFishRegion = await findRegion(`${lastFish!.storedName}-Boat.png`, foundFishParam, 2, 2500);
 
 		if (foundFishRegion === null) {
-			await gtaProcess.keyboard.sendKeyAsync('escape');
+			await typeKeyWithDelay(Key.Escape, getRandomNumberInclusive(550, 1200));
 
 			return waitLmdState;
 		}
@@ -70,7 +73,7 @@ export const fishToBoatSwitch: FishingSwitch = createCancelable<FishingConfig, F
 		console.log(e);
 	}
 
-	await typeKeyWithDelay(Key.Escape, 300);
+	await typeKeyWithDelay(Key.Escape, getRandomNumberInclusive(700, 1200));
 
 	config.mouseCoordinate = await mouse.getPosition();
 	return waitLmdState;

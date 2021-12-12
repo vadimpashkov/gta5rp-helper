@@ -5,7 +5,7 @@ import {
 	extractTextFromRegion,
 	extractNumbersFromWeight,
 	getRandomNumberInclusive,
-	prepareKey,
+	typeKeyWithDelay,
 } from '../../../utils';
 
 import { clearSessionFish, getGtaProcess } from '../../../store';
@@ -28,10 +28,11 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 	} catch {
 		// Открытие инвентаря
 		if (!config.softStop) {
-			await gtaProcess.keyboard.sendKeyAsync(prepareKey(config.openInventoryKey));
+			await typeKeyWithDelay(config.openInventoryKey, getRandomNumberInclusive(600, 1200));
 		} else {
 			return null;
 		}
+
 		config.yourItemsRegion = await waitForImage('yourItems.png', 5000, param);
 	}
 
@@ -47,7 +48,7 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 	};
 
 	const retry = async () => {
-		await gtaProcess.keyboard.sendKeyAsync(prepareKey(config.openInventoryKey));
+		await typeKeyWithDelay(config.openInventoryKey, getRandomNumberInclusive(500, 1400));
 
 		const randomX = getRandomNumberInclusive(-10, 10);
 		const randomY = getRandomNumberInclusive(-4, 4);
@@ -98,7 +99,7 @@ export const startSwitch: FishingSwitch = createCancelable<FishingConfig, Fishin
 	} else if (config.lookingForBoat) {
 		return findBoatState;
 	} else {
-		await gtaProcess.keyboard.sendKeyAsync(prepareKey(config.openInventoryKey));
+		await typeKeyWithDelay(config.openInventoryKey, getRandomNumberInclusive(660, 1600));
 	}
 
 	return placeState;
