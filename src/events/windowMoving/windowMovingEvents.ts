@@ -2,7 +2,7 @@ import { screen } from 'electron';
 import { IpcEvent } from '../types';
 
 export const appSizeEvent: IpcEvent<{ width: number; height: number }> = {
-	name: 'giveMeTotalFish',
+	name: 'appSize',
 	handle: (size, __, window) => {
 		if (!window.isDestroyed()) {
 			window.setBounds(size);
