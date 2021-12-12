@@ -23,8 +23,6 @@ export const findBoatSwitch: FishingSwitch = createCancelable<FishingConfig, Fis
 	try {
 		config.trunkRegion = await waitForImage('Trunk.png', 2000, param);
 
-		console.log(config.trunkRegion);
-
 		const trunkSize = await extractTextFromRegion(
 			new Region(
 				config.trunkRegion.left + 115,
